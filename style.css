@@ -387,6 +387,20 @@ h2 {
   color: white;
   margin: 0 auto 1.25rem;
 }
+
+.team-avatar-photo {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 1.25rem;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.2);
+}
+.team-avatar-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
 .team-avatar.open {
   background: var(--dark);
   border: 2px dashed #334155;
@@ -395,7 +409,9 @@ h2 {
 .team-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.35rem; }
 .team-role { font-size: 0.8rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; }
 .team-card p { font-size: 0.875rem; color: #94a3b8; margin-bottom: 1.25rem; }
+.team-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 .team-links a { font-size: 0.85rem; color: var(--accent); }
+.team-links a:hover { color: white; }
 .team-open { border-style: dashed; opacity: 0.8; }
 
 /* ── CONTACT ────────────────────────────────────────────────── */
