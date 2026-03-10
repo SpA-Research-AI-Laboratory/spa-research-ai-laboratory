@@ -308,6 +308,22 @@ h2 {
 .status-active .card-status { color: #4ade80; }
 .status-planning .card-status { color: #94a3b8; }
 
+.research-card-featured {
+  grid-column: 1 / -1;
+  border-color: rgba(26, 86, 219, 0.4);
+  background: linear-gradient(135deg, #1a2744 0%, #1e293b 100%);
+}
+.research-card-featured h3 { font-size: 1.2rem; }
+.card-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.card-meta-item { font-size: 0.78rem; color: #64748b; font-weight: 500; }
+
 .card-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .card-tags span {
   font-size: 0.72rem;
