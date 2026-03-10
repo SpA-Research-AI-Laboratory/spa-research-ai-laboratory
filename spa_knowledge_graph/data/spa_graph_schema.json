@@ -1,0 +1,418 @@
+{
+  "$schema": "SpA Knowledge Graph Schema v1.0",
+  "description": "Schema definition for the Spondyloarthritis Seronegative Disease Knowledge Graph",
+  "created": "2026-03-05",
+
+  "nodeTypes": {
+    "Disease": {
+      "color": "#e74c3c",
+      "icon": "●",
+      "description": "SpA disease subtypes and related conditions",
+      "baseSize": 28,
+      "properties": {
+        "id": { "type": "string", "required": true, "description": "Unique identifier (kebab-case)" },
+        "label": { "type": "string", "required": true, "description": "Display name" },
+        "type": { "type": "string", "required": true, "const": "Disease" },
+        "description": { "type": "string", "required": true },
+        "icd10": { "type": "string", "description": "ICD-10 code" },
+        "prevalence": { "type": "string", "description": "Estimated prevalence" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Immune Cell": {
+      "color": "#3498db",
+      "icon": "●",
+      "description": "Immune cells involved in SpA pathogenesis",
+      "baseSize": 22,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Immune Cell" },
+        "description": { "type": "string", "required": true },
+        "lineage": { "type": "string", "description": "Adaptive or Innate" },
+        "markers": { "type": "array", "items": "string", "description": "Surface markers (CD markers)" },
+        "location": { "type": "array", "items": "string", "description": "Where found in SpA (joints, gut, blood)" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Cytokine": {
+      "color": "#e67e22",
+      "icon": "●",
+      "description": "Cytokines and chemokines involved in SpA inflammatory cascades",
+      "baseSize": 18,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Cytokine" },
+        "description": { "type": "string", "required": true },
+        "uniprotId": { "type": "string", "description": "UniProt accession" },
+        "gene": { "type": "string", "description": "Gene encoding this cytokine" },
+        "family": { "type": "string", "description": "Cytokine family" },
+        "role": { "type": "string", "description": "Pro-inflammatory, anti-inflammatory, or pleiotropic" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Receptor": {
+      "color": "#e84393",
+      "icon": "●",
+      "description": "Receptors and signaling molecules in SpA-relevant pathways",
+      "baseSize": 16,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Receptor" },
+        "description": { "type": "string", "required": true },
+        "uniprotId": { "type": "string" },
+        "gene": { "type": "string" },
+        "cellExpression": { "type": "array", "items": "string", "description": "Which cells express this receptor" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Gene": {
+      "color": "#2ecc71",
+      "icon": "●",
+      "description": "Genes and genetic risk factors associated with SpA",
+      "baseSize": 18,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Gene" },
+        "description": { "type": "string", "required": true },
+        "chromosome": { "type": "string" },
+        "rsId": { "type": "array", "items": "string", "description": "Lead SNP rs IDs from GWAS" },
+        "oddsRatio": { "type": "number", "description": "Effect size from GWAS" },
+        "gwasSource": { "type": "string", "description": "GWAS study reference" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Pathway": {
+      "color": "#9b59b6",
+      "icon": "●",
+      "description": "Biological pathways and signaling cascades relevant to SpA",
+      "baseSize": 24,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Pathway" },
+        "description": { "type": "string", "required": true },
+        "reactomeId": { "type": "string", "description": "Reactome pathway ID" },
+        "keggId": { "type": "string", "description": "KEGG pathway ID" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Symptom": {
+      "color": "#f1c40f",
+      "icon": "●",
+      "description": "Clinical symptoms and manifestations of SpA",
+      "baseSize": 20,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Symptom" },
+        "description": { "type": "string", "required": true },
+        "hpoId": { "type": "string", "description": "Human Phenotype Ontology ID" },
+        "frequency": { "type": "string", "description": "How common in SpA patients (percentage or qualitative)" },
+        "category": { "type": "string", "description": "Axial, peripheral, extra-articular" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Anatomical Site": {
+      "color": "#795548",
+      "icon": "●",
+      "description": "Body sites affected by SpA",
+      "baseSize": 20,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Anatomical Site" },
+        "description": { "type": "string", "required": true },
+        "uberonId": { "type": "string", "description": "UBERON anatomy ontology ID" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Environmental Trigger": {
+      "color": "#95a5a6",
+      "icon": "●",
+      "description": "External factors that trigger or exacerbate SpA",
+      "baseSize": 18,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Environmental Trigger" },
+        "description": { "type": "string", "required": true },
+        "mechanism": { "type": "string", "description": "How this trigger contributes to SpA" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Microorganism": {
+      "color": "#00b894",
+      "icon": "●",
+      "description": "Bacteria and other microorganisms linked to SpA via gut-joint axis",
+      "baseSize": 16,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Microorganism" },
+        "description": { "type": "string", "required": true },
+        "taxonomy": { "type": "string", "description": "Taxonomic classification" },
+        "association": { "type": "string", "description": "Increased or decreased in SpA" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Drug": {
+      "color": "#00cec9",
+      "icon": "●",
+      "description": "Medications and treatments for SpA",
+      "baseSize": 18,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Drug" },
+        "description": { "type": "string", "required": true },
+        "drugBankId": { "type": "string" },
+        "class": { "type": "string", "description": "Drug class (TNFi, IL-17i, JAKi, NSAID, etc.)" },
+        "approvalStatus": { "type": "string", "description": "FDA/EMA approval status for SpA" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    },
+    "Biomarker": {
+      "color": "#a4de02",
+      "icon": "●",
+      "description": "Laboratory and imaging biomarkers for SpA",
+      "baseSize": 14,
+      "properties": {
+        "id": { "type": "string", "required": true },
+        "label": { "type": "string", "required": true },
+        "type": { "type": "string", "required": true, "const": "Biomarker" },
+        "description": { "type": "string", "required": true },
+        "biomarkerType": { "type": "string", "description": "Laboratory, imaging, genetic, clinical" },
+        "clinicalUse": { "type": "string", "description": "Diagnosis, monitoring, prognosis" },
+        "source": { "type": "array", "items": "string" },
+        "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"] },
+        "references": { "type": "array", "items": "string" }
+      }
+    }
+  },
+
+  "edgeTypes": {
+    "PRODUCES": {
+      "description": "Source node produces/secretes target node",
+      "example": "Th17 cell → PRODUCES → IL-17A",
+      "color": "#7f8c8d",
+      "validPairs": [
+        { "from": "Immune Cell", "to": "Cytokine" }
+      ]
+    },
+    "ACTIVATES": {
+      "description": "Source node activates or stimulates target node",
+      "example": "IL-23 → ACTIVATES → Th17 differentiation",
+      "color": "#e74c3c",
+      "validPairs": [
+        { "from": "Cytokine", "to": "Immune Cell" },
+        { "from": "Cytokine", "to": "Pathway" },
+        { "from": "Receptor", "to": "Pathway" },
+        { "from": "Environmental Trigger", "to": "Immune Cell" },
+        { "from": "Environmental Trigger", "to": "Pathway" },
+        { "from": "Microorganism", "to": "Immune Cell" }
+      ]
+    },
+    "INHIBITS": {
+      "description": "Source node inhibits or suppresses target node",
+      "example": "Secukinumab → INHIBITS → IL-17A",
+      "color": "#3498db",
+      "validPairs": [
+        { "from": "Drug", "to": "Cytokine" },
+        { "from": "Drug", "to": "Receptor" },
+        { "from": "Drug", "to": "Pathway" },
+        { "from": "Cytokine", "to": "Immune Cell" },
+        { "from": "Immune Cell", "to": "Immune Cell" }
+      ]
+    },
+    "BINDS": {
+      "description": "Source molecule binds to target receptor/molecule",
+      "example": "IL-17A → BINDS → IL-17RA",
+      "color": "#9b59b6",
+      "validPairs": [
+        { "from": "Cytokine", "to": "Receptor" },
+        { "from": "Drug", "to": "Receptor" },
+        { "from": "Drug", "to": "Cytokine" }
+      ]
+    },
+    "PREDISPOSES": {
+      "description": "Genetic factor increases risk for disease/phenotype",
+      "example": "HLA-B27 → PREDISPOSES → Ankylosing Spondylitis",
+      "color": "#2ecc71",
+      "validPairs": [
+        { "from": "Gene", "to": "Disease" },
+        { "from": "Gene", "to": "Immune Cell" },
+        { "from": "Gene", "to": "Pathway" }
+      ]
+    },
+    "TRIGGERS": {
+      "description": "Source factor triggers or initiates target process",
+      "example": "Gut dysbiosis → TRIGGERS → Mucosal immune activation",
+      "color": "#e67e22",
+      "validPairs": [
+        { "from": "Environmental Trigger", "to": "Pathway" },
+        { "from": "Environmental Trigger", "to": "Immune Cell" },
+        { "from": "Microorganism", "to": "Pathway" },
+        { "from": "Microorganism", "to": "Immune Cell" }
+      ]
+    },
+    "MANIFESTS_AT": {
+      "description": "Symptom or disease manifests at anatomical location",
+      "example": "Sacroiliitis → MANIFESTS_AT → Sacroiliac joint",
+      "color": "#795548",
+      "validPairs": [
+        { "from": "Symptom", "to": "Anatomical Site" },
+        { "from": "Disease", "to": "Anatomical Site" }
+      ]
+    },
+    "ASSOCIATED_WITH": {
+      "description": "General association between two entities",
+      "example": "Uveitis → ASSOCIATED_WITH → Ankylosing Spondylitis",
+      "color": "#f39c12",
+      "validPairs": [
+        { "from": "Symptom", "to": "Disease" },
+        { "from": "Disease", "to": "Disease" },
+        { "from": "Microorganism", "to": "Disease" },
+        { "from": "Biomarker", "to": "Disease" },
+        { "from": "Biomarker", "to": "Symptom" }
+      ]
+    },
+    "PART_OF": {
+      "description": "Component belongs to a larger pathway or system",
+      "example": "JAK2 → PART_OF → JAK-STAT pathway",
+      "color": "#8e44ad",
+      "validPairs": [
+        { "from": "Receptor", "to": "Pathway" },
+        { "from": "Cytokine", "to": "Pathway" },
+        { "from": "Gene", "to": "Pathway" }
+      ]
+    },
+    "UPREGULATES": {
+      "description": "Source increases expression or activity of target",
+      "example": "TNF-α → UPREGULATES → NF-κB signaling",
+      "color": "#c0392b",
+      "validPairs": [
+        { "from": "Cytokine", "to": "Pathway" },
+        { "from": "Cytokine", "to": "Cytokine" },
+        { "from": "Cytokine", "to": "Receptor" },
+        { "from": "Pathway", "to": "Cytokine" },
+        { "from": "Gene", "to": "Cytokine" }
+      ]
+    },
+    "DOWNREGULATES": {
+      "description": "Source decreases expression or activity of target",
+      "example": "Treg → DOWNREGULATES → Th17 response",
+      "color": "#2980b9",
+      "validPairs": [
+        { "from": "Immune Cell", "to": "Immune Cell" },
+        { "from": "Immune Cell", "to": "Cytokine" },
+        { "from": "Cytokine", "to": "Cytokine" },
+        { "from": "Drug", "to": "Pathway" }
+      ]
+    },
+    "TREATS": {
+      "description": "Drug or treatment is used to treat disease/symptom",
+      "example": "Adalimumab → TREATS → Ankylosing Spondylitis",
+      "color": "#1abc9c",
+      "validPairs": [
+        { "from": "Drug", "to": "Disease" },
+        { "from": "Drug", "to": "Symptom" }
+      ]
+    },
+    "MEASURED_BY": {
+      "description": "Condition or process is measured/detected by biomarker",
+      "example": "Inflammation → MEASURED_BY → CRP",
+      "color": "#a4de02",
+      "validPairs": [
+        { "from": "Disease", "to": "Biomarker" },
+        { "from": "Symptom", "to": "Biomarker" },
+        { "from": "Pathway", "to": "Biomarker" }
+      ]
+    },
+    "ENCODES": {
+      "description": "Gene encodes a protein (cytokine, receptor, etc.)",
+      "example": "IL17A gene → ENCODES → IL-17A cytokine",
+      "color": "#27ae60",
+      "validPairs": [
+        { "from": "Gene", "to": "Cytokine" },
+        { "from": "Gene", "to": "Receptor" }
+      ]
+    },
+    "DIFFERENTIATES_INTO": {
+      "description": "Precursor cell differentiates into mature cell type",
+      "example": "Naive CD4+ T cell → DIFFERENTIATES_INTO → Th17",
+      "color": "#2d3436",
+      "validPairs": [
+        { "from": "Immune Cell", "to": "Immune Cell" }
+      ]
+    },
+    "RESIDES_IN": {
+      "description": "Cell or organism is found at anatomical location",
+      "example": "Tissue-resident macrophage → RESIDES_IN → Enthesis",
+      "color": "#636e72",
+      "validPairs": [
+        { "from": "Immune Cell", "to": "Anatomical Site" },
+        { "from": "Microorganism", "to": "Anatomical Site" }
+      ]
+    }
+  },
+
+  "edgeProperties": {
+    "source": { "type": "string", "required": true, "description": "Source node ID" },
+    "target": { "type": "string", "required": true, "description": "Target node ID" },
+    "relationship": { "type": "string", "required": true, "description": "Edge type from edgeTypes" },
+    "mechanism": { "type": "string", "description": "Brief description of the biological mechanism" },
+    "confidence": { "type": "string", "enum": ["high", "medium", "low", "hypothesized"], "required": true },
+    "references": { "type": "array", "items": "string" },
+    "dataSource": { "type": "array", "items": "string", "description": "Which databases support this relationship" }
+  },
+
+  "confidenceLevels": {
+    "high": {
+      "description": "Established in multiple studies, reviews, or clinical guidelines",
+      "visualOpacity": 1.0,
+      "edgeWidth": 3
+    },
+    "medium": {
+      "description": "Supported by several studies but not yet consensus",
+      "visualOpacity": 0.8,
+      "edgeWidth": 2
+    },
+    "low": {
+      "description": "Limited evidence, single study, or conflicting results",
+      "visualOpacity": 0.5,
+      "edgeWidth": 1.5
+    },
+    "hypothesized": {
+      "description": "Theoretical, proposed mechanism, not yet validated",
+      "visualOpacity": 0.3,
+      "edgeWidth": 1,
+      "edgeStyle": "dashed"
+    }
+  }
+}

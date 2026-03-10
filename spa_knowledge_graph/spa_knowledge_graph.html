@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spondyloarthritis Knowledge Graph v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0f6fc;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .stat-item {
+            display: flex;
+            gap: 8px;
+        }
+
+        .stat-label {
+            color: #c9d1d9;
+            font-weight: 500;
+        }
+
+        .header-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            background-color: #238636;
+            color: #ffffff;
+            border: 1px solid #1f6feb;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2ea043;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        button:active {
+            background-color: #1f6feb;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #161b22;
+            border-right: 1px solid #30363d;
+            overflow-y: auto;
+            padding: 16px;
+            flex-shrink: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #8b949e;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            width: 100%;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 8px 12px;
+            color: #c9d1d9;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .search-dropdown {
+            display: none;
+            position: absolute;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            width: 252px;
+            z-index: 100;
+        }
+
+        .search-dropdown.active {
+            display: block;
+        }
+
+        .search-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #30363d;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.15s ease;
+        }
+
+        .search-item:hover {
+            background-color: #21262d;
+        }
+
+        .search-item-type {
+            color: #8b949e;
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        .filter-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: background-color 0.15s ease;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .filter-label:hover {
+            background-color: #21262d;
+        }
+
+        .filter-checkbox {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: #58a6ff;
+        }
+
+        .color-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .graph-container {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            background-color: #0d1117;
+        }
+
+        .node-label {
+            font-size: 11px;
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            fill: #f0f6fc;
+            font-weight: 500;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .node {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .node:hover {
+            filter: drop-shadow(0 0 8px rgba(88, 166, 255, 0.5));
+        }
+
+        .detail-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 100%;
+            background-color: #161b22;
+            border-left: 1px solid #30363d;
+            overflow-y: auto;
+            padding: 16px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 50;
+        }
+
+        .detail-panel.active {
+            transform: translateX(0);
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: none;
+            border: none;
+            color: #8b949e;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .detail-close:hover {
+            color: #f0f6fc;
+        }
+
+        .detail-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f0f6fc;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            word-wrap: break-word;
+        }
+
+        .detail-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background-color: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            margin-bottom: 12px;
+        }
+
+        .detail-description {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #8b949e;
+            margin-bottom: 16px;
+        }
+
+        .detail-wikipedia {
+            display: inline-block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #30363d;
+            padding: 6px 8px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .detail-wikipedia:hover {
+            background-color: rgba(88, 166, 255, 0.1);
+            border-color: #58a6ff;
+        }
+
+        .detail-section {
+            margin-bottom: 16px;
+        }
+
+        .detail-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #8b949e;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-property {
+            font-size: 12px;
+            margin-bottom: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .detail-property-label {
+            color: #8b949e;
+        }
+
+        .detail-property-value {
+            color: #c9d1d9;
+            text-align: right;
+            flex: 1;
+            margin-left: 8px;
+        }
+
+        .connection-group {
+            margin-bottom: 12px;
+        }
+
+        .connection-type {
+            font-weight: 600;
+            color: #8b949e;
+            margin-bottom: 4px;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        .connection-item {
+            padding: 4px 8px;
+            background-color: #0d1117;
+            border-radius: 3px;
+            margin-bottom: 3px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            color: #58a6ff;
+        }
+
+        .connection-item:hover {
+            background-color: #21262d;
+            padding-left: 12px;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            background-color: rgba(22, 27, 34, 0.95);
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 8px;
+            display: flex;
+            gap: 4px;
+            z-index: 40;
+        }
+
+        .control-btn {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            color: #8b949e;
+            cursor: pointer;
+            border-radius: 3px;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background-color: #21262d;
+            color: #58a6ff;
+            border-color: #58a6ff;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #30363d;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #484f58;
+        }
+
+        .edge-label-text {
+            font-size: 10px;
+            fill: #f0f6fc;
+            font-weight: 600;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+
+        .edge-label-bg {
+            fill: #1a1f26;
+            stroke: #30363d;
+            stroke-width: 1;
+            rx: 3;
+        }
+
+        .persistent-node-label {
+            font-size: 10px;
+            fill: #c9d1d9;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+            text-shadow: 0 0 4px #0d1117, 0 0 4px #0d1117, 0 0 4px #0d1117;
+        }
+
+        .persistent-edge-label {
+            font-size: 9px;
+            fill: #8b949e;
+            text-anchor: middle;
+            dominant-baseline: central;
+            pointer-events: none;
+        }
+
+        .persistent-edge-label-bg {
+            fill: rgba(13, 17, 23, 0.85);
+            rx: 3;
+        }
+
+        #font-size-input:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        .rel-filter-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .rel-color-line {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div style="background:#0d1117; border-bottom:1px solid #21262d; padding:8px 16px; display:flex; align-items:center; gap:16px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; font-size:13px; flex-shrink:0;">
+      <a href="../index.html" style="color:#58a6ff; text-decoration:none; display:flex; align-items:center; gap:6px; font-weight:500;">
+        &#8592; SpA Research AI Lab
+      </a>
+      <span style="color:#30363d;">|</span>
+      <span style="color:#8b949e;">Knowledge Graph</span>
+    </div>
+    <header>
+        <div class="header-left">
+            <h1>SpA Knowledge Graph v2</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Nodes:</span>
+                    <span id="node-count">119</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Edges:</span>
+                    <span id="edge-count">172</span>
+                </div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button id="reset-btn">Reset View</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <div style="position: relative;">
+                    <input type="text" class="search-box" id="search-box" placeholder="Search nodes...">
+                    <div class="search-dropdown" id="search-dropdown"></div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Node Types</div>
+                <div id="type-filters"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Confidence Levels</div>
+                <div id="confidence-filters"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Display Options</div>
+                <label class="filter-label">
+                    <input type="checkbox" class="filter-checkbox" id="toggle-node-labels"> 
+                    <span>Show Node Labels</span>
+                </label>
+                <label class="filter-label">
+                    <input type="checkbox" class="filter-checkbox" id="toggle-edge-labels"> 
+                    <span>Show Edge Labels</span>
+                </label>
+                <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                    <span style="font-size:12px; color:#8b949e; white-space:nowrap;">Font Size:</span>
+                    <input type="number" id="font-size-input" value="10" min="5" max="24" step="1"
+                        style="width:55px; background:#0d1117; border:1px solid #30363d; border-radius:4px; 
+                        color:#e6edf3; padding:3px 6px; font-size:12px; text-align:center;">
+                    <span style="font-size:11px; color:#6e7681;">px</span>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Relationship Types</div>
+                <div id="relationship-filters" style="max-height:200px; overflow-y:auto;"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-title">Legend</div>
+                <div class="legend" id="legend"></div>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <svg></svg>
+            <div class="controls">
+                <button class="control-btn" id="zoom-in-btn" title="Zoom In">+</button>
+                <button class="control-btn" id="zoom-out-btn" title="Zoom Out">−</button>
+                <button class="control-btn" id="center-btn" title="Center View">⊙</button>
+            </div>
+            <div class="detail-panel" id="detail-panel">
+                <button class="detail-close" id="detail-close">&times;</button>
+                <div id="detail-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script>
+        const GRAPH_DATA = {"metadata": {"version": "1.0", "created": "2026-03-05", "nodeCount": 119, "edgeCount": 172, "description": "Comprehensive Spondyloarthritis Knowledge Graph - Seed Dataset"}, "nodes": [{"id": "disease-ankylosing-spondylitis", "label": "Ankylosing Spondylitis", "type": "Disease", "description": "Ankylosing Spondylitis (AS) is a chronic inflammatory arthropathy primarily affecting the sacroiliac joints and spine, characterized by progressive spinal fusion and ankylosis (bony bridging). It is the most common form of spondyloarthritis and predominantly affects males (3-4 times more common). AS is strongly associated with HLA-B27 positivity (88-90% of patients) and leads to significant disability if untreated, with potential for complete spinal immobility.", "icd10": "M45.9", "prevalence": "0.1-0.2% in European populations", "source": ["ICD-10", "EULAR", "ACR"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Ankylosing_spondylitis"}, {"id": "disease-psoriatic-arthritis", "label": "Psoriatic Arthritis", "type": "Disease", "description": "Psoriatic Arthritis (PsA) is an inflammatory arthritis that develops in 6-42% of patients with cutaneous psoriasis, distinct from but related to the spondyloarthritis family. It can present as axial (spine-predominant) or peripheral (asymmetric polyarthritis) disease, with skin manifestations often preceding joint symptoms. PsA shares genetic features with AS including HLA-B27 positivity in axial presentations and demonstrates T-cell driven immune dysregulation.", "icd10": "L40.5", "prevalence": "0.05-0.25% in general population", "source": ["ICD-10", "EULAR"], "confidence": "high", "references": ["23676134", "29145608"], "wikipedia": "https://en.wikipedia.org/wiki/Psoriatic_arthritis"}, {"id": "disease-reactive-arthritis", "label": "Reactive Arthritis", "type": "Disease", "description": "Reactive Arthritis (formerly Reiter's syndrome) is a sterile inflammatory arthritis triggered by preceding bacterial infection of the gastrointestinal or urogenital tract. This post-infectious condition typically develops 1-4 weeks after infection with organisms like Chlamydia, Shigella, or Salmonella. It represents a form of spondyloarthritis with HLA-B27 associations and can progress to chronic arthritic disease if untreated.", "icd10": "M02.9", "prevalence": "0.01-0.05% annual incidence", "source": ["ICD-10", "ACR"], "confidence": "high", "references": ["19654303", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Reactive_arthritis"}, {"id": "disease-axial-spa-nr", "label": "Non-Radiographic Axial SpA", "type": "Disease", "description": "Non-Radiographic Axial Spondyloarthritis (nr-axial SpA) is early axial SpA without radiographic changes on plain radiographs but with inflammatory changes visible on MRI. This condition typically precedes radiographic AS and affects 7-15% of axial SpA patients, representing the earliest detectable form of axial disease. Early intervention with biologic therapy in nr-axial SpA shows promise for preventing progression to radiographic AS and maintaining spinal function.", "icd10": "M45.8", "prevalence": "0.1-0.3% in general population", "source": ["EULAR", "ASspirations"], "confidence": "high", "references": ["21873635", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Axial_spondyloarthritis"}, {"id": "disease-enteropathic-arthritis", "label": "Enteropathic Arthritis", "type": "Disease", "description": "Enteropathic Arthritis is a form of spondyloarthritis associated with inflammatory bowel diseases including Crohn's disease and ulcerative colitis, occurring in 15-30% of IBD patients. The arthritis can be either peripheral or axial, and typically improves with treatment of the underlying bowel inflammation. This connection highlights the shared mucosal immune dysregulation and bacterial-driven pathogenesis in both intestinal and articular manifestations.", "icd10": "M07.6", "prevalence": "10-30% in IBD patients", "source": ["ICD-10", "EULAR"], "confidence": "high", "references": ["27660185", "22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Inflammatory_bowel_disease"}, {"id": "disease-undifferentiated-spa", "label": "Undifferentiated SpA", "type": "Disease", "description": "Undifferentiated SpA (uSpA) refers to spondyloarthritis that does not meet classification criteria for AS, PsA, or other defined subtypes despite having characteristic SpA features. This heterogeneous group includes patients with inflammatory back pain, HLA-B27 positivity, and elevated inflammatory markers but incomplete phenotypic presentation. Many uSpA patients eventually develop into a specific SpA subtype over time, while others remain undifferentiated for years.", "icd10": "M45.9", "prevalence": "Variable", "source": ["EULAR"], "confidence": "medium", "references": ["21873635"], "wikipedia": "https://en.wikipedia.org/wiki/Spondyloarthritis"}, {"id": "disease-juvenile-spa", "label": "Juvenile SpA", "type": "Disease", "description": "Juvenile Spondyloarthritis (jSpA) is spondyloarthritis with onset before age 16 years, often presenting with peripheral arthritis and HLA-B27 positivity. Early-onset disease can follow a more aggressive course with greater functional impairment if untreated, though biologic therapies have significantly improved outcomes in children. jSpA may evolve from peripheral to axial patterns as children mature.", "icd10": "M45.9", "prevalence": "0.01-0.05% in children", "source": ["EULAR"], "confidence": "medium", "references": ["27195436"], "wikipedia": "https://en.wikipedia.org/wiki/Juvenile_arthritis"}, {"id": "cell-th17", "label": "Th17 Cell", "type": "Immune Cell", "description": "Th17 cells are CD4+ helper T cell subset that produce IL-17, IL-22, and other inflammatory cytokines, and are central to SpA pathogenesis. These cells differentiate from naive CD4+ T cells in response to IL-23 and IL-6/TGF-beta signaling, and accumulate at sites of SpA inflammation including synovium and entheses. Th17 cells directly drive osteoclastogenesis and bone destruction through RANKL and IL-17 production.", "lineage": "Adaptive", "markers": ["CD4+", "IL-17A+", "IL-17F+", "ROR\u03b3t+"], "location": ["synovium", "gut", "blood"], "source": ["CellMarker", "ImmGen"], "confidence": "high", "references": ["22553110", "23676134"], "wikipedia": "https://en.wikipedia.org/wiki/T_helper_17_cell"}, {"id": "cell-th1", "label": "Th1 Cell", "type": "Immune Cell", "description": "Th1 cells are CD4+ helper T cell subset producing IFN-gamma and TNF-alpha, driving classical cell-mediated immune responses. Th1 cells are elevated in SpA and contribute to macrophage activation and chronic inflammation at articular and extra-articular sites. The balance between Th1 and Th17 responses differs across SpA subtypes and influences treatment response.", "lineage": "Adaptive", "markers": ["CD4+", "IFN-\u03b3+", "T-bet+"], "location": ["synovium", "blood"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/T_helper_1_cell"}, {"id": "cell-cd8-t", "label": "CD8+ T Cell", "type": "Immune Cell", "description": "CD8+ cytotoxic T lymphocytes are key components of SpA pathogenesis through recognition of HLA-B27-restricted peptide epitopes from self and microbial sources. CD8+ T cells produce IFN-gamma and TNF-alpha, contributing to chronic joint and entheseal inflammation in SpA. Cross-reactive CD8+ T cells against both HLA-B27 and bacterial epitopes may perpetuate SpA through molecular mimicry.", "lineage": "Adaptive", "markers": ["CD8+", "CD3+"], "location": ["synovium", "blood", "gut"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Cytotoxic_T_cell"}, {"id": "cell-gamma-delta-t", "label": "\u03b3\u03b4 T Cell", "type": "Immune Cell", "description": "Gamma-delta (\u03b3\u03b4) T cells are unconventional T cells with gamma-delta receptors that produce large amounts of IL-17, and are enriched at mucosal sites and entheses. \u03b3\u03b4 T cells expand in response to IL-23 and recognize both microbial antigens and phosphoantigens, contributing to SpA pathogenesis. \u03b3\u03b4 T cells may be particularly important in barrier tolerance at mucosal surfaces.", "lineage": "Adaptive", "markers": ["TCR\u03b3\u03b4+", "IL-17A+"], "location": ["gut", "skin", "synovium"], "source": ["CellMarker"], "confidence": "high", "references": ["23676134", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Gamma_delta_T_cell"}, {"id": "cell-mait", "label": "MAIT Cell", "type": "Immune Cell", "description": "Mucosal-associated invariant T (MAIT) cells are innate-like T cells with invariant TCR-alpha chains that recognize bacterial metabolites (vitamin B derivatives) presented on MR1. MAIT cells produce IL-17, IFN-gamma, and TNF-alpha and are linked to bacterial sensing and barrier immunity in SpA. MAIT cell dysregulation and enrichment at inflamed sites implicates bacterial-driven immune responses in SpA pathogenesis.", "lineage": "Adaptive", "markers": ["V\u03b17.2+", "CD161+", "IL-17A+"], "location": ["gut", "blood"], "source": ["CellMarker"], "confidence": "medium", "references": ["23676134"], "wikipedia": "https://en.wikipedia.org/wiki/MAIT_cell"}, {"id": "cell-treg", "label": "Regulatory T Cell (Treg)", "type": "Immune Cell", "description": "Regulatory T cells (Tregs) are CD4+CD25+Foxp3+ suppressive T cells that produce IL-10 and TGF-beta and maintain immune tolerance to self-antigens and commensals. Tregs are often reduced in number and impaired in function in SpA, contributing to inadequate immune suppression of pathogenic Th17 and TNF-producing responses. Expansion and restoration of Treg function is an emerging therapeutic strategy in SpA.", "lineage": "Adaptive", "markers": ["CD4+", "CD25+", "Foxp3+"], "location": ["blood", "synovium", "gut"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Regulatory_T_cell"}, {"id": "cell-ilc3", "label": "ILC3 (Innate Lymphoid Cell Type 3)", "type": "Immune Cell", "description": "Innate Lymphoid Cell type 3 (ILC3) are innate immune cells producing IL-17 and IL-22, crucial for maintaining gut barrier function and responding to mucosal pathogens. ILC3 frequencies and IL-17 production are elevated in SpA, contributing to both barrier dysfunction and systemic immune activation. ILC3-derived IL-17 and IL-22 may be important in the pathogenic link between intestinal dysbiosis and SpA.", "lineage": "Innate", "markers": ["ROR\u03b3t+", "IL-17A+", "IL-22+"], "location": ["gut", "lymphoid tissue"], "source": ["CellMarker"], "confidence": "high", "references": ["25180821", "27195436"], "wikipedia": "https://en.wikipedia.org/wiki/Innate_lymphoid_cell"}, {"id": "cell-neutrophil", "label": "Neutrophil", "type": "Immune Cell", "description": "Neutrophils are the most abundant innate immune cells that are rapidly recruited to SpA-inflamed joints and entheses by IL-8 and TNF-alpha-induced chemokines. These short-lived cells produce reactive oxygen species, serine proteases, and form neutrophil extracellular traps (NETs) that amplify local inflammation and tissue damage. Elevated neutrophil counts and high serum IL-8 correlate with active SpA disease, making neutrophil recruitment an important amplification loop in SpA pathogenesis.", "lineage": "Innate", "markers": ["CD15+", "CD11b+"], "location": ["synovium", "blood"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Neutrophil"}, {"id": "cell-macrophage", "label": "Macrophage", "type": "Immune Cell", "description": "Macrophages are myeloid cells derived from circulating monocytes that infiltrate inflamed joints and entheses in SpA, producing TNF-alpha, IL-1-beta, IL-6, and IL-23. These professional antigen-presenting cells are activated by microbial pattern recognition receptors and pro-inflammatory signals, perpetuating local and systemic inflammation. Macrophage accumulation in SpA tissues correlates with disease activity and is a target of TNF inhibitors.", "lineage": "Innate", "markers": ["CD14+", "CD68+"], "location": ["synovium", "enthesis", "gut"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Macrophage"}, {"id": "cell-dendritic", "label": "Dendritic Cell", "type": "Immune Cell", "description": "Dendritic cells are professional antigen-presenting cells that bridge innate and adaptive immunity by capturing and processing antigens to naive T cells. In SpA, dendritic cells are activated by TNF-alpha and microbial antigens, producing IL-23 and IL-12 that drive Th17 and Th1 differentiation respectively. Dysregulation of dendritic cell responses to commensal bacteria and microbial antigens contributes to SpA pathogenesis.", "lineage": "Innate", "markers": ["CD11c+", "HLA-DR+"], "location": ["synovium", "gut", "lymphoid tissue"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Dendritic_cell"}, {"id": "cell-mast", "label": "Mast Cell", "type": "Immune Cell", "description": "Mast cells are innate immune cells residing in tissues that release pre-formed mediators and produce TNF-alpha, IL-6, and other inflammatory cytokines upon activation. Increased mast cell numbers have been found in SpA synovium and may contribute to local inflammation and pain through substance P and other neuropeptide signaling. Mast cell activation in SpA may be triggered by mechanical stress, infection, or complement activation.", "lineage": "Innate", "markers": ["Fc\u03b5RI+", "c-kit+"], "location": ["synovium", "tissue"], "source": ["CellMarker"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Mast_cell"}, {"id": "cell-nk", "label": "Natural Killer Cell", "type": "Immune Cell", "description": "Natural Killer (NK) cells are innate lymphoid cells that produce IFN-gamma and TNF-alpha, contributing to early immune responses against intracellular pathogens and altered self. NK cells can also interact with dendritic cells to enhance adaptive immune responses in SpA. The role of NK cells in SpA pathogenesis is less well characterized than T cells but contributes to both protective and pathogenic responses.", "lineage": "Innate", "markers": ["CD56+", "CD16+"], "location": ["blood", "synovium"], "source": ["CellMarker"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Natural_killer_cell"}, {"id": "cell-naive-cd4", "label": "Naive CD4+ T Cell", "type": "Immune Cell", "description": "Naive CD4+ T cells are precursor cells that differentiate into Th1, Th2, Th17, or Treg cells depending on the cytokine microenvironment and dendritic cell signals. In SpA, altered dendritic cell signaling biases naive CD4+ T cell differentiation toward Th17 cells through IL-23 and IL-6 signals. The balance of naive T-cell differentiation affects disease progression and inflammatory severity.", "lineage": "Adaptive", "markers": ["CD4+", "CD45RA+", "CCR7+"], "location": ["blood", "lymphoid tissue"], "source": ["CellMarker"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/CD4"}, {"id": "cell-osteoclast", "label": "Osteoclast", "type": "Immune Cell", "description": "Osteoclasts are multinucleated bone-resorbing cells differentiated from monocyte precursors in response to TNF-alpha, IL-17, and RANKL signaling in SpA. These cells create an acidic microenvironment and produce collagenase and other proteases to dissolve bone matrix in SpA, contributing to early bone erosion. Osteoclast formation is a key step in the inflammatory bone loss that occurs early in SpA.", "lineage": "Innate", "markers": ["TRAP+", "CTSK+"], "location": ["bone"], "source": ["CellMarker"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Osteoclast"}, {"id": "cytokine-il17a", "label": "IL-17A", "type": "Cytokine", "description": "IL-17A is the main IL-17 isoform produced by Th17 cells and is the primary target of IL-17 inhibitors in SpA therapy. IL-17A drives osteoclastogenesis through RANKL upregulation on osteoblasts and recruits neutrophils through chemokine induction. IL-17A neutralization shows dramatic efficacy in AS and PsA, making it a key therapeutic target.", "uniprotId": "Q16552", "gene": "IL17A", "family": "IL-17 family", "role": "Pro-inflammatory", "source": ["UniProt", "NCBI Gene"], "confidence": "high", "references": ["22553110", "23676134"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_17"}, {"id": "cytokine-il17f", "label": "IL-17F", "type": "Cytokine", "description": "IL-17F is a less abundant IL-17 family cytokine produced by Th17 cells with partially redundant but distinct functions compared to IL-17A. IL-17F also promotes inflammatory responses and osteoclastogenesis though with potentially lower efficacy than IL-17A. Combined IL-17A/IL-17F inhibition may provide greater therapeutic benefit than IL-17A alone.", "uniprotId": "Q96PD7", "gene": "IL17F", "family": "IL-17 family", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["23676134"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_17"}, {"id": "cytokine-il23", "label": "IL-23", "type": "Cytokine", "description": "IL-23 is a heterodimeric cytokine (p19 and p40 subunits) produced by activated dendritic cells and macrophages that drives differentiation and expansion of Th17 cells, \u03b3\u03b4 T cells, and innate lymphoid cells. IL-23 signaling is essential for Th17 maintenance and IL-17 production, and genetic and immunological evidence places IL-23 upstream of pathogenic Th17 responses in SpA. IL-23 inhibitors (risankizumab, guselkumab) are under investigation as emerging SpA therapies.", "uniprotId": "Q14813", "gene": "IL23A", "family": "IL-12 family", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_23"}, {"id": "cytokine-tnf-alpha", "label": "TNF-\u03b1", "type": "Cytokine", "description": "TNF-alpha is the primary pro-inflammatory cytokine driving SpA pathogenesis, produced by macrophages, T cells, and dendritic cells. TNF-alpha activates NF-kB, induces RANKL expression, recruits immune cells, and drives systemic inflammation in SpA. TNF-alpha neutralization is the most successful biologic therapy in SpA.", "uniprotId": "P01375", "gene": "TNF", "family": "TNF superfamily", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Tumor_necrosis_factor"}, {"id": "cytokine-il22", "label": "IL-22", "type": "Cytokine", "description": "IL-22 is a cytokine produced by Th17 cells, Th22 cells, and innate lymphoid cells that signals through IL-22R1 on epithelial and stromal cells. IL-22 promotes epithelial barrier function and tissue regeneration but can also enhance inflammation in the context of SpA. IL-22 levels are elevated in active AS and may contribute to enthesial inflammation and new bone formation.", "uniprotId": "Q9GZX6", "gene": "IL22", "family": "IL-10 family", "role": "Pleiotropic", "source": ["UniProt"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_22"}, {"id": "cytokine-il6", "label": "IL-6", "type": "Cytokine", "description": "IL-6 is a multifunctional cytokine produced by macrophages, dendritic cells, and T cells that drives STAT3 and NF-kB activation in SpA. IL-6 induces systemic inflammation, B-cell differentiation to antibody-producing cells, and elevated C-reactive protein (CRP) levels characteristic of active disease. IL-6 receptor blockade demonstrates therapeutic benefit in SpA, particularly in TNF-refractory patients.", "uniprotId": "P05231", "gene": "IL6", "family": "IL-6 family", "role": "Pleiotropic", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_6"}, {"id": "cytokine-il1b", "label": "IL-1\u03b2", "type": "Cytokine", "description": "IL-1-beta (IL-1\u03b2) is produced by macrophages through inflammasome activation in response to TNF-alpha and danger-associated molecular patterns. IL-1\u03b2 drives osteoclastogenesis, synovial inflammation, and systemic acute phase responses in SpA. IL-1 inhibitors (anakinra, canakinumab) show efficacy in TNF-refractory SpA.", "uniprotId": "P01584", "gene": "IL1B", "family": "IL-1 family", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_1"}, {"id": "cytokine-ifn-gamma", "label": "IFN-\u03b3", "type": "Cytokine", "description": "IFN-gamma (Interferon-gamma) is a Th1-derived cytokine produced by CD4+ and CD8+ T cells that activates macrophages and enhances antigen presentation. Elevated IFN-gamma is found in SpA and represents both protective (pathogen control) and pathogenic (chronic inflammation) functions. The balance between IFN-gamma and IL-17 production differs across SpA disease stages.", "uniprotId": "P01579", "gene": "IFNG", "family": "Type II interferon", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interferon_gamma"}, {"id": "cytokine-tgf-beta", "label": "TGF-\u03b2", "type": "Cytokine", "description": "TGF-beta is a pleiotropic cytokine with context-dependent pro- and anti-inflammatory roles in SpA pathogenesis and tissue remodeling. TGF-beta signaling promotes both Treg differentiation (anti-inflammatory) and Th17 differentiation (pro-inflammatory) depending on cytokine context. Dysregulated TGF-beta signaling contributes to impaired immune tolerance in SpA.", "uniprotId": "P01137", "gene": "TGFB1", "family": "TGF-\u03b2 superfamily", "role": "Pleiotropic", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Transforming_growth_factor_beta"}, {"id": "cytokine-il10", "label": "IL-10", "type": "Cytokine", "description": "IL-10 is a regulatory cytokine produced by regulatory T cells, B cells, and alternatively activated macrophages that suppresses pro-inflammatory responses. IL-10 levels are often reduced relative to pro-inflammatory cytokines in SpA, suggesting a deficiency in immune regulation that allows Th17 and TNF-driven inflammation. Impaired IL-10 production may contribute to the chronic nature of SpA.", "uniprotId": "P22301", "gene": "IL10", "family": "IL-10 family", "role": "Anti-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_10"}, {"id": "cytokine-gm-csf", "label": "GM-CSF", "type": "Cytokine", "description": "GM-CSF (Granulocyte-Macrophage Colony-Stimulating Factor) is a cytokine produced by T cells and fibroblasts that promotes myeloid cell differentiation and activation. GM-CSF drives macrophage and dendritic cell expansion and pro-inflammatory polarization in SpA. GM-CSF levels are elevated in SpA synovial fluid and contribute to myeloid cell-driven inflammation.", "uniprotId": "P04141", "gene": "CSF2", "family": "Colony-stimulating factor", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/GM-CSF"}, {"id": "cytokine-ccl20", "label": "CCL20", "type": "Cytokine", "description": "CCL20 (C-C Chemokine Ligand 20) is a chemokine produced by epithelial and immune cells that recruits CCR6-expressing cells including Th17, \u03b3\u03b4 T cells, and B cells to mucosal and joint sites. CCL20 is elevated in SpA serum and tissues and is induced by IL-22 and IL-17, creating a positive feedback loop amplifying Th17 recruitment. CCL20-CCR6 axis dysregulation contributes to pathogenic Th17 accumulation.", "uniprotId": "P78556", "gene": "CCL20", "family": "CC chemokine", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/CCL20"}, {"id": "cytokine-il12", "label": "IL-12", "type": "Cytokine", "description": "IL-12 is a heterodimeric cytokine (p35 and p40 subunits) produced by dendritic cells and macrophages that drives Th1 differentiation and IFN-gamma production. IL-12 shares the p40 subunit with IL-23, and IL-12/IL-23 balance determines Th1 versus Th17 immune responses in SpA. IL-12-mediated Th1 responses may limit pathogenic Th17 expansion in some SpA patients.", "uniprotId": "P29460", "gene": "IL12A", "family": "IL-12 family", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_12"}, {"id": "cytokine-rankl", "label": "RANKL", "type": "Cytokine", "description": "RANKL (Receptor Activator of NF-kB Ligand) is expressed on osteoblasts, synovial fibroblasts, and T cells and is the key osteoclastogenic signal in SpA. IL-17 and TNF-alpha enhance RANKL expression, creating a pro-osteoclastogenic microenvironment in SpA joints and entheses. RANKL-RANK signaling is the final common pathway for osteoclastogenesis in SpA.", "uniprotId": "P41080", "gene": "TNFSF11", "family": "TNF superfamily", "role": "Pro-inflammatory", "source": ["UniProt"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/RANKL"}, {"id": "cytokine-il33", "label": "IL-33", "type": "Cytokine", "description": "IL-33 is a tissue-derived alarmin cytokine produced by epithelial and stromal cells in response to tissue damage, released from nuclei during cell necrosis. IL-33 signals through ST2 on innate lymphoid cells and mast cells to promote type 2 and type 17 responses. IL-33 elevation at SpA inflammation sites may promote barrier dysfunction and IL-17 production.", "uniprotId": "O95760", "gene": "IL33", "family": "IL-1 family", "role": "Pleiotropic", "source": ["UniProt"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_33"}, {"id": "receptor-il17ra", "label": "IL-17RA", "type": "Receptor", "description": "IL-17RA (IL-17 Receptor A) is expressed on stromal cells, osteoblasts, and fibroblasts and transduces IL-17A and IL-17F signaling. IL-17RA signaling activates NF-kB and MAPK pathways, inducing RANKL expression and chemokine production in SpA. IL-17RA is the critical component for IL-17-mediated osteoclastogenesis.", "uniprotId": "Q16552", "gene": "IL17RA", "cellExpression": ["neutrophil", "fibroblast", "epithelial cell"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin-17_receptor"}, {"id": "receptor-il17rc", "label": "IL-17RC", "type": "Receptor", "description": "IL-17RC (IL-17 Receptor C) heterodimerizes with IL-17RA to form the functional IL-17 receptor and is required for optimal IL-17 signaling. IL-17RC expression is upregulated by TNF-alpha in SpA-inflamed tissues, amplifying IL-17 responsiveness. Both IL-17RA and IL-17RC are necessary for full IL-17-mediated inflammatory responses.", "uniprotId": "Q9UHZ1", "gene": "IL17RC", "cellExpression": ["neutrophil", "fibroblast"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin-17_receptor"}, {"id": "receptor-il23r", "label": "IL-23R", "type": "Receptor", "description": "IL-23 Receptor (IL-23R) is composed of IL-23R and IL-12R\u03b21 subunits and is expressed on Th17 cells, innate lymphoid cells, and other immune cells. IL-23R signaling through STAT3 drives Th17 differentiation and IL-17 production, critical for SpA pathogenesis. Genetic variants in IL23R affecting receptor signaling are among the strongest genome-wide associations with AS, supporting the therapeutic targeting of IL-23/IL-23R axis.", "uniprotId": "Q5VT97", "gene": "IL23R", "cellExpression": ["Th17", "ILC3", "\u03b3\u03b4 T cell"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin-23_receptor"}, {"id": "receptor-tnfr1", "label": "TNFR1", "type": "Receptor", "description": "TNFR1 (TNF Receptor 1) is widely expressed and transduces TNF-alpha signaling into pro-inflammatory NF-kB and death-inducing DISC pathways. TNFR1 is the primary mediator of TNF's pro-inflammatory effects in SpA and is blocked by TNF inhibitors. TNFR1 activation on macrophages and dendritic cells drives SpA inflammation.", "uniprotId": "P19438", "gene": "TNFRSF1A", "cellExpression": ["T cell", "B cell", "macrophage"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Tumor_necrosis_factor_receptor"}, {"id": "receptor-tnfr2", "label": "TNFR2", "type": "Receptor", "description": "TNFR2 (TNF Receptor 2) is expressed preferentially on regulatory T cells and endothelial cells and transduces alternative NF-kB signaling. TNFR2 engagement may provide protective signals through Treg activation and stabilization. TNF inhibitors blocking both TNFR1 and TNFR2 may have additional immunomodulatory effects.", "uniprotId": "P20333", "gene": "TNFRSF1B", "cellExpression": ["T cell", "endothelial cell"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Tumor_necrosis_factor_receptor"}, {"id": "receptor-il6r", "label": "IL-6R", "type": "Receptor", "description": "IL-6 Receptor (IL-6R) exists in two forms: membrane-bound IL-6R on immune cells and soluble IL-6R shed from cells. IL-6R signaling through gp130 activates STAT3 and NF-kB, driving B-cell and T-cell responses and systemic inflammation in SpA. Both membrane-bound and soluble IL-6R are therapeutic targets, with tocilizumab blocking both forms and showing efficacy in TNF-refractory SpA.", "uniprotId": "P08887", "gene": "IL6R", "cellExpression": ["T cell", "B cell", "monocyte"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin-6_receptor"}, {"id": "receptor-jak1", "label": "JAK1", "type": "Receptor", "description": "JAK1 (Janus Kinase 1) is a tyrosine kinase that transduces signaling from IL-23, IL-6, and type I interferon receptors in immune cells. JAK1 phosphorylates STAT3 downstream of IL-23 signaling driving Th17 differentiation in SpA. JAK1-selective inhibitors are under investigation in SpA.", "uniprotId": "P23458", "gene": "JAK1", "cellExpression": ["all hematopoietic cells"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/JAK1"}, {"id": "receptor-jak2", "label": "JAK2", "type": "Receptor", "description": "JAK2 (Janus Kinase 2) is a tyrosine kinase that transduces signaling from IL-23 and growth hormone receptors in immune and stromal cells. JAK2 cooperates with TYK2 downstream of IL-23R to activate STAT3 and STAT5 in Th17 differentiation. JAK2 inhibitors are under investigation in SpA alongside JAK1 inhibitors.", "uniprotId": "P52333", "gene": "JAK2", "cellExpression": ["all hematopoietic cells"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/JAK2"}, {"id": "receptor-tyk2", "label": "TYK2", "type": "Receptor", "description": "TYK2 (Tyrosine Kinase 2) is a JAK family kinase critical for IL-23 signal transduction to STAT3 and STAT5. TYK2 polymorphisms show strong AS associations and affect IL-23-mediated Th17 differentiation and innate immune activation. TYK2 inhibitors are emerging as selective alternatives to broad JAK inhibition.", "uniprotId": "P29597", "gene": "TYK2", "cellExpression": ["immune cells"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/TYK2"}, {"id": "receptor-stat3", "label": "STAT3", "type": "Receptor", "description": "STAT3 (Signal Transducer and Activator of Transcription 3) is a transcription factor downstream of IL-23 and IL-6 signaling critical for Th17 cell differentiation. STAT3 phosphorylation and activation drives ROR\u03b3t expression and IL-17 production in Th17 cells. STAT3 inhibitors are being developed as potential SpA therapeutics.", "uniprotId": "P40763", "gene": "STAT3", "cellExpression": ["immune cells"], "source": ["UniProt"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/STAT3"}, {"id": "gene-hla-b27", "label": "HLA-B27", "type": "Gene", "description": "HLA-B27 is an MHC class I molecule with strong association to AS (88-90% of patients) through both peptide presentation and disease-associated misfolding. HLA-B27 positivity is the strongest genetic risk factor for AS, and specific alleles (*05:01) show higher disease associations. HLA-B27 allelic variation affects peptide binding and misfolding propensity in SpA.", "chromosome": "6p21.3", "rsId": ["rs4349859"], "oddsRatio": 200, "gwasSource": "Multiple GWAS meta-analyses", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/HLA-B27"}, {"id": "gene-erap1", "label": "ERAP1", "type": "Gene", "description": "ERAP1 (Endoplasmic Reticulum Aminopeptidase 1) is a gene encoding an aminopeptidase that trims peptides in the endoplasmic reticulum for optimal MHC class I binding. ERAP1 variants show strong epistatic interactions with HLA-B27, significantly increasing AS risk through impaired peptide processing and presentation. This suggests that both HLA-B27 misfolding and ERAP1-mediated peptide trimming defects contribute to aberrant immune responses in SpA pathogenesis.", "chromosome": "5q15", "rsId": ["rs30187"], "oddsRatio": 1.34, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/ERAP1"}, {"id": "gene-erap2", "label": "ERAP2", "type": "Gene", "description": "ERAP2 (Endoplasmic Reticulum Aminopeptidase 2) is a paralog of ERAP1 that trims peptides in the ER for MHC class I binding. ERAP2 shows epistatic interactions with HLA-B27 similar to ERAP1, and genetic variants affect AS risk through peptide processing and presentation. The ERAP1-ERAP2 interaction suggests redundancy in peptide trimming for HLA-B27.", "chromosome": "5q15", "rsId": ["rs2248374"], "oddsRatio": 1.2, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/ERAP2"}, {"id": "gene-il23r", "label": "IL23R", "type": "Gene", "description": "IL23R (Interleukin-23 Receptor) encodes a subunit of the IL-23 receptor, critical for IL-23 signaling in immune cells including Th17 cells and innate lymphoid cells. Polymorphisms in IL23R show genome-wide significant associations with AS and other forms of SpA, implicating the IL-23/Th17 axis as a key pathogenic mechanism. Loss-of-function variants are protective, making IL-23 signaling an attractive therapeutic target in SpA.", "chromosome": "1p13.3", "rsId": ["rs11209026"], "oddsRatio": 0.59, "gwasSource": "Multiple SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110", "25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_23"}, {"id": "gene-card9", "label": "CARD9", "type": "Gene", "description": "CARD9 (Caspase Recruitment Domain 9) encodes a signaling adapter protein in fungal and bacterial pattern recognition pathways that activates NF-kB and MAPK. CARD9 polymorphisms show associations with AS and other autoimmune diseases, implicating pattern recognition receptor signaling in SpA pathogenesis. CARD9 mutations alter immune responses to commensals.", "chromosome": "9q34.3", "rsId": ["rs4077515"], "oddsRatio": 1.18, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/CARD9"}, {"id": "gene-runx3", "label": "RUNX3", "type": "Gene", "description": "RUNX3 is a transcription factor critical for CD8+ T-cell development and Th17 differentiation, encoded by a gene with AS-associated polymorphisms. RUNX3 mutations affect both CD8+ T-cell function and Th17 differentiation, potentially explaining SpA susceptibility. RUNX3 dysregulation may alter cross-reactive CD8+ T-cell responses in HLA-B27-driven SpA.", "chromosome": "1p36.11", "rsId": ["rs4648356"], "oddsRatio": 1.15, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/RUNX3"}, {"id": "gene-tyk2", "label": "TYK2", "type": "Gene", "description": "TYK2 encodes Tyrosine Kinase 2, a JAK family kinase that transduces IL-23 signaling through STAT3 and STAT5. TYK2 genetic variants showing AS associations affect IL-23-mediated Th17 differentiation and innate immune responses. TYK2 inhibitors are emerging therapies targeting the IL-23 pathway in SpA.", "chromosome": "19p13.2", "rsId": ["rs12720356"], "oddsRatio": 1.2, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/TYK2"}, {"id": "gene-il1r2", "label": "IL1R2", "type": "Gene", "description": "IL1R2 encodes IL-1 Receptor 2, a decoy receptor that absorbs IL-1 and prevents IL-1R1 signaling, dampening IL-1 responses. Polymorphisms in IL1R2 may alter IL-1 signaling balance in SpA inflammation. Impaired decoy receptor function could enhance pathogenic IL-1 effects in SpA.", "chromosome": "2q14.2", "rsId": ["rs1939800"], "oddsRatio": 1.12, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_1_receptor"}, {"id": "gene-ptger4", "label": "PTGER4", "type": "Gene", "description": "PTGER4 encodes Prostaglandin E Receptor 4 (EP4) that mediates anti-inflammatory PGE2 signaling in immune cells. PTGER4 polymorphisms show associations with AS, suggesting altered prostaglandin signaling in SpA. EP4 signaling promotes Treg differentiation and tolerance, and genetic variants may impair these protective responses.", "chromosome": "5p13.1", "rsId": ["rs1893592"], "oddsRatio": 1.15, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Prostaglandin_E_receptor"}, {"id": "gene-ltbr", "label": "LTBR", "type": "Gene", "description": "LTBR (Lymphotoxin Beta Receptor) transduces non-canonical NF-kB signaling important for secondary lymphoid organ development and lymphoid structure formation. LTBR polymorphisms show associations with AS, implicating lymphoid tissue organization in SpA pathogenesis. LTBR signaling may affect ectopic lymphoid structure formation in SpA.", "chromosome": "13q31.3", "rsId": ["rs6565694"], "oddsRatio": 1.13, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Lymphotoxin"}, {"id": "gene-npepps", "label": "NPEPPS", "type": "Gene", "description": "NPEPPS encodes puromycin-sensitive aminopeptidase that processes peptides in the cytosol for MHC presentation. NPEPPS genetic variants show associations with AS and affect peptide processing alongside ERAP1 and ERAP2. Combinatorial effects of multiple peptide-processing genes influence HLA-B27 peptide presentation in SpA.", "chromosome": "17q21.2", "rsId": ["rs2230173"], "oddsRatio": 1.1, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/NPEPPS"}, {"id": "gene-gpr25", "label": "GPR25", "type": "Gene", "description": "GPR25 encodes a G protein-coupled receptor involved in immune cell chemotaxis and cytokine signaling. GPR25 polymorphisms show associations with AS, implicating altered chemokine signaling in SpA pathogenesis. GPR25 function in T-cell trafficking may affect immune cell recruitment to inflamed sites.", "chromosome": "1p13.3", "rsId": ["rs10489629"], "oddsRatio": 1.09, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/G_protein-coupled_receptor"}, {"id": "gene-ube2l3", "label": "UBE2L3", "type": "Gene", "description": "UBE2L3 encodes an E2 ubiquitin-conjugating enzyme involved in protein ubiquitination and degradation in immune signaling. UBE2L3 polymorphisms show associations with AS and other autoimmune diseases, affecting NF-kB and MAPK pathway signaling. Altered ubiquitination of immune signaling proteins may dysregulate inflammatory responses.", "chromosome": "22q11.21", "rsId": ["rs6427528"], "oddsRatio": 1.13, "gwasSource": "SpA GWAS", "source": ["NCBI Gene", "GWAS Catalog"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/UBE2L3"}, {"id": "pathway-il23-il17-axis", "label": "IL-23/IL-17 Axis", "type": "Pathway", "description": "The IL-23/IL-17 axis represents the central inflammatory pathway in SpA pathogenesis, with IL-23 driving Th17 and ILC differentiation and IL-17 driving osteoclastogenesis. Multiple genetic associations in AS point to components of this axis (IL23R, IL12B), and IL-23 and IL-17 inhibitors show superior efficacy in SpA. The IL-23/IL-17 axis is the most validated therapeutic target in SpA.", "reactomeId": "R-HSA-381340", "keggId": "hsa04657", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["22553110", "23676134"], "wikipedia": "https://en.wikipedia.org/wiki/Interleukin_23"}, {"id": "pathway-jak-stat", "label": "JAK-STAT Signaling", "type": "Pathway", "description": "JAK-STAT signaling downstream of IL-23 and IL-6 receptors drives Th17 differentiation and pro-inflammatory gene expression in SpA. TYK2 and JAK2 transduce IL-23 signaling to phosphorylate STAT3, a critical event in Th17 commitment. JAK inhibitors targeting this pathway are under investigation as emerging SpA therapies.", "reactomeId": "R-HSA-8849471", "keggId": "hsa04900", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/JAK-STAT_signaling_pathway"}, {"id": "pathway-nf-kappa-b", "label": "NF-\u03baB Signaling", "type": "Pathway", "description": "NF-kB signaling is the central transcription factor activated by TNF-alpha, IL-1, and pattern recognition receptors, driving pro-inflammatory gene expression in SpA. Canonical NF-kB activation leads to TNF, IL-6, and IL-8 expression, while non-canonical pathways affect immune tolerance and lymphoid tissue organization. NF-kB represents a key node in SpA inflammation converging multiple cytokine signals.", "reactomeId": "R-HSA-5602503", "keggId": "hsa04064", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/NF-kappa-B"}, {"id": "pathway-th17-diff", "label": "Th17 Differentiation", "type": "Pathway", "description": "Th17 differentiation requires IL-23 and IL-6 signals to naive CD4+ T cells in the context of dendritic cell-derived signals and STAT3 activation. TGF-beta and IL-6 initiate Th17 commitment through ROR\u03b3t and STAT3 expression, while IL-23 maintains and expands Th17 cells in SpA. Dysregulation of Th17 differentiation drives pathogenic Th17 accumulation in SpA.", "reactomeId": "R-HSA-2690814", "keggId": "hsa04659", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/T_helper_17_cell"}, {"id": "pathway-er-stress-upr", "label": "ER Stress and Unfolded Protein Response", "type": "Pathway", "description": "ER Stress and the Unfolded Protein Response (UPR) are activated by HLA-B27 misfolding and trigger NF-kB-mediated pro-inflammatory responses in SpA. HLA-B27 molecules in certain alleles have increased propensity for ER accumulation and misfolding, activating IRE1 and ATF6 branches of the UPR. ER stress-induced inflammation may explain the AS-HLA-B27 association independent of peptide presentation.", "reactomeId": "R-HSA-381070", "keggId": "hsa04141", "source": ["Reactome", "KEGG"], "confidence": "medium", "references": ["27195436"], "wikipedia": "https://en.wikipedia.org/wiki/Unfolded_protein_response"}, {"id": "pathway-wnt-signaling", "label": "Wnt Signaling (Bone Formation)", "type": "Pathway", "description": "Wnt signaling through \u03b2-catenin (canonical) promotes osteoblast differentiation and bone formation in SpA, contributing to the paradoxical new bone and ankylosis. Wnt ligands are produced at SpA inflammation sites and drive osteogenesis through Wnt/\u03b2-catenin pathway activation. Wnt pathway inhibitors (sclerostin antibodies, DKK inhibitors) are being investigated to block SpA-associated bone formation.", "reactomeId": "R-HSA-881907", "keggId": "hsa04310", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Wnt_signaling_pathway"}, {"id": "pathway-rankl-opg", "label": "RANKL/OPG (Bone Resorption)", "type": "Pathway", "description": "The RANKL/OPG (Osteoprotegerin) pathway controls the balance between osteoclastogenesis and osteoblast-mediated bone formation in SpA. RANKL-RANK signaling is enhanced by TNF-alpha and IL-17, driving bone resorption, while OPG acts as a decoy to inhibit RANKL. Dysregulation of this pathway leads to both inflammatory bone loss and paradoxical new bone formation in SpA.", "reactomeId": "R-HSA-2029513", "keggId": "hsa04380", "source": ["Reactome", "KEGG"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/RANKL"}, {"id": "pathway-autophagy", "label": "Autophagy", "type": "Pathway", "description": "Autophagy is a cellular degradation pathway that regulates immune cell homeostasis and pathogen clearance. Dysregulation of autophagy has been implicated in SpA pathogenesis through impaired bacterial handling and immune cell activation. Autophagy-defective immune cells may have enhanced pro-inflammatory responses in SpA.", "reactomeId": "R-HSA-383108", "keggId": "hsa04140", "source": ["Reactome", "KEGG"], "confidence": "medium", "references": ["27195436"], "wikipedia": "https://en.wikipedia.org/wiki/Autophagy"}, {"id": "symptom-ibp", "label": "Inflammatory Back Pain", "type": "Symptom", "description": "Inflammatory Back Pain (IBP) is the cardinal symptom of axial SpA, characterized by pain and stiffness improving with activity and worsening with rest. IBP typically begins before age 45, improves with NSAIDs, and is associated with morning stiffness >30 minutes. IBP ASAS classification criteria are 80-90% sensitive for axial SpA diagnosis.", "hpoId": "HP:0025435", "frequency": "70-90% in SpA", "category": "Axial", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Back_pain"}, {"id": "symptom-sacroiliitis", "label": "Sacroiliitis", "type": "Symptom", "description": "Sacroiliitis (inflammation of sacroiliac joints) is the radiographic hallmark of AS, showing bilateral symmetric changes with erosions and ankylosis. Sacroiliitis can be asymptomatic in early disease but eventually causes pain and stiffness in the buttocks and lower back. Bilateral sacroiliitis is required for AS diagnosis under modified New York criteria.", "hpoId": "HP:0012507", "frequency": "80-100% in AS", "category": "Axial", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Sacroiliitis"}, {"id": "symptom-enthesitis", "label": "Enthesitis", "type": "Symptom", "description": "Enthesitis (inflammation at tendon/ligament insertions) is a characteristic feature of SpA that distinguishes it from rheumatoid arthritis. Common sites include the Achilles insertion, plantar fascia insertion, and anterior tibial tuberosity. Enthesitis causes pain at tendon attachment sites and is a target of ASAS classification criteria for SpA.", "hpoId": "HP:0009043", "frequency": "30-50% in SpA", "category": "Peripheral", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Enthesitis"}, {"id": "symptom-peripheral-arthritis", "label": "Peripheral Arthritis", "type": "Symptom", "description": "Peripheral arthritis (inflammation in small and large joints of limbs) is a prominent feature of PsA and occurs in ~30% of axial SpA patients. Peripheral SpA can present as oligoarthritis (typically knees, hips, ankles) or polyarthritis, with potential for permanent joint damage if untreated. Peripheral disease often responds more dramatically than axial disease to TNF inhibitors.", "hpoId": "HP:0001369", "frequency": "30-40% in SpA", "category": "Peripheral", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Arthritis"}, {"id": "symptom-dactylitis", "label": "Dactylitis", "type": "Symptom", "description": "Dactylitis (swollen digit) is a hallmark manifestation of PsA and represents simultaneous inflammation of bone, synovium, and soft tissues in fingers or toes. Dactylitis occurs in 15-50% of PsA patients and indicates more aggressive disease with greater structural damage. Dactylitis responds well to TNF inhibitors and IL-17 inhibitors.", "hpoId": "HP:0009027", "frequency": "10-20% in SpA, 40% in PsA", "category": "Peripheral", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["29145608"], "wikipedia": "https://en.wikipedia.org/wiki/Dactylitis"}, {"id": "symptom-uveitis", "label": "Anterior Uveitis", "type": "Symptom", "description": "Anterior uveitis (iritis) is an acute inflammatory eye manifestation occurring in 20-30% of AS and 5-10% of other SpA subtypes. Uveitis in SpA is HLA-B27-mediated and often recurrent, caused by IL-17 and TNF-alpha-driven immune activation at the uveal tract. Untreated uveitis can lead to vision loss, cataracts, and glaucoma.", "hpoId": "HP:0000496", "frequency": "20-30% in AS", "category": "Extra-articular", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Anterior_uveitis"}, {"id": "symptom-psoriasis", "label": "Psoriasis", "type": "Symptom", "description": "Psoriasis is present at SpA diagnosis in 70% of PsA patients and develops within 10 years in others, indicating shared immune dysregulation. Psoriatic skin lesions contain IL-17-producing Th17 cells and express TNF-alpha, paralleling joint inflammation. Skin manifestations guide biologic selection toward TNF and IL-17 inhibitors.", "hpoId": "HP:0000969", "frequency": "10-15% in AS, 70% in PsA", "category": "Extra-articular", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["29145608"], "wikipedia": "https://en.wikipedia.org/wiki/Psoriasis"}, {"id": "symptom-ibd", "label": "Inflammatory Bowel Disease", "type": "Symptom", "description": "Inflammatory Bowel Disease (IBD) is a comorbid manifestation occurring in 5-10% of SpA patients as enteropathic arthritis or in non-IBD SpA subtypes. Shared mucosal immune dysregulation and dysbiosis link IBD and SpA pathogenesis. IBD and SpA in the same patient requires integrated biologic therapy selection.", "hpoId": "HP:0002037", "frequency": "5-10% in SpA", "category": "Extra-articular", "source": ["HPO", "EULAR"], "confidence": "high", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Inflammatory_bowel_disease"}, {"id": "symptom-fatigue", "label": "Fatigue", "type": "Symptom", "description": "Fatigue is a prevalent and debilitating symptom in SpA affecting 40-70% of patients and correlating with disease activity, depression, and sleep disturbance. IL-6 and TNF-alpha produced during SpA inflammation may contribute to fatigue through central nervous system effects. Fatigue often persists despite good disease control and impacts quality of life.", "hpoId": "HP:0012378", "frequency": "40-60% in SpA", "category": "Extra-articular", "source": ["HPO"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Fatigue"}, {"id": "symptom-morning-stiffness", "label": "Morning Stiffness", "type": "Symptom", "description": "Morning stiffness lasting >30 minutes upon waking is a key symptom of active axial SpA reflecting overnight accumulation of inflammatory mediators. Stiffness improves dramatically with NSAIDs and activity in SpA, contrasting with mechanical back pain. Duration of morning stiffness correlates with disease activity in AS.", "hpoId": "HP:0002959", "frequency": "70-80% in SpA", "category": "Axial", "source": ["HPO"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Morning_stiffness"}, {"id": "symptom-spinal-fusion", "label": "Spinal Fusion/Ankylosis", "type": "Symptom", "description": "Spinal fusion (ankylosis) is the progressive outcome of untreated axial SpA, with syndesmophyte formation bridging vertebral bodies and creating a rigid 'bamboo spine'. Advanced spinal fusion results in complete immobility, increased fracture risk from minor trauma, and severe functional disability. Early biologic therapy can slow or prevent progression to advanced spinal fusion.", "hpoId": "HP:0002938", "frequency": "30-40% in AS over 20 years", "category": "Axial", "source": ["HPO"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Spinal_fusion"}, {"id": "symptom-osteoporosis", "label": "Osteoporosis", "type": "Symptom", "description": "Osteoporosis occurs in 5-60% of SpA patients due to both TNF-alpha-driven bone loss early in disease and paradoxical new bone formation later. Dual-energy X-ray absorptiometry (DXA) scans assess bone mineral density in SpA, with attention to both systemic loss and local new bone. Fracture risk in SpA includes both osteoporotic and new bone-related complications.", "hpoId": "HP:0000939", "frequency": "20-60% in SpA", "category": "Extra-articular", "source": ["HPO"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Osteoporosis"}, {"id": "site-si-joint", "label": "Sacroiliac Joint", "type": "Anatomical Site", "description": "The sacroiliac (SI) joints are the primary sites of inflammation in axial spondyloarthritis, showing early inflammatory changes on MRI before radiographic involvement. Bilateral SI joint inflammation with or without spinal changes defines radiographic SpA (AS), while unilateral or early changes indicate non-radiographic axial SpA. SI joint assessment is central to SpA diagnosis and monitoring.", "uberonId": "UBERON:0001158", "source": ["UBERON"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Sacroiliac_joint"}, {"id": "site-spine", "label": "Spine", "type": "Anatomical Site", "description": "The spine is the primary target organ in axial spondyloarthritis, with inflammatory changes in the discovertebral junctions progressing to syndesmophyte formation and spinal fusion. Spinal ankylosis in advanced AS results in complete immobility and kyphotic deformity, reducing functional capacity. Early recognition and TNF or IL-17 inhibition can slow spinal progression.", "uberonId": "UBERON:0002240", "source": ["UBERON"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Vertebral_column"}, {"id": "site-enthesis", "label": "Enthesis", "type": "Anatomical Site", "description": "The enthesis is the insertion site of tendons and ligaments into bone and is the primary site of inflammation in axial spondyloarthritis. Enthesial inflammation is characterized by TNF-alpha and IL-17 production, HLA-B27 immune cell infiltration, and paradoxical new bone formation. Enthesitis precedes spinal inflammation in early AS.", "uberonId": "UBERON:0009835", "source": ["UBERON"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Enthesis"}, {"id": "site-gut", "label": "Gut (Ileum)", "type": "Anatomical Site", "description": "The gut (intestinal tract) is a key immune interface in SpA pathogenesis where dysbiosis and increased intestinal permeability allow bacterial antigen exposure. Elevated fecal calprotectin indicates intestinal inflammation in enteropathic arthritis and SpA-IBD, and intestinal changes precede clinical SpA. Microbiota modulation and barrier function restoration are emerging therapeutic targets.", "uberonId": "UBERON:0002116", "source": ["UBERON"], "confidence": "high", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Gut"}, {"id": "site-eye-uvea", "label": "Eye (Uvea)", "type": "Anatomical Site", "description": "The eye uvea (iris, ciliary body, choroid) is a site of acute anterior uveitis inflammation in 20-30% of AS and 5-10% of other SpA subtypes. Uveitis in SpA is HLA-B27-mediated and involves IL-17-producing cells and TNF-alpha, with shared pathogenic mechanisms with joint disease. Uveitis requires prompt treatment to prevent vision loss.", "uberonId": "UBERON:0001258", "source": ["UBERON"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Uvea"}, {"id": "site-skin", "label": "Skin", "type": "Anatomical Site", "description": "The skin is a site of psoriasis manifestations in PsA and other SpA subtypes, reflecting systemic IL-17 and TNF-alpha-driven inflammation. Psoriatic skin lesions contain elevated Th17 cells and express IL-17, IL-22, and TNF-alpha. Skin clearance with systemic therapy (TNF inhibitors, IL-17 inhibitors) indicates control of systemic inflammation.", "uberonId": "UBERON:0002097", "source": ["UBERON"], "confidence": "high", "references": ["29145608"], "wikipedia": "https://en.wikipedia.org/wiki/Skin"}, {"id": "site-peripheral-joints", "label": "Peripheral Joints", "type": "Anatomical Site", "description": "Peripheral joints (elbows, hips, knees, ankles, small joints of hands and feet) are sites of symmetric or asymmetric arthritis in SpA, particularly prominent in PsA. Peripheral arthritis can occur with or without axial disease and often responds to TNF inhibitors and IL-17 inhibitors. Imaging and ultrasound assess peripheral joint inflammation and damage.", "uberonId": "UBERON:0002091", "source": ["UBERON"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Joint"}, {"id": "site-achilles", "label": "Achilles Tendon", "type": "Anatomical Site", "description": "The Achilles tendon is a frequent site of enthesitis in SpA, causing pain, swelling, and functional impairment. Achilles enthesitis is characteristic of axial SpA and reactive arthritis and often responds to TNF inhibition or IL-17 inhibition. Imaging and ultrasound can detect Achilles enthesitis and monitor treatment response.", "uberonId": "UBERON:0001384", "source": ["UBERON"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Achilles_tendon"}, {"id": "site-aortic-root", "label": "Aortic Root", "type": "Anatomical Site", "description": "The aortic root is a cardiovascular extra-articular manifestation site in SpA, with chronic TNF-alpha-driven inflammation causing aortic regurgitation. Aortic root inflammation occurs in 1-10% of AS patients and is associated with aortic dilatation and valve insufficiency. Aortic involvement increases cardiovascular mortality in SpA.", "uberonId": "UBERON:0003847", "source": ["UBERON"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Aorta"}, {"id": "trigger-gut-dysbiosis", "label": "Gut Dysbiosis", "type": "Environmental Trigger", "description": "Gut dysbiosis (altered bacterial composition) is documented in SpA with reduced diversity, depletion of anti-inflammatory species, and enrichment of pro-inflammatory bacteria. Dysbiosis increases intestinal permeability, allows pathogenic bacterial translocation, and drives Th17 differentiation. Dysbiosis precedes and perpetuates SpA pathogenesis through barrier dysfunction.", "mechanism": "Increased intestinal permeability, reduced barrier function, altered mucosal immunity", "source": ["Literature"], "confidence": "high", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Dysbiosis"}, {"id": "trigger-mechanical-stress", "label": "Mechanical Stress", "type": "Environmental Trigger", "description": "Mechanical stress from trauma or repetitive microtrauma may trigger inflammation at enthesial sites in SpA through toll-like receptor activation and danger signal release. Stress-induced inflammation at the enthesis may break immunological tolerance and initiate or perpetuate SpA. Enthesitis distribution often follows mechanical stress patterns.", "mechanism": "Triggers local inflammation and innate immune activation via danger signals", "source": ["Literature"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Mechanical_stress"}, {"id": "trigger-bacterial-infection", "label": "Bacterial Infection", "type": "Environmental Trigger", "description": "Bacterial infections by Chlamydia, Shigella, Salmonella, Yersinia, and other pathogens trigger reactive arthritis in HLA-B27-positive individuals through molecular mimicry and cross-reactivity. Post-infectious arthritis typically develops 1-4 weeks after acute GI or urogenital infection. Bacterial triggers represent the clearest link between microbes and SpA pathogenesis.", "mechanism": "Molecular mimicry, cross-reactive T cells, persistent bacterial antigens", "source": ["Literature"], "confidence": "high", "references": ["19654303"], "wikipedia": "https://en.wikipedia.org/wiki/Bacterial_infection"}, {"id": "trigger-smoking", "label": "Smoking", "type": "Environmental Trigger", "description": "Smoking is a modifiable risk factor that increases SpA disease severity, radiographic progression, and poor response to TNF inhibitors. Smoking impairs immune function and increases systemic TNF-alpha levels independent of SpA, amplifying inflammation. Smoking cessation is strongly recommended as part of comprehensive SpA management.", "mechanism": "Enhanced Th17 differentiation, increased TNF-\u03b1 production, altered immune tolerance", "source": ["Literature"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Smoking"}, {"id": "trigger-psychological-stress", "label": "Psychological Stress", "type": "Environmental Trigger", "description": "Psychological stress is associated with SpA disease flares through neuroimmune mechanisms including norepinephrine signaling and reduced regulatory T-cell function. Stress hormones can promote Th17 differentiation and reduce Treg function, exacerbating SpA inflammation. Stress management and psychosocial support are important adjunctive interventions in SpA.", "mechanism": "Dysregulation of HPA axis, altered immune homeostasis", "source": ["Literature"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Psychological_stress"}, {"id": "trigger-nsaid-withdrawal", "label": "NSAID Withdrawal", "type": "Environmental Trigger", "description": "NSAID withdrawal or inadequate NSAID use can lead to SpA disease flares through loss of prostaglandin-mediated anti-inflammatory effects. Continuous NSAID therapy is recommended in SpA for maintenance of anti-inflammatory benefit and slowing of radiographic progression. Abrupt NSAID discontinuation should be avoided without alternative disease-modifying therapy.", "mechanism": "Rebound inflammation, loss of anti-inflammatory effects", "source": ["Literature"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Nonsteroidal_anti-inflammatory_drug"}, {"id": "microbe-klebsiella", "label": "Klebsiella pneumoniae", "type": "Microorganism", "description": "Klebsiella pneumoniae is a gram-negative opportunistic pathogen implicated in SpA pathogenesis through molecular mimicry with HLA-B27 and dysbiosis. Increased Klebsiella prevalence in SpA patient stool samples and cross-reactive antibodies against Klebsiella epitopes suggest pathogenic triggering. The Klebsiella/HLA-B27 cross-reactivity hypothesis is supported by immunological studies.", "taxonomy": "Enterobacteriaceae family", "association": "Increased in SpA", "source": ["Literature"], "confidence": "medium", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Klebsiella_pneumoniae"}, {"id": "microbe-ruminococcus", "label": "Ruminococcus gnavus", "type": "Microorganism", "description": "Ruminococcus gnavus is a commensal bacterium that is enriched in IBD and may promote pro-inflammatory immune responses through antigen exposure. R. gnavus abundance in SpA-IBD patients may contribute to both intestinal and articular inflammation. Changes in Ruminococcus abundance reflect dysbiosis and altered immune tolerance in SpA.", "taxonomy": "Firmicutes phylum", "association": "Increased in SpA", "source": ["Literature"], "confidence": "medium", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Ruminococcus"}, {"id": "microbe-faecalibacterium", "label": "Faecalibacterium prausnitzii", "type": "Microorganism", "description": "Faecalibacterium prausnitzii is a commensal bacterium depleted in SpA patient fecal samples, representing loss of potentially protective bacteria in gut dysbiosis. F. prausnitzii produces anti-inflammatory metabolites including butyrate and promotes barrier integrity and Treg differentiation. Reduction of F. prausnitzii abundance in SpA may contribute to pathogenic immune activation.", "taxonomy": "Firmicutes phylum", "association": "Decreased in SpA", "source": ["Literature"], "confidence": "high", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Faecalibacterium"}, {"id": "microbe-prevotella", "label": "Prevotella copri", "type": "Microorganism", "description": "Prevotella copri is a commensal bacterium enriched in early rheumatoid arthritis and depleted in some SpA patient microbiota. P. copri reduction in SpA may represent loss of a regulatory species or enrichment of pathogenic species. Dysbiosis of Prevotella and related anaerobes contributes to barrier dysfunction and pathogenic immune activation.", "taxonomy": "Bacteroidetes phylum", "association": "Increased in SpA", "source": ["Literature"], "confidence": "medium", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Prevotella"}, {"id": "microbe-chlamydia", "label": "Chlamydia trachomatis", "type": "Microorganism", "description": "Chlamydia trachomatis is an obligate intracellular pathogen causing urogenital infections that frequently triggers reactive arthritis, particularly in HLA-B27-positive individuals. Chlamydia antigens trigger cross-reactive T-cell and antibody responses with joint epitopes through molecular mimicry with HLA-B27. Post-Chlamydia reactive arthritis is a major subset of SpA.", "taxonomy": "Chlamydiaceae family", "association": "Triggers reactive arthritis", "source": ["Literature"], "confidence": "high", "references": ["19654303"], "wikipedia": "https://en.wikipedia.org/wiki/Chlamydia_trachomatis"}, {"id": "microbe-campylobacter", "label": "Campylobacter", "type": "Microorganism", "description": "Campylobacter jejuni is a gram-negative bacterium causing gastrointestinal infection that can trigger reactive arthritis, particularly in HLA-B27-positive individuals. Campylobacter infection precedes reactive arthritis development by 1-4 weeks and activates cross-reactive T-cell responses. Post-Campylobacter reactive arthritis may progress to chronic SpA in genetically susceptible patients.", "taxonomy": "Campylobacteraceae family", "association": "Triggers reactive arthritis", "source": ["Literature"], "confidence": "high", "references": ["19654303"], "wikipedia": "https://en.wikipedia.org/wiki/Campylobacter_jejuni"}, {"id": "drug-adalimumab", "label": "Adalimumab", "type": "Drug", "description": "Adalimumab (brand name Humira) is a recombinant human monoclonal antibody against TNF-alpha approved by the FDA for AS, PsA, and other SpA subtypes. As a TNF inhibitor, adalimumab neutralizes both soluble and membrane-bound TNF-alpha, blocking TNF-R1 and TNF-R2 signaling and reducing pro-inflammatory responses. Adalimumab can be given as subcutaneous injection every 1-2 weeks and is one of the most widely used first-line biologic therapies in SpA.", "drugBankId": "DB00051", "class": "TNF inhibitor", "approvalStatus": "FDA/EMA approved for AS, PsA, non-radiographic axSpA", "source": ["DrugBank"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Adalimumab"}, {"id": "drug-etanercept", "label": "Etanercept", "type": "Drug", "description": "Etanercept (Enbrel) is a recombinant TNF receptor-Fc fusion protein that acts as a TNF decoy receptor, binding and neutralizing TNF-alpha and TNF-beta (lymphotoxin). FDA-approved for AS and other SpA, etanercept is a first-line TNF inhibitor given as twice-weekly subcutaneous injections or once-weekly with lower dosing. Etanercept blocks both soluble and membrane-bound TNF-alpha and shows sustained efficacy in SpA over long-term follow-up.", "drugBankId": "DB00041", "class": "TNF inhibitor", "approvalStatus": "FDA/EMA approved for AS, PsA", "source": ["DrugBank"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Etanercept"}, {"id": "drug-infliximab", "label": "Infliximab", "type": "Drug", "description": "Infliximab (Remicade) is a chimeric mouse-human monoclonal antibody against TNF-alpha approved for AS, PsA, and enteropathic arthritis in the SpA spectrum. As a TNF inhibitor, infliximab is administered intravenously every 6-8 weeks after induction, induces formation of TNF immune complexes, and activates complement-mediated cytotoxicity of TNF-producing cells. Infliximab shows potent anti-inflammatory efficacy in SpA but requires intravenous infusions.", "drugBankId": "DB00065", "class": "TNF inhibitor", "approvalStatus": "FDA/EMA approved for AS, PsA", "source": ["DrugBank"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Infliximab"}, {"id": "drug-secukinumab", "label": "Secukinumab", "type": "Drug", "description": "Secukinumab (Cosentyx) is a fully human monoclonal antibody against IL-17A approved as a first-line biologic for AS and PsA with superior efficacy in some patients compared to TNF inhibitors. As an IL-17 inhibitor, secukinumab blocks IL-17-driven osteoclastogenesis, neutrophil recruitment, and pro-inflammatory mediator production, showing rapid clinical improvement in AS. Secukinumab is administered as monthly subcutaneous injections and represents the first IL-17 inhibitor approved for SpA.", "drugBankId": "DB09073", "class": "IL-17A inhibitor", "approvalStatus": "FDA/EMA approved for AS, PsA, non-radiographic axSpA", "source": ["DrugBank"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Secukinumab"}, {"id": "drug-ixekizumab", "label": "Ixekizumab", "type": "Drug", "description": "Ixekizumab (Taltz) is a fully human monoclonal antibody against IL-17A approved for AS, PsA, and non-radiographic axial SpA with efficacy comparable to TNF inhibitors. As an IL-17 inhibitor, ixekizumab blocks IL-17A-mediated inflammation, osteoclastogenesis, and tissue damage through high-affinity antibody binding. Ixekizumab is administered every 2-4 weeks subcutaneously and is a key option in IL-17-targeted SpA therapy.", "drugBankId": "DB09075", "class": "IL-17A inhibitor", "approvalStatus": "FDA/EMA approved for AS, PsA", "source": ["DrugBank"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Ixekizumab"}, {"id": "drug-guselkumab", "label": "Guselkumab", "type": "Drug", "description": "Guselkumab (Tremfya) is a selective human monoclonal antibody against IL-23p19 approved for psoriasis and PsA with favorable safety and efficacy profile. As an IL-23-selective inhibitor, guselkumab blocks IL-23 without inhibiting IL-12, reducing Th17 responses while maintaining Th1 and antimicrobial immunity. Guselkumab shows rapid onset and sustained benefit in PsA and is being evaluated in other SpA subtypes.", "drugBankId": "DB11642", "class": "IL-23 inhibitor", "approvalStatus": "FDA/EMA approved for psoriasis, PsA", "source": ["DrugBank"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Guselkumab"}, {"id": "drug-tofacitinib", "label": "Tofacitinib", "type": "Drug", "description": "Tofacitinib (Xeljanz) is a small molecule JAK inhibitor approved for rheumatoid arthritis and is under investigation in PsA and axial SpA. As a JAK1/JAK3 inhibitor, tofacitinib blocks STAT signaling downstream of multiple cytokine receptors including IL-23R and IL-6R, reducing Th17 and pro-inflammatory responses. Tofacitinib offers oral dosing twice daily with potential efficacy across SpA subtypes through broad JAK-STAT inhibition.", "drugBankId": "DB08877", "class": "JAK inhibitor", "approvalStatus": "FDA/EMA approved for RA, PsA", "source": ["DrugBank"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Tofacitinib"}, {"id": "drug-upadacitinib", "label": "Upadacitinib", "type": "Drug", "description": "Upadacitinib (Rinvoq) is a selective JAK1 inhibitor approved for rheumatoid arthritis and is under investigation in PsA and axial SpA. As a JAK1-selective inhibitor, upadacitinib blocks STAT signaling downstream of IL-23 and other pro-inflammatory cytokines while preserving JAK2 signaling important for infections. Upadacitinib offers once-daily oral dosing with selective JAK1 targeting in SpA.", "drugBankId": "DB12610", "class": "JAK inhibitor", "approvalStatus": "FDA/EMA approved for RA, PsA", "source": ["DrugBank"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Upadacitinib"}, {"id": "drug-nsaids", "label": "NSAIDs (General)", "type": "Drug", "description": "NSAIDs (Non-steroidal Anti-inflammatory Drugs) are first-line symptomatic therapies for SpA pain and inflammation, including indomethacin, naproxen, and celecoxib. Continuous NSAID use may slow radiographic progression in early AS by inhibiting prostaglandin synthesis and inflammation. NSAIDs are recommended for all SpA patients as symptomatic management with or without DMARDs.", "class": "NSAID", "approvalStatus": "Standard therapy", "source": ["EULAR"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Nonsteroidal_anti-inflammatory_drug"}, {"id": "drug-sulfasalazine", "label": "Sulfasalazine", "type": "Drug", "description": "Sulfasalazine (Azulfidine) is a combination drug of 5-aminosalicylic acid and sulfapyridine used as a conventional DMARD in peripheral SpA and reactive arthritis. Sulfasalazine has modest efficacy in peripheral spondyloarthritis particularly when combined with NSAIDs, with anti-inflammatory and potential antimicrobial properties. Sulfasalazine requires monitoring for adverse effects and is less effective in axial disease than TNF inhibitors.", "drugBankId": "DB00633", "class": "DMARD", "approvalStatus": "Used in SpA", "source": ["DrugBank"], "confidence": "medium", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Sulfasalazine"}, {"id": "drug-physical-therapy", "label": "Physical Therapy", "type": "Drug", "description": "Physical therapy and exercise programs are essential non-pharmacological management strategies in SpA that improve spinal mobility, functional capacity, and quality of life. Regular exercise programs reduce stiffness, improve strength and cardiovascular fitness, and may slow spinal fusion progression when combined with biologic therapy. Patient education and adherence to exercise are critical for long-term outcomes.", "class": "Non-pharmacological", "approvalStatus": "Standard therapy", "source": ["EULAR"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Physical_therapy"}, {"id": "drug-bimekizumab", "label": "Bimekizumab", "type": "Drug", "description": "Bimekizumab is a monoclonal antibody against IL-17A and IL-17F (dual IL-17 inhibition) that is in late-stage clinical trials for AS and PsA. Dual IL-17A/IL-17F targeting may provide superior efficacy compared to IL-17A-selective inhibitors by blocking both IL-17 isoforms. Bimekizumab shows promise as an emerging first-line biologic for SpA.", "class": "IL-17A/F inhibitor", "approvalStatus": "FDA/EMA approved for PsA", "source": ["Literature"], "confidence": "high", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Bimekizumab"}, {"id": "biomarker-crp", "label": "CRP", "type": "Biomarker", "description": "C-Reactive Protein (CRP) is an acute phase reactant synthesized by hepatocytes in response to IL-6 and TNF-alpha, used as a serological marker of systemic inflammation in SpA. Elevated CRP correlates with clinical disease activity, imaging progression, and prognosis in AS and other SpA subtypes, with CRP >10 mg/L indicating active inflammation. CRP levels decline with effective TNF inhibitor therapy and are used to monitor treatment response.", "biomarkerType": "Laboratory", "clinicalUse": "Monitoring disease activity", "source": ["Clinical practice"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/C-reactive_protein"}, {"id": "biomarker-esr", "label": "ESR", "type": "Biomarker", "description": "Erythrocyte Sedimentation Rate (ESR) is a non-specific marker of inflammation measured by the rate of RBC settling in plasma, elevated in active SpA. ESR correlates with systemic inflammation, disease activity, and radiographic progression in AS and other SpA subtypes, though it is less specific than CRP. ESR levels normalize with effective biologic therapy and are used alongside CRP and clinical assessment to monitor SpA disease activity.", "biomarkerType": "Laboratory", "clinicalUse": "Monitoring disease activity", "source": ["Clinical practice"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/Erythrocyte_sedimentation_rate"}, {"id": "biomarker-hla-b27-test", "label": "HLA-B27 Test", "type": "Biomarker", "description": "HLA-B27 testing is a genetic marker test that identifies the presence of HLA-B27 allele, present in 88-90% of AS patients but only 6-8% of general population. Positive HLA-B27 supports diagnosis of axial SpA and predicts more aggressive disease with earlier onset and greater spinal involvement. HLA-B27 testing is recommended for all patients with suspected SpA to support diagnosis and prognostication.", "biomarkerType": "Genetic", "clinicalUse": "Diagnosis, prognosis", "source": ["Clinical practice"], "confidence": "high", "references": ["22553110"], "wikipedia": "https://en.wikipedia.org/wiki/HLA-B27"}, {"id": "biomarker-mri-sac", "label": "MRI Sacroiliitis", "type": "Biomarker", "description": "MRI Sacroiliitis refers to magnetic resonance imaging findings of inflammation in the sacroiliac joints, showing bone marrow edema and synovitis before radiographic changes appear. MRI is more sensitive than conventional radiography for detecting early inflammatory changes in axial SpA and enables diagnosis of non-radiographic disease. MRI sacroiliitis is a key diagnostic criterion for axial SpA.", "biomarkerType": "Imaging", "clinicalUse": "Diagnosis, monitoring", "source": ["Clinical practice"], "confidence": "high", "references": ["21873635"], "wikipedia": "https://en.wikipedia.org/wiki/Magnetic_resonance_imaging"}, {"id": "biomarker-fecal-calprotectin", "label": "Fecal Calprotectin", "type": "Biomarker", "description": "Fecal Calprotectin is a stool-based marker of intestinal inflammation elevated in inflammatory bowel disease, a condition associated with enteropathic arthritis in the SpA spectrum. Elevated fecal calprotectin in SpA-IBD patients indicates active intestinal inflammation and may predict spinal inflammation. This non-invasive biomarker helps assess intestinal inflammation burden in SpA patients with concomitant IBD.", "biomarkerType": "Laboratory", "clinicalUse": "Monitoring gut inflammation", "source": ["Clinical practice"], "confidence": "medium", "references": ["27660185"], "wikipedia": "https://en.wikipedia.org/wiki/Calprotectin"}, {"id": "biomarker-vegf", "label": "VEGF", "type": "Biomarker", "description": "VEGF (Vascular Endothelial Growth Factor) is an angiogenic cytokine produced at sites of SpA inflammation that promotes new blood vessel formation. Serum VEGF levels are elevated in active SpA and correlate with disease activity and inflammatory markers. VEGF overexpression supports immune cell infiltration into inflamed joints and may be targeted therapeutically.", "biomarkerType": "Laboratory", "clinicalUse": "Research, potential biomarker", "source": ["Literature"], "confidence": "medium", "references": ["25180821"], "wikipedia": "https://en.wikipedia.org/wiki/Vascular_endothelial_growth_factor"}, {"id": "site-synovium", "label": "Synovium", "type": "Anatomical Site", "description": "The synovium (joint capsule lining) is chronically inflamed in SpA with infiltration of T cells, B cells, macrophages, and neutrophils producing TNF-alpha and IL-17. Synovial inflammation drives pain and functional limitation in SpA, though persistent inflammation may occur despite clinical remission. Synovial biopsy shows immune cell infiltration and lymphoid aggregates in active disease.", "source": ["PubMed", "Human Protein Atlas"], "confidence": "high", "references": ["PMID:28153829"], "wikipedia": "https://en.wikipedia.org/wiki/Synovium"}], "edges": [{"source": "cell-th17", "target": "cytokine-il17a", "relationship": "PRODUCES", "mechanism": "Th17 cells are primary IL-17A producers via ROR\u03b3t transcription factor", "confidence": "high", "references": ["22553110"]}, {"source": "cell-th17", "target": "cytokine-il17f", "relationship": "PRODUCES", "mechanism": "Th17 cells produce IL-17F alongside IL-17A", "confidence": "high", "references": ["23676134"]}, {"source": "cell-th17", "target": "cytokine-il22", "relationship": "PRODUCES", "mechanism": "Th17 subset produces IL-22 in addition to IL-17", "confidence": "high", "references": ["25180821"]}, {"source": "cell-macrophage", "target": "cytokine-tnf-alpha", "relationship": "PRODUCES", "mechanism": "Macrophages produce TNF-\u03b1 upon inflammatory activation", "confidence": "high", "references": ["22553110"]}, {"source": "cell-macrophage", "target": "cytokine-il1b", "relationship": "PRODUCES", "mechanism": "Activated macrophages are primary source of IL-1\u03b2", "confidence": "high", "references": ["22553110"]}, {"source": "cell-macrophage", "target": "cytokine-il6", "relationship": "PRODUCES", "mechanism": "Macrophages produce IL-6 in response to PAMPs and DAMPs", "confidence": "high", "references": ["22553110"]}, {"source": "cell-macrophage", "target": "cytokine-il23", "relationship": "PRODUCES", "mechanism": "Macrophages produce IL-23 in response to Th17 licensing", "confidence": "high", "references": ["22553110"]}, {"source": "cell-dendritic", "target": "cytokine-il23", "relationship": "PRODUCES", "mechanism": "Dendritic cells are primary IL-23 producers in lymphoid tissues", "confidence": "high", "references": ["22553110"]}, {"source": "cell-dendritic", "target": "cytokine-il12", "relationship": "PRODUCES", "mechanism": "Dendritic cells produce IL-12 for Th1 differentiation", "confidence": "high", "references": ["22553110"]}, {"source": "cell-ilc3", "target": "cytokine-il17a", "relationship": "PRODUCES", "mechanism": "ILC3 are innate IL-17 producers at mucosal barriers", "confidence": "high", "references": ["25180821"]}, {"source": "cell-ilc3", "target": "cytokine-il22", "relationship": "PRODUCES", "mechanism": "ILC3 produce IL-22 supporting epithelial barrier function", "confidence": "high", "references": ["25180821"]}, {"source": "cell-gamma-delta-t", "target": "cytokine-il17a", "relationship": "PRODUCES", "mechanism": "\u03b3\u03b4 T cells are major IL-17 producers particularly in gut and skin", "confidence": "high", "references": ["25180821"]}, {"source": "cell-mait", "target": "cytokine-il17a", "relationship": "PRODUCES", "mechanism": "MAIT cells produce IL-17A in response to microbial metabolites", "confidence": "medium", "references": ["23676134"]}, {"source": "cell-mast", "target": "cytokine-tnf-alpha", "relationship": "PRODUCES", "mechanism": "Activated mast cells release TNF-\u03b1 from preformed stores", "confidence": "high", "references": ["22553110"]}, {"source": "cell-nk", "target": "cytokine-ifn-gamma", "relationship": "PRODUCES", "mechanism": "NK cells produce IFN-\u03b3 in early innate immune responses", "confidence": "high", "references": ["22553110"]}, {"source": "cell-th1", "target": "cytokine-ifn-gamma", "relationship": "PRODUCES", "mechanism": "Th1 cells produce IFN-\u03b3 via T-bet transcription factor", "confidence": "high", "references": ["22553110"]}, {"source": "cell-cd8-t", "target": "cytokine-ifn-gamma", "relationship": "PRODUCES", "mechanism": "CD8+ T cells produce IFN-\u03b3 upon antigen recognition", "confidence": "high", "references": ["22553110"]}, {"source": "cell-cd8-t", "target": "cytokine-tnf-alpha", "relationship": "PRODUCES", "mechanism": "Cytotoxic CD8+ T cells produce TNF-\u03b1", "confidence": "high", "references": ["22553110"]}, {"source": "cell-osteoclast", "target": "cytokine-rankl", "relationship": "PRODUCES", "mechanism": "Activated osteoclasts produce RANKL perpetuating bone resorption", "confidence": "medium", "references": ["25180821"]}, {"source": "cell-neutrophil", "target": "cytokine-il17a", "relationship": "PRODUCES", "mechanism": "Neutrophils are recruited to sites of IL-17A production and contribute to production", "confidence": "medium", "references": ["22553110"]}, {"source": "cytokine-il23", "target": "cell-th17", "relationship": "ACTIVATES", "mechanism": "IL-23 activates Th17 cells via IL-23R-JAK-STAT3 pathway", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il23", "target": "cell-ilc3", "relationship": "ACTIVATES", "mechanism": "IL-23 activates ILC3 via IL-23R signaling", "confidence": "high", "references": ["25180821"]}, {"source": "cytokine-il6", "target": "pathway-th17-diff", "relationship": "ACTIVATES", "mechanism": "IL-6 supports Th17 differentiation via STAT3 activation in presence of TGF-\u03b2", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il1b", "target": "pathway-th17-diff", "relationship": "ACTIVATES", "mechanism": "IL-1\u03b2 co-stimulates Th17 differentiation with TGF-\u03b2", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-tnf-alpha", "target": "pathway-nf-kappa-b", "relationship": "UPREGULATES", "mechanism": "TNF-\u03b1 binds TNFR1/TNFR2 triggering NF-\u03baB canonical pathway", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il1b", "target": "pathway-nf-kappa-b", "relationship": "UPREGULATES", "mechanism": "IL-1\u03b2 activates NF-\u03baB signaling via IL-1R", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il17a", "target": "cell-neutrophil", "relationship": "ACTIVATES", "mechanism": "IL-17A recruits and activates neutrophils via IL-17RA/RC", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il17a", "target": "pathway-nf-kappa-b", "relationship": "UPREGULATES", "mechanism": "IL-17 signaling amplifies NF-\u03baB activation", "confidence": "high", "references": ["22553110"]}, {"source": "drug-secukinumab", "target": "cytokine-il17a", "relationship": "INHIBITS", "mechanism": "Secukinumab binds and neutralizes IL-17A blocking signaling", "confidence": "high", "references": ["25180821"]}, {"source": "drug-ixekizumab", "target": "cytokine-il17a", "relationship": "INHIBITS", "mechanism": "Ixekizumab monoclonal antibody neutralizes IL-17A", "confidence": "high", "references": ["25180821"]}, {"source": "drug-bimekizumab", "target": "cytokine-il17a", "relationship": "INHIBITS", "mechanism": "Bimekizumab blocks both IL-17A and IL-17F", "confidence": "high", "references": ["25180821"]}, {"source": "drug-bimekizumab", "target": "cytokine-il17f", "relationship": "INHIBITS", "mechanism": "Bimekizumab dual-targeting blocks IL-17F in addition to IL-17A", "confidence": "high", "references": ["25180821"]}, {"source": "drug-adalimumab", "target": "cytokine-tnf-alpha", "relationship": "INHIBITS", "mechanism": "Adalimumab monoclonal antibody binds and neutralizes TNF-\u03b1", "confidence": "high", "references": ["22553110"]}, {"source": "drug-etanercept", "target": "cytokine-tnf-alpha", "relationship": "INHIBITS", "mechanism": "Etanercept TNF receptor fusion protein traps TNF-\u03b1 in circulation", "confidence": "high", "references": ["22553110"]}, {"source": "drug-infliximab", "target": "cytokine-tnf-alpha", "relationship": "INHIBITS", "mechanism": "Infliximab chimeric antibody neutralizes TNF-\u03b1", "confidence": "high", "references": ["22553110"]}, {"source": "drug-guselkumab", "target": "cytokine-il23", "relationship": "INHIBITS", "mechanism": "Guselkumab blocks IL-23 p19 subunit", "confidence": "high", "references": ["25180821"]}, {"source": "drug-tofacitinib", "target": "receptor-jak1", "relationship": "INHIBITS", "mechanism": "Tofacitinib inhibits JAK1 kinase blocking IL-23 and cytokine signaling", "confidence": "high", "references": ["25180821"]}, {"source": "drug-upadacitinib", "target": "receptor-jak1", "relationship": "INHIBITS", "mechanism": "Upadacitinib selectively inhibits JAK1 kinase", "confidence": "high", "references": ["25180821"]}, {"source": "cell-treg", "target": "cell-th17", "relationship": "INHIBITS", "mechanism": "Tregs suppress Th17 differentiation and function via IL-10 and TGF-\u03b2", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il10", "target": "cytokine-tnf-alpha", "relationship": "INHIBITS", "mechanism": "IL-10 suppresses TNF-\u03b1 production by macrophages and DCs", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il10", "target": "pathway-nf-kappa-b", "relationship": "DOWNREGULATES", "mechanism": "IL-10 antagonizes NF-\u03baB activation", "confidence": "medium", "references": ["22553110"]}, {"source": "cytokine-il17a", "target": "receptor-il17ra", "relationship": "BINDS", "mechanism": "IL-17A homodimer binds IL-17RA component of IL-17R", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il17a", "target": "receptor-il17rc", "relationship": "BINDS", "mechanism": "IL-17A binds IL-17RA/RC heterodimeric receptor complex", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il23", "target": "receptor-il23r", "relationship": "BINDS", "mechanism": "IL-23 p19 and p40 subunits bind IL-23R component of heterodimeric receptor", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-tnf-alpha", "target": "receptor-tnfr1", "relationship": "BINDS", "mechanism": "TNF-\u03b1 trimer binds TNFR1 triggering signaling", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-tnf-alpha", "target": "receptor-tnfr2", "relationship": "BINDS", "mechanism": "TNF-\u03b1 can also bind TNFR2 with lower affinity", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il6", "target": "receptor-il6r", "relationship": "BINDS", "mechanism": "IL-6 binds IL-6R for classical signaling", "confidence": "high", "references": ["22553110"]}, {"source": "drug-adalimumab", "target": "receptor-tnfr1", "relationship": "BINDS", "mechanism": "Adalimumab binding to TNF-\u03b1 prevents TNFR engagement", "confidence": "high", "references": ["22553110"]}, {"source": "drug-secukinumab", "target": "receptor-il17ra", "relationship": "INHIBITS", "mechanism": "Secukinumab blocks IL-17A preventing IL-17RA binding and signaling", "confidence": "high", "references": ["25180821"]}, {"source": "gene-hla-b27", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "HLA-B27 presence increases AS risk 200-fold, mediates peptide presentation", "confidence": "high", "references": ["22553110"]}, {"source": "gene-hla-b27", "target": "disease-reactive-arthritis", "relationship": "PREDISPOSES", "mechanism": "HLA-B27 associated with reactive arthritis development", "confidence": "high", "references": ["19654303"]}, {"source": "gene-hla-b27", "target": "disease-psoriatic-arthritis", "relationship": "PREDISPOSES", "mechanism": "HLA-B27 predisposes to axial PsA", "confidence": "high", "references": ["29145608"]}, {"source": "gene-erap1", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "ERAP1 variants affect HLA-B27 peptide trimming in AS", "confidence": "high", "references": ["22553110"]}, {"source": "gene-il23r", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "IL23R protective variant reduces AS risk via decreased Th17 activation", "confidence": "high", "references": ["22553110"]}, {"source": "gene-il23r", "target": "disease-psoriatic-arthritis", "relationship": "PREDISPOSES", "mechanism": "IL23R variants influence PsA risk through IL-23 pathway", "confidence": "high", "references": ["29145608"]}, {"source": "gene-card9", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "CARD9 variants affect innate immune sensing and fungal recognition", "confidence": "medium", "references": ["22553110"]}, {"source": "gene-tyk2", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "TYK2 variants affect IL-23 JAK-STAT signaling in AS", "confidence": "high", "references": ["22553110"]}, {"source": "gene-erap2", "target": "disease-ankylosing-spondylitis", "relationship": "PREDISPOSES", "mechanism": "ERAP2 variants modulate HLA-B27 peptide processing", "confidence": "high", "references": ["22553110"]}, {"source": "trigger-gut-dysbiosis", "target": "pathway-il23-il17-axis", "relationship": "TRIGGERS", "mechanism": "Dysbiosis reduces barrier function and increases pathobiont-driven IL-23 responses", "confidence": "high", "references": ["27660185"]}, {"source": "trigger-gut-dysbiosis", "target": "cell-ilc3", "relationship": "ACTIVATES", "mechanism": "Loss of protective bacteria dysregulates ILC3 function", "confidence": "medium", "references": ["27660185"]}, {"source": "trigger-mechanical-stress", "target": "site-enthesis", "relationship": "TRIGGERS", "mechanism": "Mechanical stress triggers local inflammatory response at entheses", "confidence": "medium", "references": ["25180821"]}, {"source": "trigger-bacterial-infection", "target": "disease-reactive-arthritis", "relationship": "TRIGGERS", "mechanism": "Post-infectious reactive arthritis develops after GI or urogenital infection", "confidence": "high", "references": ["19654303"]}, {"source": "trigger-smoking", "target": "pathway-il23-il17-axis", "relationship": "TRIGGERS", "mechanism": "Smoking enhances Th17 differentiation and IL-17 production", "confidence": "high", "references": ["22553110"]}, {"source": "trigger-smoking", "target": "cell-th17", "relationship": "ACTIVATES", "mechanism": "Smoke exposure promotes Th17 cell differentiation", "confidence": "high", "references": ["22553110"]}, {"source": "trigger-psychological-stress", "target": "pathway-il23-il17-axis", "relationship": "TRIGGERS", "mechanism": "Stress dysregulates HPA axis affecting Th17/Treg balance", "confidence": "medium", "references": ["25180821"]}, {"source": "trigger-nsaid-withdrawal", "target": "pathway-nf-kappa-b", "relationship": "TRIGGERS", "mechanism": "NSAID cessation leads to rebound NF-\u03baB activation and inflammation", "confidence": "medium", "references": ["22553110"]}, {"source": "microbe-klebsiella", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "Increased Klebsiella with HLA-B27 molecular mimicry in AS", "confidence": "medium", "references": ["27660185"]}, {"source": "microbe-prevotella", "target": "disease-psoriatic-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Increased Prevotella copri in PsA dysbiosis", "confidence": "medium", "references": ["27660185"]}, {"source": "microbe-chlamydia", "target": "disease-reactive-arthritis", "relationship": "TRIGGERS", "mechanism": "Chlamydia trachomatis triggers reactive arthritis via molecular mimicry", "confidence": "high", "references": ["19654303"]}, {"source": "microbe-campylobacter", "target": "disease-reactive-arthritis", "relationship": "TRIGGERS", "mechanism": "Campylobacter jejuni triggers post-infectious reactive arthritis", "confidence": "high", "references": ["19654303"]}, {"source": "microbe-faecalibacterium", "target": "pathway-il23-il17-axis", "relationship": "INHIBITS", "mechanism": "Faecalibacterium prausnitzii produces butyrate supporting barrier function and Tregs", "confidence": "high", "references": ["27660185"]}, {"source": "microbe-ruminococcus", "target": "pathway-il23-il17-axis", "relationship": "ACTIVATES", "mechanism": "Ruminococcus gnavus promotes pro-inflammatory IL-23 responses", "confidence": "medium", "references": ["27660185"]}, {"source": "symptom-sacroiliitis", "target": "site-si-joint", "relationship": "MANIFESTS_AT", "mechanism": "Sacroiliitis inflammation occurs specifically at sacroiliac joints", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-enthesitis", "target": "site-enthesis", "relationship": "MANIFESTS_AT", "mechanism": "Enthesitis manifests at tendon and ligament insertions", "confidence": "high", "references": ["25180821"]}, {"source": "symptom-enthesitis", "target": "site-achilles", "relationship": "MANIFESTS_AT", "mechanism": "Achilles tendon commonly affected by SpA-related enthesitis", "confidence": "high", "references": ["25180821"]}, {"source": "symptom-uveitis", "target": "site-eye-uvea", "relationship": "MANIFESTS_AT", "mechanism": "Uveitis inflammation occurs in uveal tissue of eye", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-psoriasis", "target": "site-skin", "relationship": "MANIFESTS_AT", "mechanism": "Psoriatic lesions manifest on skin surface", "confidence": "high", "references": ["29145608"]}, {"source": "symptom-ibp", "target": "site-spine", "relationship": "MANIFESTS_AT", "mechanism": "IBP manifests as axial inflammation", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-peripheral-arthritis", "target": "site-peripheral-joints", "relationship": "MANIFESTS_AT", "mechanism": "Peripheral arthritis occurs at limb joints", "confidence": "high", "references": ["25180821"]}, {"source": "symptom-ibd", "target": "site-gut", "relationship": "MANIFESTS_AT", "mechanism": "IBD manifests as mucosal inflammation in gut", "confidence": "high", "references": ["27660185"]}, {"source": "symptom-ibp", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "IBP is characteristic presentation of AS", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-sacroiliitis", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "Sacroiliitis is defining feature of AS diagnosis", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-uveitis", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "Anterior uveitis occurs in 20-30% of AS patients with HLA-B27", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-psoriasis", "target": "disease-psoriatic-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Psoriasis precedes arthritis in 70% of PsA cases", "confidence": "high", "references": ["29145608"]}, {"source": "symptom-dactylitis", "target": "disease-psoriatic-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Dactylitis is characteristic feature of PsA", "confidence": "high", "references": ["29145608"]}, {"source": "symptom-ibd", "target": "disease-enteropathic-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Enteropathic arthritis is directly associated with IBD", "confidence": "high", "references": ["27660185"]}, {"source": "symptom-morning-stiffness", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "Morning stiffness >30 min is feature of axial SpA", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-spinal-fusion", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "Progressive spinal ankylosis and fusion occur in advanced AS", "confidence": "high", "references": ["22553110"]}, {"source": "symptom-osteoporosis", "target": "disease-ankylosing-spondylitis", "relationship": "ASSOCIATED_WITH", "mechanism": "AS patients develop osteoporosis from chronic inflammation and reduced mobility", "confidence": "high", "references": ["25180821"]}, {"source": "symptom-enthesitis", "target": "disease-psoriatic-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Enthesitis is common peripheral manifestation of PsA", "confidence": "high", "references": ["29145608"]}, {"source": "symptom-peripheral-arthritis", "target": "disease-reactive-arthritis", "relationship": "ASSOCIATED_WITH", "mechanism": "Reactive arthritis often presents as asymmetric peripheral arthritis", "confidence": "high", "references": ["19654303"]}, {"source": "receptor-jak1", "target": "pathway-jak-stat", "relationship": "PART_OF", "mechanism": "JAK1 is component kinase of JAK-STAT pathway", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-jak2", "target": "pathway-jak-stat", "relationship": "PART_OF", "mechanism": "JAK2 kinase participates in IL-23 and other cytokine signaling", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-tyk2", "target": "pathway-jak-stat", "relationship": "PART_OF", "mechanism": "TYK2 is JAK family member in IL-23R signaling", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-stat3", "target": "pathway-jak-stat", "relationship": "PART_OF", "mechanism": "STAT3 is transcription factor downstream of JAK kinases", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-il23r", "target": "pathway-il23-il17-axis", "relationship": "PART_OF", "mechanism": "IL-23R is receptor component of IL-23/IL-17 axis", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-il17ra", "target": "pathway-il23-il17-axis", "relationship": "PART_OF", "mechanism": "IL-17RA is receptor for IL-17A in effector phase of axis", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il17a", "target": "pathway-il23-il17-axis", "relationship": "PART_OF", "mechanism": "IL-17A is key effector cytokine in IL-23/IL-17 axis", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il23", "target": "pathway-il23-il17-axis", "relationship": "PART_OF", "mechanism": "IL-23 is inducer cytokine of IL-23/IL-17 axis", "confidence": "high", "references": ["22553110"]}, {"source": "gene-il23r", "target": "pathway-il23-il17-axis", "relationship": "PART_OF", "mechanism": "IL23R gene encodes receptor in IL-23/IL-17 axis", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-rankl", "target": "pathway-rankl-opg", "relationship": "PART_OF", "mechanism": "RANKL is ligand in RANKL/OPG bone resorption pathway", "confidence": "high", "references": ["25180821"]}, {"source": "cytokine-il17a", "target": "pathway-nf-kappa-b", "relationship": "PART_OF", "mechanism": "IL-17A signaling integrates with NF-\u03baB pathway", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-tnf-alpha", "target": "pathway-nf-kappa-b", "relationship": "PART_OF", "mechanism": "TNF-\u03b1 is primary activator of NF-\u03baB signaling", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il1b", "target": "pathway-nf-kappa-b", "relationship": "PART_OF", "mechanism": "IL-1\u03b2 contributes to NF-\u03baB pathway activation", "confidence": "high", "references": ["22553110"]}, {"source": "gene-hla-b27", "target": "cytokine-il17a", "relationship": "UPREGULATES", "mechanism": "HLA-B27 presentation promotes IL-17A-producing T cell responses", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il23", "target": "cytokine-il17a", "relationship": "UPREGULATES", "mechanism": "IL-23 drives IL-17A production by Th17 and innate cells", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il6", "target": "cytokine-il17a", "relationship": "UPREGULATES", "mechanism": "IL-6 with TGF-\u03b2 upregulates IL-17A during Th17 differentiation", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-il1b", "target": "cytokine-il17a", "relationship": "UPREGULATES", "mechanism": "IL-1\u03b2 promotes IL-17A production", "confidence": "high", "references": ["22553110"]}, {"source": "pathway-th17-diff", "target": "cell-th17", "relationship": "ACTIVATES", "mechanism": "Th17 differentiation pathway generates mature Th17 cells", "confidence": "high", "references": ["22553110"]}, {"source": "drug-adalimumab", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Adalimumab TNFi reduces inflammation and slows radiographic progression in AS", "confidence": "high", "references": ["22553110"]}, {"source": "drug-etanercept", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Etanercept TNFi improves signs and symptoms in AS", "confidence": "high", "references": ["22553110"]}, {"source": "drug-infliximab", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Infliximab TNFi reduces disease activity in AS", "confidence": "high", "references": ["22553110"]}, {"source": "drug-secukinumab", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Secukinumab IL-17i approved for AS treatment", "confidence": "high", "references": ["25180821"]}, {"source": "drug-secukinumab", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Secukinumab approved for both axial and peripheral PsA", "confidence": "high", "references": ["29145608"]}, {"source": "drug-ixekizumab", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Ixekizumab IL-17A inhibitor approved for AS treatment", "confidence": "high", "references": ["25180821"]}, {"source": "drug-ixekizumab", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Ixekizumab approved for PsA", "confidence": "high", "references": ["29145608"]}, {"source": "drug-guselkumab", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Guselkumab IL-23 inhibitor approved for PsA", "confidence": "high", "references": ["25180821"]}, {"source": "drug-bimekizumab", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Bimekizumab dual IL-17A/F inhibitor approved for PsA", "confidence": "high", "references": ["25180821"]}, {"source": "drug-nsaids", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "NSAIDs reduce pain and inflammation, may slow radiographic progression", "confidence": "high", "references": ["22553110"]}, {"source": "drug-sulfasalazine", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Sulfasalazine effective for peripheral PsA", "confidence": "medium", "references": ["22553110"]}, {"source": "drug-physical-therapy", "target": "disease-ankylosing-spondylitis", "relationship": "TREATS", "mechanism": "Exercise therapy improves function and reduces disability in AS", "confidence": "high", "references": ["22553110"]}, {"source": "drug-physical-therapy", "target": "symptom-morning-stiffness", "relationship": "TREATS", "mechanism": "Physical therapy reduces morning stiffness duration", "confidence": "high", "references": ["22553110"]}, {"source": "drug-tofacitinib", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "JAK inhibitor effective in PsA", "confidence": "high", "references": ["25180821"]}, {"source": "drug-upadacitinib", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "Selective JAK1 inhibitor approved for PsA", "confidence": "high", "references": ["25180821"]}, {"source": "disease-ankylosing-spondylitis", "target": "biomarker-crp", "relationship": "MEASURED_BY", "mechanism": "CRP elevated in AS reflecting systemic inflammation", "confidence": "high", "references": ["22553110"]}, {"source": "disease-ankylosing-spondylitis", "target": "biomarker-esr", "relationship": "MEASURED_BY", "mechanism": "ESR elevated in active AS", "confidence": "high", "references": ["22553110"]}, {"source": "disease-ankylosing-spondylitis", "target": "biomarker-hla-b27-test", "relationship": "MEASURED_BY", "mechanism": "HLA-B27 test positive in 90% of AS for diagnosis", "confidence": "high", "references": ["22553110"]}, {"source": "disease-ankylosing-spondylitis", "target": "biomarker-mri-sac", "relationship": "MEASURED_BY", "mechanism": "MRI sacroiliitis detects inflammation in early AS", "confidence": "high", "references": ["21873635"]}, {"source": "disease-enteropathic-arthritis", "target": "biomarker-fecal-calprotectin", "relationship": "MEASURED_BY", "mechanism": "Fecal calprotectin elevated in enteropathic arthritis with IBD", "confidence": "high", "references": ["27660185"]}, {"source": "symptom-ibp", "target": "biomarker-crp", "relationship": "ASSOCIATED_WITH", "mechanism": "IBP severity correlates with CRP levels", "confidence": "medium", "references": ["22553110"]}, {"source": "pathway-nf-kappa-b", "target": "biomarker-crp", "relationship": "UPREGULATES", "mechanism": "NF-\u03baB pathway upregulates CRP gene expression", "confidence": "high", "references": ["22553110"]}, {"source": "pathway-il23-il17-axis", "target": "biomarker-crp", "relationship": "UPREGULATES", "mechanism": "IL-23/IL-17 axis drives systemic CRP elevation", "confidence": "high", "references": ["22553110"]}, {"source": "gene-hla-b27", "target": "cytokine-tnf-alpha", "relationship": "ENCODES", "mechanism": "HLA-B27 presents peptides that activate TNF-\u03b1-producing T cells", "confidence": "medium", "references": ["22553110"]}, {"source": "gene-il23r", "target": "receptor-il23r", "relationship": "ENCODES", "mechanism": "IL23R gene encodes IL-23 receptor protein", "confidence": "high", "references": ["22553110"]}, {"source": "gene-tyk2", "target": "receptor-tyk2", "relationship": "ENCODES", "mechanism": "TYK2 gene encodes tyrosine kinase 2 protein", "confidence": "high", "references": ["22553110"]}, {"source": "cell-naive-cd4", "target": "cell-th17", "relationship": "DIFFERENTIATES_INTO", "mechanism": "Naive CD4+ cells differentiate into Th17 via IL-23/IL-6/TGF-\u03b2", "confidence": "high", "references": ["22553110"]}, {"source": "cell-naive-cd4", "target": "cell-th1", "relationship": "DIFFERENTIATES_INTO", "mechanism": "Naive CD4+ cells differentiate into Th1 via IL-12/IFN-\u03b3", "confidence": "high", "references": ["22553110"]}, {"source": "cell-naive-cd4", "target": "cell-treg", "relationship": "DIFFERENTIATES_INTO", "mechanism": "Naive CD4+ cells differentiate into Treg via TGF-\u03b2/IL-2", "confidence": "high", "references": ["22553110"]}, {"source": "cell-macrophage", "target": "site-enthesis", "relationship": "RESIDES_IN", "mechanism": "Tissue-resident macrophages present in entheseal tissue", "confidence": "high", "references": ["25180821"]}, {"source": "cell-ilc3", "target": "site-gut", "relationship": "RESIDES_IN", "mechanism": "ILC3 enriched at gut mucosa maintaining barrier immunity", "confidence": "high", "references": ["27660185"]}, {"source": "cell-dendritic", "target": "site-gut", "relationship": "RESIDES_IN", "mechanism": "Dendritic cells present in gut mucosa", "confidence": "high", "references": ["27660185"]}, {"source": "cell-th17", "target": "site-synovium", "relationship": "RESIDES_IN", "mechanism": "Th17 cells infiltrate synovial tissue in SpA", "confidence": "high", "references": ["22553110"]}, {"source": "microbe-klebsiella", "target": "site-gut", "relationship": "RESIDES_IN", "mechanism": "Klebsiella colonizes gastrointestinal tract", "confidence": "high", "references": ["27660185"]}, {"source": "microbe-faecalibacterium", "target": "site-gut", "relationship": "RESIDES_IN", "mechanism": "Faecalibacterium is commensal of colon", "confidence": "high", "references": ["27660185"]}, {"source": "cytokine-il22", "target": "site-gut", "relationship": "ACTIVATES", "mechanism": "IL-22 supports intestinal epithelial barrier function", "confidence": "high", "references": ["25180821"]}, {"source": "pathway-wnt-signaling", "target": "cell-osteoclast", "relationship": "INHIBITS", "mechanism": "Wnt signaling suppresses osteoclast differentiation", "confidence": "high", "references": ["25180821"]}, {"source": "pathway-rankl-opg", "target": "site-spine", "relationship": "TRIGGERS", "mechanism": "RANKL/OPG imbalance drives spinal bone resorption in AS", "confidence": "high", "references": ["25180821"]}, {"source": "pathway-rankl-opg", "target": "cell-osteoclast", "relationship": "ACTIVATES", "mechanism": "RANKL signaling activates osteoclast differentiation and bone resorption", "confidence": "high", "references": ["25180821"]}, {"source": "cytokine-il17a", "target": "pathway-rankl-opg", "relationship": "UPREGULATES", "mechanism": "IL-17A upregulates RANKL promoting osteoclast activation", "confidence": "high", "references": ["25180821"]}, {"source": "cytokine-tnf-alpha", "target": "pathway-rankl-opg", "relationship": "UPREGULATES", "mechanism": "TNF-\u03b1 enhances RANKL expression and bone resorption", "confidence": "high", "references": ["25180821"]}, {"source": "symptom-spinal-fusion", "target": "site-spine", "relationship": "MANIFESTS_AT", "mechanism": "Spinal ankylosis and fusion occur in vertebral column", "confidence": "high", "references": ["22553110"]}, {"source": "disease-ankylosing-spondylitis", "target": "disease-axial-spa-nr", "relationship": "ASSOCIATED_WITH", "mechanism": "nr-axSpA is early stage of AS before radiographic changes", "confidence": "high", "references": ["21873635"]}, {"source": "disease-psoriatic-arthritis", "target": "disease-undifferentiated-spa", "relationship": "ASSOCIATED_WITH", "mechanism": "Some PsA cases present as undifferentiated SpA", "confidence": "medium", "references": ["29145608"]}, {"source": "disease-reactive-arthritis", "target": "disease-axial-spa-nr", "relationship": "ASSOCIATED_WITH", "mechanism": "Some reactive arthritis progresses to axial SpA", "confidence": "medium", "references": ["19654303"]}, {"source": "gene-erap1", "target": "pathway-th17-diff", "relationship": "PREDISPOSES", "mechanism": "ERAP1 peptide trimming affects antigen presentation in Th17 pathway", "confidence": "high", "references": ["22553110"]}, {"source": "gene-card9", "target": "pathway-il23-il17-axis", "relationship": "PREDISPOSES", "mechanism": "CARD9 innate signaling affects IL-23 and Th17 responses", "confidence": "medium", "references": ["22553110"]}, {"source": "drug-adalimumab", "target": "symptom-ibp", "relationship": "TREATS", "mechanism": "TNF inhibition reduces IBP", "confidence": "high", "references": ["22553110"]}, {"source": "drug-secukinumab", "target": "symptom-enthesitis", "relationship": "TREATS", "mechanism": "IL-17A inhibition reduces entheseal inflammation", "confidence": "high", "references": ["25180821"]}, {"source": "drug-secukinumab", "target": "symptom-psoriasis", "relationship": "TREATS", "mechanism": "IL-17A inhibition improves psoriatic skin lesions", "confidence": "high", "references": ["25180821"]}, {"source": "drug-upadacitinib", "target": "symptom-dactylitis", "relationship": "TREATS", "mechanism": "JAK inhibition reduces dactylitis", "confidence": "high", "references": ["25180821"]}, {"source": "pathway-er-stress-upr", "target": "site-enthesis", "relationship": "TRIGGERS", "mechanism": "ER stress pathway activated at mechanically stressed entheses", "confidence": "medium", "references": ["27195436"]}, {"source": "pathway-autophagy", "target": "cell-ilc3", "relationship": "ACTIVATES", "mechanism": "Autophagy supports ILC3 function at mucosal sites", "confidence": "medium", "references": ["27195436"]}, {"source": "gene-runx3", "target": "pathway-th17-diff", "relationship": "PREDISPOSES", "mechanism": "RUNX3 transcription factor regulates T cell differentiation", "confidence": "medium", "references": ["22553110"]}, {"source": "pathway-autophagy", "target": "cell-treg", "relationship": "ACTIVATES", "mechanism": "Autophagy supports Treg differentiation and function", "confidence": "medium", "references": ["27195436"]}, {"source": "cytokine-tgf-beta", "target": "pathway-th17-diff", "relationship": "ACTIVATES", "mechanism": "TGF-\u03b2 with IL-6 drives Th17 differentiation", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-tgf-beta", "target": "cell-treg", "relationship": "ACTIVATES", "mechanism": "TGF-\u03b2 with IL-2 supports Treg differentiation", "confidence": "high", "references": ["22553110"]}, {"source": "receptor-il6r", "target": "pathway-jak-stat", "relationship": "PART_OF", "mechanism": "IL-6R signals through JAK-STAT pathway", "confidence": "high", "references": ["22553110"]}, {"source": "drug-nsaids", "target": "symptom-enthesitis", "relationship": "TREATS", "mechanism": "NSAIDs reduce entheseal inflammation and pain", "confidence": "high", "references": ["22553110"]}, {"source": "cytokine-ccl20", "target": "cell-th17", "relationship": "ACTIVATES", "mechanism": "CCL20 chemokine recruits Th17 cells to inflamed sites", "confidence": "high", "references": ["25180821"]}, {"source": "drug-adalimumab", "target": "disease-reactive-arthritis", "relationship": "TREATS", "mechanism": "TNFi reduces reactive arthritis severity", "confidence": "medium", "references": ["19654303"]}, {"source": "drug-adalimumab", "target": "disease-psoriatic-arthritis", "relationship": "TREATS", "mechanism": "TNFi approved for PsA treatment", "confidence": "high", "references": ["29145608"]}, {"source": "drug-adalimumab", "target": "disease-axial-spa-nr", "relationship": "TREATS", "mechanism": "TNFi effective in early axial SpA", "confidence": "high", "references": ["25180821"]}]};
+
+        const NODE_COLORS = {
+            'Disease': '#e74c3c',
+            'Immune Cell': '#3498db',
+            'Cytokine': '#e67e22',
+            'Receptor': '#e84393',
+            'Gene': '#2ecc71',
+            'Pathway': '#9b59b6',
+            'Symptom': '#f1c40f',
+            'Anatomical Site': '#795548',
+            'Environmental Trigger': '#95a5a6',
+            'Microorganism': '#00b894',
+            'Drug': '#00cec9',
+            'Biomarker': '#a4de02'
+        };
+
+        const NODE_SIZES = {
+            'Disease': 28,
+            'Pathway': 24,
+            'Immune Cell': 22,
+            'Symptom': 20,
+            'Anatomical Site': 20,
+            'Cytokine': 18,
+            'Gene': 18,
+            'Drug': 18,
+            'Environmental Trigger': 18,
+            'Receptor': 16,
+            'Microorganism': 16,
+            'Biomarker': 14
+        };
+
+        const EDGE_RELATIONSHIP_COLORS = {
+            'PRODUCES': '#7f8c8d',
+            'ACTIVATES': '#e74c3c',
+            'INHIBITS': '#3498db',
+            'BINDS': '#9b59b6',
+            'PREDISPOSES': '#2ecc71',
+            'TRIGGERS': '#e67e22',
+            'MANIFESTS_AT': '#795548',
+            'ASSOCIATED_WITH': '#f39c12',
+            'PART_OF': '#8e44ad',
+            'UPREGULATES': '#c0392b',
+            'DOWNREGULATES': '#2980b9',
+            'TREATS': '#1abc9c',
+            'MEASURED_BY': '#a4de02',
+            'ENCODES': '#27ae60',
+            'DIFFERENTIATES_INTO': '#2d3436',
+            'RESIDES_IN': '#636e72'
+        };
+
+        let simulation, svg, g, nodeElements, linkElements, nodeLabels, edgeLabelGroup;
+        let persistentNodeLabelGroup, persistentEdgeLabelGroup;
+        let selectedNode = null, hoveredNode = null;
+        let activeFilters = { types: new Set(), confidence: new Set() };
+        let zoomBehavior;
+
+        function initVisualization() {
+            const container = document.querySelector('.graph-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            svg = d3.select('svg').attr('width', width).attr('height', height);
+            g = svg.append('g');
+
+            const defs = svg.append('defs');
+            Object.entries(EDGE_RELATIONSHIP_COLORS).forEach(([key, color]) => {
+                defs.append('marker')
+                    .attr('id', 'arrow-' + key)
+                    .attr('markerWidth', 10).attr('markerHeight', 10)
+                    .attr('refX', 8).attr('refY', 3)
+                    .attr('orient', 'auto')
+                    .append('polygon')
+                    .attr('points', '0 0, 10 3, 0 6')
+                    .attr('fill', color);
+            });
+
+            simulation = d3.forceSimulation(GRAPH_DATA.nodes)
+                .force('link', d3.forceLink(GRAPH_DATA.edges).id(d => d.id).distance(120))
+                .force('charge', d3.forceManyBody().strength(-400))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(d => getNodeSize(d) + 2))
+                .on('tick', tick);
+
+            linkElements = g.append('g').selectAll('path').data(GRAPH_DATA.edges).enter()
+                .append('path').attr('class', 'link')
+                .attr('stroke', d => EDGE_RELATIONSHIP_COLORS[d.relationship] || '#5a6370')
+                .attr('stroke-opacity', 0.6).attr('stroke-width', d => getEdgeWidth(d))
+                .attr('fill', 'none')
+                .attr('marker-end', d => 'url(#arrow-' + d.relationship + ')')
+                .attr('filter', 'drop-shadow(0 0 2px rgba(100,140,180,0.3))')
+                .on('mouseenter', function(event, d) {
+                    d3.select(this).attr('stroke-opacity', 1.0).attr('stroke-width', getEdgeWidth(d) + 1.5);
+                })
+                .on('mouseleave', function(event, d) {
+                    if (hoveredNode === null && selectedNode === null) {
+                        d3.select(this).attr('stroke-opacity', 0.6).attr('stroke-width', getEdgeWidth(d));
+                    }
+                });
+
+            edgeLabelGroup = g.append('g').attr('class', 'edge-label-group');
+
+            // Persistent label groups (hidden by default)
+            persistentNodeLabelGroup = g.append('g').attr('class', 'persistent-node-labels').style('display', 'none');
+            persistentNodeLabelGroup.selectAll('text').data(GRAPH_DATA.nodes).enter()
+                .append('text').attr('class', 'persistent-node-label')
+                .text(d => d.label);
+
+            persistentEdgeLabelGroup = g.append('g').attr('class', 'persistent-edge-labels').style('display', 'none');
+
+            nodeElements = g.append('g').selectAll('circle').data(GRAPH_DATA.nodes).enter()
+                .append('circle').attr('class', 'node')
+                .attr('r', d => getNodeSize(d))
+                .attr('fill', d => NODE_COLORS[d.type] || '#8b949e')
+                .attr('stroke', '#30363d').attr('stroke-width', 2)
+                .call(d3.drag().on('start', dragstart).on('drag', dragged).on('end', dragend))
+                .on('mouseenter', function(event, d) {
+                    if (selectedNode === null) {
+                        hoveredNode = d;
+                        highlightNode(d);
+                        showEdgeLabels(d);
+                    }
+                })
+                .on('mouseleave', function(event, d) {
+                    if (selectedNode === null) {
+                        hoveredNode = null;
+                        clearHighlight();
+                        clearEdgeLabels();
+                    }
+                })
+                .on('click', function(event, d) {
+                    event.stopPropagation();
+                    selectNode(d);
+                });
+
+            nodeLabels = g.append('g').selectAll('text').data(GRAPH_DATA.nodes).enter()
+                .append('text').attr('class', 'node-label')
+                .attr('text-anchor', 'middle').text(d => d.label).attr('opacity', 0);
+
+            zoomBehavior = d3.zoom().on('zoom', (event) => { g.attr('transform', event.transform); });
+            svg.call(zoomBehavior);
+            svg.on('click', function() { if (selectedNode !== null) deselectNode(); });
+
+            initFilters();
+            initRelationshipFilters();
+            initDisplayOptions();
+            initSearch();
+            initControls();
+
+            function tick() {
+                linkElements.attr('d', d => {
+                    const dx = d.target.x - d.source.x, dy = d.target.y - d.source.y;
+                    const dr = Math.sqrt(dx * dx + dy * dy) * 1.5;
+                    return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y;
+                });
+                nodeElements
+                    .attr('cx', d => d.x = Math.max(0, Math.min(width, d.x)))
+                    .attr('cy', d => d.y = Math.max(0, Math.min(height, d.y)));
+                nodeLabels.attr('x', d => d.x).attr('y', d => d.y);
+
+                // Update persistent node labels
+                persistentNodeLabelGroup.selectAll('text')
+                    .attr('x', d => d.x).attr('y', d => d.y + getNodeSize(d) + 12);
+
+                // Update persistent edge labels
+                persistentEdgeLabelGroup.selectAll('.p-edge-label-group')
+                    .attr('transform', d => {
+                        const mx = (d.source.x + d.target.x) / 2;
+                        const my = (d.source.y + d.target.y) / 2;
+                        return 'translate(' + mx + ',' + my + ')';
+                    });
+            }
+        }
+
+        function getNodeSize(node) {
+            const baseSize = NODE_SIZES[node.type] || 16;
+            const connectionCount = GRAPH_DATA.edges.filter(e => e.source.id === node.id || e.target.id === node.id).length;
+            return baseSize + Math.sqrt(connectionCount) * 1.5;
+        }
+
+        function getEdgeWidth(edge) {
+            const w = { 'high': 2.5, 'medium': 2, 'low': 1.5, 'hypothesized': 1 };
+            return w[edge.confidence] || 2;
+        }
+
+        function highlightNode(node) {
+            nodeElements.attr('opacity', 0.08);
+            linkElements.attr('opacity', 0.08);
+            nodeLabels.attr('opacity', 0);
+            nodeElements.filter(d => d.id === node.id).attr('opacity', 1);
+
+            const connectedNodeIds = new Set([node.id]);
+            linkElements.filter(d => {
+                const conn = d.source.id === node.id || d.target.id === node.id;
+                if (conn) {
+                    if (d.source.id === node.id) connectedNodeIds.add(d.target.id);
+                    if (d.target.id === node.id) connectedNodeIds.add(d.source.id);
+                }
+                return conn;
+            })
+                .attr('opacity', 1.0)
+                .attr('stroke-width', d => getEdgeWidth(d) + 1)
+                .attr('stroke', d => EDGE_RELATIONSHIP_COLORS[d.relationship] || '#5a6370');
+
+            nodeElements.filter(d => connectedNodeIds.has(d.id)).attr('opacity', 1);
+            nodeLabels.filter(d => connectedNodeIds.has(d.id)).attr('opacity', 1);
+        }
+
+        function showEdgeLabels(node) {
+            clearEdgeLabels();
+            const connectedEdges = GRAPH_DATA.edges.filter(d => d.source.id === node.id || d.target.id === node.id);
+            connectedEdges.forEach(edge => {
+                const source = edge.source, target = edge.target;
+                const midX = (source.x + target.x) / 2, midY = (source.y + target.y) / 2;
+                const labelGroup = edgeLabelGroup.append('g').attr('class', 'edge-label-item')
+                    .attr('transform', 'translate(' + midX + ',' + midY + ')');
+                const text = labelGroup.append('text').attr('class', 'edge-label-text').text(edge.relationship);
+                const bbox = text.node().getBBox();
+                labelGroup.insert('rect', ':first-child').attr('class', 'edge-label-bg')
+                    .attr('x', bbox.x - 4).attr('y', bbox.y - 2)
+                    .attr('width', bbox.width + 8).attr('height', bbox.height + 4);
+            });
+        }
+
+        function clearEdgeLabels() { edgeLabelGroup.selectAll('.edge-label-item').remove(); }
+        function clearHighlight() {
+            nodeElements.attr('opacity', 1);
+            linkElements.attr('opacity', 0.6).attr('stroke-width', d => getEdgeWidth(d));
+            nodeLabels.attr('opacity', 0);
+        }
+
+        function selectNode(node) {
+            selectedNode = node;
+            hoveredNode = node;
+            highlightNode(node);
+            showDetailPanel(node);
+        }
+
+        function deselectNode() {
+            selectedNode = null;
+            hoveredNode = null;
+            clearHighlight();
+            closeDetailPanel();
+        }
+
+        function showDetailPanel(node) {
+            const panel = document.getElementById('detail-panel');
+            const content = document.getElementById('detail-content');
+            let html = '<div class="detail-label">' + node.label + '</div><span class="detail-type">' + node.type + '</span>';
+            if (node.description) html += '<div class="detail-description">' + node.description + '</div>';
+            if (node.wikipedia) html += '<a href="' + node.wikipedia + '" target="_blank" class="detail-wikipedia">Wikipedia ↗</a>';
+            if (node.type === 'Disease' && node.icd10) {
+                html += '<div class="detail-section"><div class="detail-section-title">Clinical Info</div>' +
+                    '<div class="detail-property"><span class="detail-property-label">ICD-10:</span>' +
+                    '<span class="detail-property-value">' + node.icd10 + '</span></div>' +
+                    '<div class="detail-property"><span class="detail-property-label">Prevalence:</span>' +
+                    '<span class="detail-property-value">' + (node.prevalence || 'N/A') + '</span></div></div>';
+            }
+
+            const outgoing = GRAPH_DATA.edges.filter(e => e.source.id === node.id);
+            const incoming = GRAPH_DATA.edges.filter(e => e.target.id === node.id);
+            const connections = {};
+            outgoing.forEach(e => {
+                if (!connections[e.relationship]) connections[e.relationship] = [];
+                const targetNode = GRAPH_DATA.nodes.find(n => n.id === e.target.id);
+                connections[e.relationship].push({label: targetNode.label, id: e.target.id});
+            });
+            incoming.forEach(e => {
+                if (!connections[e.relationship]) connections[e.relationship] = [];
+                const sourceNode = GRAPH_DATA.nodes.find(n => n.id === e.source.id);
+                connections[e.relationship].push({label: sourceNode.label, id: e.source.id});
+            });
+
+            if (Object.keys(connections).length > 0) {
+                html += '<div class="detail-section"><div class="detail-section-title">Connections</div>';
+                Object.entries(connections).forEach(([rel, items]) => {
+                    html += '<div class="connection-group"><div class="connection-type">' + rel + '</div>';
+                    items.forEach(item => {
+                        html += '<div class="connection-item" onclick="clickConnection(\''+item.id+'\')">'+item.label+'</div>';
+                    });
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
+            if (node.references && node.references.length > 0) {
+                html += '<div class="detail-section"><div class="detail-section-title">References</div>';
+                node.references.forEach(ref => {
+                    html += '<div style="font-size:11px; margin-bottom:4px;"><a href="https://pubmed.ncbi.nlm.nih.gov/'+ref+'" target="_blank" style="color:#58a6ff;">PubMed: '+ref+'</a></div>';
+                });
+                html += '</div>';
+            }
+
+            content.innerHTML = html;
+            panel.classList.add('active');
+        }
+
+        function closeDetailPanel() { document.getElementById('detail-panel').classList.remove('active'); }
+
+        function initFilters() {
+            const typeContainer = document.getElementById('type-filters');
+            const confidenceContainer = document.getElementById('confidence-filters');
+            const types = [], typeSet = new Set();
+            GRAPH_DATA.nodes.forEach(n => {
+                if (!typeSet.has(n.type)) { typeSet.add(n.type); types.push(n.type); }
+            });
+            types.sort();
+
+            types.forEach(type => {
+                const color = NODE_COLORS[type] || '#8b949e';
+                const label = document.createElement('label');
+                label.className = 'filter-label';
+                label.innerHTML = '<input type="checkbox" class="filter-checkbox" data-type="'+type+'" checked>' +
+                    '<span class="color-dot" style="background-color:'+color+'"></span><span>'+type+'</span>';
+                label.querySelector('input').addEventListener('change', updateFilters);
+                typeContainer.appendChild(label);
+            });
+
+            ['high', 'medium', 'low', 'hypothesized'].forEach(level => {
+                const label = document.createElement('label');
+                label.className = 'filter-label';
+                label.innerHTML = '<input type="checkbox" class="filter-checkbox" data-confidence="'+level+'" checked>' +
+                    '<span>'+(level.charAt(0).toUpperCase() + level.slice(1))+'</span>';
+                label.querySelector('input').addEventListener('change', updateFilters);
+                confidenceContainer.appendChild(label);
+            });
+
+            const legendContainer = document.getElementById('legend');
+            types.forEach(type => {
+                const color = NODE_COLORS[type] || '#8b949e';
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = '<span class="legend-color" style="background-color:'+color+'"></span><span>'+type+'</span>';
+                legendContainer.appendChild(item);
+            });
+        }
+
+        function updateFilters() {
+            activeFilters.types.clear();
+            activeFilters.confidence.clear();
+            if (!activeFilters.relationships) activeFilters.relationships = new Set();
+            activeFilters.relationships.clear();
+            document.querySelectorAll('[data-type]:checked').forEach(cb => activeFilters.types.add(cb.dataset.type));
+            document.querySelectorAll('[data-confidence]:checked').forEach(cb => activeFilters.confidence.add(cb.dataset.confidence));
+            document.querySelectorAll('[data-relationship]:checked').forEach(cb => activeFilters.relationships.add(cb.dataset.relationship));
+
+            nodeElements.style('opacity', d => !activeFilters.types.has(d.type) ? 0 : 1);
+            nodeElements.style('pointer-events', d => !activeFilters.types.has(d.type) ? 'none' : 'all');
+            nodeLabels.style('opacity', d => !activeFilters.types.has(d.type) ? 0 : null);
+
+            linkElements.style('opacity', d => {
+                const src = GRAPH_DATA.nodes.find(n => n.id === d.source.id);
+                const tgt = GRAPH_DATA.nodes.find(n => n.id === d.target.id);
+                const visible = activeFilters.types.has(src.type) && activeFilters.types.has(tgt.type) 
+                    && activeFilters.confidence.has(d.confidence) 
+                    && activeFilters.relationships.has(d.relationship);
+                return visible ? 0.6 : 0;
+            });
+            linkElements.style('pointer-events', d => {
+                const src = GRAPH_DATA.nodes.find(n => n.id === d.source.id);
+                const tgt = GRAPH_DATA.nodes.find(n => n.id === d.target.id);
+                const visible = activeFilters.types.has(src.type) && activeFilters.types.has(tgt.type) 
+                    && activeFilters.confidence.has(d.confidence) 
+                    && activeFilters.relationships.has(d.relationship);
+                return visible ? 'all' : 'none';
+            });
+
+            // Update persistent labels visibility based on filters
+            persistentNodeLabelGroup.selectAll('text')
+                .style('display', d => activeFilters.types.has(d.type) ? null : 'none');
+            persistentEdgeLabelGroup.selectAll('.p-edge-label-group')
+                .style('display', d => {
+                    const src = GRAPH_DATA.nodes.find(n => n.id === d.source.id);
+                    const tgt = GRAPH_DATA.nodes.find(n => n.id === d.target.id);
+                    return (activeFilters.types.has(src.type) && activeFilters.types.has(tgt.type) 
+                        && activeFilters.confidence.has(d.confidence)
+                        && activeFilters.relationships.has(d.relationship)) ? null : 'none';
+                });
+        }
+
+        function initSearch() {
+            const searchBox = document.getElementById('search-box');
+            const dropdown = document.getElementById('search-dropdown');
+            searchBox.addEventListener('input', function() {
+                const query = this.value.toLowerCase();
+                dropdown.innerHTML = '';
+                if (query.length > 0) {
+                    const results = GRAPH_DATA.nodes.filter(n => n.label.toLowerCase().includes(query) || (n.id && n.id.toLowerCase().includes(query))).slice(0, 10);
+                    results.forEach(node => {
+                        const item = document.createElement('div');
+                        item.className = 'search-item';
+                        item.innerHTML = node.label + '<span class="search-item-type">'+node.type+'</span>';
+                        item.addEventListener('click', () => {
+                            selectNode(node);
+                            searchBox.value = '';
+                            dropdown.classList.remove('active');
+                        });
+                        dropdown.appendChild(item);
+                    });
+                    dropdown.classList.add('active');
+                } else {
+                    dropdown.classList.remove('active');
+                }
+            });
+            document.addEventListener('click', function(e) { if (e.target !== searchBox) dropdown.classList.remove('active'); });
+        }
+
+        function initControls() {
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                simulation.alpha(1).restart();
+                svg.transition().duration(750).call(zoomBehavior.transform, d3.zoomIdentity.translate(0, 0));
+            });
+            document.getElementById('zoom-in-btn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoomBehavior.scaleBy, 1.3);
+            });
+            document.getElementById('zoom-out-btn').addEventListener('click', () => {
+                svg.transition().duration(300).call(zoomBehavior.scaleBy, 0.77);
+            });
+            document.getElementById('center-btn').addEventListener('click', () => {
+                const w = svg.node().clientWidth, h = svg.node().clientHeight;
+                svg.transition().duration(750).call(zoomBehavior.transform, d3.zoomIdentity.translate(w / 2, h / 2));
+            });
+            document.getElementById('detail-close').addEventListener('click', function(e) { e.stopPropagation(); deselectNode(); });
+        }
+
+        function initDisplayOptions() {
+            const nodeToggle = document.getElementById('toggle-node-labels');
+            const edgeToggle = document.getElementById('toggle-edge-labels');
+            const fontInput = document.getElementById('font-size-input');
+
+            nodeToggle.addEventListener('change', function() {
+                persistentNodeLabelGroup.style('display', this.checked ? null : 'none');
+            });
+
+            edgeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    // Build persistent edge labels
+                    persistentEdgeLabelGroup.selectAll('.p-edge-label-group').remove();
+                    const groups = persistentEdgeLabelGroup.selectAll('.p-edge-label-group')
+                        .data(GRAPH_DATA.edges).enter()
+                        .append('g').attr('class', 'p-edge-label-group');
+                    groups.each(function(d) {
+                        const g = d3.select(this);
+                        const text = g.append('text').attr('class', 'persistent-edge-label')
+                            .text(d.relationship)
+                            .style('font-size', fontInput.value + 'px');
+                        const bbox = text.node().getBBox();
+                        g.insert('rect', ':first-child').attr('class', 'persistent-edge-label-bg')
+                            .attr('x', bbox.x - 3).attr('y', bbox.y - 1)
+                            .attr('width', bbox.width + 6).attr('height', bbox.height + 2);
+                    });
+                    persistentEdgeLabelGroup.style('display', null);
+                } else {
+                    persistentEdgeLabelGroup.style('display', 'none');
+                }
+            });
+
+            fontInput.addEventListener('input', function() {
+                const size = this.value + 'px';
+                persistentNodeLabelGroup.selectAll('text').style('font-size', size);
+                // Rebuild edge labels if visible
+                if (edgeToggle.checked) {
+                    persistentEdgeLabelGroup.selectAll('.p-edge-label-group').remove();
+                    const groups = persistentEdgeLabelGroup.selectAll('.p-edge-label-group')
+                        .data(GRAPH_DATA.edges).enter()
+                        .append('g').attr('class', 'p-edge-label-group');
+                    groups.each(function(d) {
+                        const g = d3.select(this);
+                        const text = g.append('text').attr('class', 'persistent-edge-label')
+                            .text(d.relationship).style('font-size', size);
+                        const bbox = text.node().getBBox();
+                        g.insert('rect', ':first-child').attr('class', 'persistent-edge-label-bg')
+                            .attr('x', bbox.x - 3).attr('y', bbox.y - 1)
+                            .attr('width', bbox.width + 6).attr('height', bbox.height + 2);
+                    });
+                }
+            });
+        }
+
+        function initRelationshipFilters() {
+            const container = document.getElementById('relationship-filters');
+            const relTypes = new Set();
+            GRAPH_DATA.edges.forEach(e => relTypes.add(e.relationship));
+            const sorted = Array.from(relTypes).sort();
+            activeFilters.relationships = new Set(sorted);
+
+            sorted.forEach(rel => {
+                const color = EDGE_RELATIONSHIP_COLORS[rel] || '#5a6370';
+                const count = GRAPH_DATA.edges.filter(e => e.relationship === rel).length;
+                const label = document.createElement('label');
+                label.className = 'filter-label rel-filter-item';
+                label.innerHTML = '<input type="checkbox" class="filter-checkbox" data-relationship="'+rel+'" checked>' +
+                    '<span class="rel-color-line" style="background-color:'+color+'"></span>' +
+                    '<span style="flex:1">' + rel.replace(/_/g, ' ') + '</span>' +
+                    '<span style="color:#6e7681; font-size:10px;">' + count + '</span>';
+                label.querySelector('input').addEventListener('change', updateFilters);
+                container.appendChild(label);
+            });
+        }
+
+        function dragstart(event, d) { if (!event.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; }
+        function dragged(event, d) { d.fx = event.x; d.fy = event.y; }
+        function dragend(event, d) { if (!event.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; }
+
+        function clickConnection(nodeId) {
+            const node = GRAPH_DATA.nodes.find(n => n.id === nodeId);
+            if (node) selectNode(node);
+        }
+
+        window.addEventListener('load', initVisualization);
+    </script>
+</body>
+</html>
