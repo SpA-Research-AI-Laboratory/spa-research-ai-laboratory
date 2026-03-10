@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spondyloarthritis Knowledge Graph v2</title>
+    <title>Spondyloarthritis Knowledge Graph </title>
     <style>
         * {
             margin: 0;
@@ -511,7 +511,7 @@
     </div>
     <header>
         <div class="header-left">
-            <h1>SpA Knowledge Graph v2</h1>
+            <h1>SpA Knowledge Graph </h1>
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-label">Nodes:</span>
@@ -550,7 +550,7 @@
             <div class="sidebar-section">
                 <div class="sidebar-title">Display Options</div>
                 <label class="filter-label">
-                    <input type="checkbox" class="filter-checkbox" id="toggle-node-labels"> 
+                    <input type="checkbox" class="filter-checkbox" id="toggle-node-labels" checked> 
                     <span>Show Node Labels</span>
                 </label>
                 <label class="filter-label">
@@ -1102,7 +1102,53 @@
             if (node) selectNode(node);
         }
 
-        window.addEventListener('load', initVisualization);
+        window.addEventListener('load', function() {
+            initVisualization();
+            document.getElementById('kg-welcome-modal').style.display = 'flex';
+        });
+    </script>
+
+    <!-- Welcome Modal -->
+    <div id="kg-welcome-modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+      <div style="background:#161b22; border:1px solid #30363d; border-radius:12px; max-width:520px; width:90%; padding:2rem; box-shadow:0 24px 64px rgba(0,0,0,0.6); position:relative;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.25rem;">
+          <div style="background:linear-gradient(135deg,#1a56db,#06b6d4); width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; flex-shrink:0;">🧬</div>
+          <div>
+            <h2 style="color:#f0f6fc; font-size:1.1rem; font-weight:700; margin:0;">SpA Knowledge Graph</h2>
+            <p style="color:#8b949e; font-size:0.8rem; margin:0;">119 nodes &middot; 172 edges &middot; Interactive</p>
+          </div>
+        </div>
+        <p style="color:#c9d1d9; font-size:0.9rem; line-height:1.6; margin-bottom:1.25rem;">
+          This graph maps the biological landscape of Spondyloarthritis — connecting genes, cytokines, bacteria, treatments, pathways, and clinical features into a single navigable network.
+        </p>
+        <ul style="list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-direction:column; gap:0.65rem;">
+          <li style="display:flex; gap:10px; align-items:flex-start; color:#c9d1d9; font-size:0.875rem;">
+            <span style="color:#58a6ff; font-size:1rem; margin-top:1px;">①</span>
+            <span><strong style="color:#f0f6fc;">Click any node</strong> to open a detail panel with its description, type, and all connected relationships.</span>
+          </li>
+          <li style="display:flex; gap:10px; align-items:flex-start; color:#c9d1d9; font-size:0.875rem;">
+            <span style="color:#58a6ff; font-size:1rem; margin-top:1px;">②</span>
+            <span><strong style="color:#f0f6fc;">Drag nodes</strong> to rearrange the layout. <strong style="color:#f0f6fc;">Scroll</strong> to zoom in and out.</span>
+          </li>
+          <li style="display:flex; gap:10px; align-items:flex-start; color:#c9d1d9; font-size:0.875rem;">
+            <span style="color:#58a6ff; font-size:1rem; margin-top:1px;">③</span>
+            <span>Use the <strong style="color:#f0f6fc;">search box</strong> and <strong style="color:#f0f6fc;">category filters</strong> in the left sidebar to focus on specific node types.</span>
+          </li>
+          <li style="display:flex; gap:10px; align-items:flex-start; color:#c9d1d9; font-size:0.875rem;">
+            <span style="color:#58a6ff; font-size:1rem; margin-top:1px;">④</span>
+            <span>To return to the main site, click <strong style="color:#f0f6fc;">← SpA Research AI Lab</strong> in the top bar at any time.</span>
+          </li>
+        </ul>
+        <button onclick="document.getElementById('kg-welcome-modal').style.display='none'" style="width:100%; background:#1a56db; color:#fff; border:none; border-radius:6px; padding:0.75rem; font-size:0.95rem; font-weight:600; cursor:pointer; transition:background 0.2s;" onmouseover="this.style.background='#1340b0'" onmouseout="this.style.background='#1a56db'">
+          Explore the Graph →
+        </button>
+        <p style="text-align:center; color:#6e7681; font-size:0.75rem; margin-top:0.75rem; margin-bottom:0;">Click anywhere outside this box to dismiss</p>
+      </div>
+    </div>
+    <script>
+      document.getElementById('kg-welcome-modal').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+      });
     </script>
 </body>
 </html>
