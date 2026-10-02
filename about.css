@@ -1,0 +1,97 @@
+/* Profile stories extend the shared SpA Lab editorial system. */
+.about-page .about-cover { padding-block: 68px 60px; border-top: 1px solid var(--line); }
+.about-cover > .eyebrow { margin-bottom: 26px; color: var(--accent); }
+.about-cover h1 { max-width: 1100px; font-size: clamp(3.5rem, 7.7vw, 7.4rem); line-height: 1.02; }
+.about-cover > .lead { max-width: 650px; margin-top: 34px; color: var(--muted); font-size: 21px; }
+.about-jump { display: flex; align-items: center; flex-wrap: wrap; gap: 22px 42px; padding-block: 25px; border-block: 1px solid var(--line); }
+.about-jump a { display: inline-flex; align-items: center; gap: 20px; font-size: 14px; text-decoration: none; border-bottom: 1px solid transparent; }
+.about-jump a:hover { border-bottom-color: var(--accent); }
+.about-jump a::after { content: '↘'; color: var(--accent); }
+.about-page .profile { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.25fr); gap: clamp(48px, 7vw, 108px); align-items: start; padding-block: 100px 112px; }
+.profile-media { position: sticky; top: 35px; margin: 4px 0 0; }
+.profile-media::before { content: ''; display: block; height: 1px; width: 36px; background: var(--accent); margin-bottom: 17px; }
+.profile-media img { display: block; width: 100%; height: auto; background: var(--ink-deep); }
+.profile-media figcaption { border-bottom: 1px solid var(--line); padding-block: 15px 18px; font-family: var(--mono); color: var(--muted); font-size: 11px; line-height: 1.7; letter-spacing: .015em; }
+.profile-copy { min-width: 0; }
+.profile-copy > .eyebrow { margin-bottom: 22px; color: var(--accent); }
+.profile-copy h2 { font-size: clamp(3rem, 5.3vw, 5.4rem); line-height: 1.05; }
+.profile-copy .profile-role { max-width: 48ch; margin-top: 17px; padding-bottom: 26px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; line-height: 1.75; text-transform: uppercase; letter-spacing: .045em; color: var(--muted); }
+.profile-copy .lead { max-width: 47ch; margin-top: 31px; margin-bottom: 29px; font-family: var(--serif); font-size: clamp(1.45rem, 2.1vw, 1.9rem); line-height: 1.43; letter-spacing: -.022em; }
+.profile-copy > p:not(.eyebrow):not(.profile-role):not(.lead) { font-size: 17px; line-height: 1.85; max-width: 61ch; color: var(--muted); }
+.profile-copy > p + p { margin-top: 23px; }
+.profile-copy h3 { margin-top: 39px; margin-bottom: 16px; font-size: 29px; }
+.profile-copy h3 + p { margin-top: 0; }
+.profile-copy a { text-decoration-color: var(--line); }
+.profile-copy a:hover { text-decoration-color: var(--accent); }
+.profile-copy .text-link { margin-top: 26px; }
+.story-break { background: var(--ink); color: var(--paper-light); padding-block: 85px; }
+.story-break > .wrap { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 90px; }
+.story-break h2 { max-width: 13ch; font-size: clamp(2.7rem, 4.6vw, 4.5rem); }
+.story-break h2 em { color: var(--accent-soft); }
+.story-break p { max-width: 43ch; font-size: 19px; color: #d4ddd2; line-height: 1.75; }
+.about-page #astra.profile { padding-bottom: 100px; }
+#astra .profile-media { margin-top: 6px; }
+#astra .profile-media img { aspect-ratio: 1; object-fit: contain; }
+.about-page .collaboration { padding-block: 70px 95px; border-top: 1px solid var(--line); }
+.collaboration h2 { max-width: 850px; font-size: clamp(2.7rem, 4.8vw, 4.6rem); }
+.collaboration > .eyebrow { margin-bottom: 23px; color: var(--accent); }
+.collaboration > p:not(.eyebrow) { max-width: 700px; margin-top: 28px; color: var(--muted); }
+.collaboration .button { margin-top: 29px; }
+.about-footer { border-top: 1px solid var(--line); padding-block: 27px 33px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 18px 35px; font-size: 12px; color: var(--muted); }
+.about-footer a { color: var(--ink); }
+.about-footer p { margin: 0; font-family: var(--mono); font-size: 11px; }
+@media (max-width: 1050px) {
+  .about-page .profile { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 45px; }
+  .profile-copy .lead { font-size: 25px; }
+  .story-break > .wrap { gap: 50px; }
+  .story-break p { font-size: 17px; }
+}
+@media (max-width: 760px) {
+  .about-page .about-cover { padding-block: 41px 35px; }
+  .about-cover > .eyebrow { font-size: 10px; margin-bottom: 22px; }
+  .about-cover h1 { font-size: clamp(2.9rem, 10.8vw, 4.6rem); line-height: 1.06; letter-spacing: -.05em; overflow-wrap: break-word; }
+  .about-cover > .lead { font-size: 18px; line-height: 1.6; margin-top: 25px; }
+  .about-jump { padding-block: 19px; gap: 15px 24px; }
+  .about-jump a { font-size: 12px; gap: 10px; }
+  .about-page .profile { grid-template-columns: minmax(0, 1fr); gap: 35px; padding-block: 54px 65px; }
+  .profile-media { position: static; width: 100%; max-width: 500px; margin: 0; }
+  .profile-media::before { margin-bottom: 14px; }
+  .profile-media figcaption { padding-block: 12px 14px; font-size: 10px; }
+  .profile-copy > .eyebrow { margin-bottom: 17px; font-size: 10px; }
+  .profile-copy h2 { font-size: clamp(2.8rem, 10.5vw, 4.8rem); }
+  .profile-copy .profile-role { font-size: 10px; margin-top: 14px; padding-bottom: 21px; }
+  .profile-copy .lead { margin-top: 24px; margin-bottom: 25px; font-size: 25px; line-height: 1.4; }
+  .profile-copy > p:not(.eyebrow):not(.profile-role):not(.lead) { font-size: 16px; line-height: 1.85; }
+  .profile-copy > p + p { margin-top: 21px; }
+  .profile-copy h3 { margin-top: 32px; margin-bottom: 15px; font-size: 27px; }
+  .story-break { padding-block: 60px; }
+  .story-break > .wrap { grid-template-columns: 1fr; gap: 29px; }
+  .story-break h2 { max-width: 18ch; font-size: clamp(2.5rem, 9vw, 3.7rem); }
+  .story-break p { font-size: 17px; max-width: 50ch; }
+  .about-page #astra.profile { padding-bottom: 65px; }
+  .about-page .collaboration { padding-block: 55px 65px; }
+  .collaboration h2 { font-size: clamp(2.5rem, 9vw, 3.7rem); }
+  .collaboration > p:not(.eyebrow) { font-size: 16px; margin-top: 23px; }
+  .about-footer { padding-block: 24px; font-size: 11px; gap: 15px; }
+  .about-footer p { font-size: 10px; }
+}
+@media (max-width: 400px) {
+  .about-cover h1 { font-size: clamp(2.65rem, 11vw, 3.2rem); }
+  .about-jump { gap: 15px 20px; }
+  .about-jump a { font-size: 11px; }
+  .profile-copy h2 { font-size: 2.8rem; }
+  .profile-copy .lead { font-size: 24px; }
+}
+@media print {
+  .about-page .profile { display: block; padding-block: 20px; }
+  .profile-media { position: static; width: 200px; float: left; margin: 0 25px 20px 0; }
+  .story-break { background: white; color: black; padding-block: 25px; }
+  .story-break p, .story-break h2 em { color: black; }
+  .about-jump { display: none; }
+}
+
+/* Final content integration. */
+.about-jump { margin-top: 38px; }
+.about-jump a::after { content: none; }
+.story-break > .wrap > .eyebrow { grid-column: 1 / -1; font: 12px var(--mono); margin-bottom: -50px; text-transform: uppercase; letter-spacing: .09em; }
+@media (max-width:760px) { .story-break > .wrap > .eyebrow { margin-bottom: 0; } }

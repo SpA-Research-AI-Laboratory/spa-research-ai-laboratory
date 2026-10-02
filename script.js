@@ -99,6 +99,8 @@
         if (url.origin !== window.location.origin || !['http:', 'https:', 'file:'].includes(url.protocol)) return;
         if (!/\/(?:[^/]*\.html)?$/i.test(url.pathname)) return;
         url.searchParams.set('audience', audience);
+        if (url.hash === '#public-study' || url.hash === '#research-study') url.hash = `#${audience}-study`;
+        if (url.hash === '#public-methods' || url.hash === '#research-methods') url.hash = `#${audience}-methods`;
         // Preserve the author's relative path, including project-page deployment prefixes.
         const original = link.getAttribute('href').split(/[?#]/)[0];
         link.setAttribute('href', `${original}${url.search}${url.hash}`);
@@ -177,6 +179,12 @@
       const target = hashTarget();
       if (target) target.scrollIntoView({ block: 'start', behavior: 'auto' });
     });
+  }
+
+  if (!audiencePanels.length) {
+    audience = requestedAudience();
+    root.dataset.audience = audience;
+    updateLinks();
   }
 
   const outcomePanels = all('[data-outcome-panel]');
