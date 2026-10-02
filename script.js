@@ -5,6 +5,24 @@
   const root = document.documentElement;
   const body = document.body;
   if (!body) return;
+  // Preserve useful destinations for links into the former single-page site.
+  if (body.classList.contains('lab-home')) {
+    const legacyDestinations = {
+      '#about': 'about.html',
+      '#public-study': 'work.html#p002',
+      '#research-study': 'work.html#p002',
+      '#public-methods': 'how-we-work.html',
+      '#research-methods': 'how-we-work.html',
+      '#public-outcomes': 'how-we-work.html#outcomes'
+    };
+    const destination = legacyDestinations[window.location.hash];
+    if (destination) {
+      const url = new URL(destination, window.location.href);
+      url.search = window.location.search;
+      window.location.replace(url.href);
+      return;
+    }
+  }
   const all = (selector, context = document) => Array.from(context.querySelectorAll(selector));
   const validAudience = value => value === 'public' || value === 'research';
   const readPreference = key => {

@@ -1,0 +1,87 @@
+/* Project directory: shares the lab's palette and accessible base controls. */
+.work-page .work-main { padding-top: 56px; padding-bottom: 104px; }
+.work-intro { display: grid; grid-template-columns: 260px minmax(0, 1fr); column-gap: 56px; padding-bottom: 48px; }
+.work-intro .eyebrow { grid-row: 1 / 3; padding-top: 17px; }
+.work-intro h1 { margin: 0; font: 400 clamp(3rem, 5vw, 4.5rem)/1.02 var(--serif); letter-spacing: -.045em; }
+.work-intro > p:last-child { grid-column: 2; color: var(--muted); margin: 20px 0 0; }
+.work-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 56px; align-items: start; }
+.project-sidebar { position: sticky; top: 28px; }
+.project-picker { border-top: 1px solid var(--ink); }
+.project-picker summary { font: 400 14px/1.5 var(--mono); padding: 18px 0; cursor: pointer; }
+.project-picker summary span { color: var(--muted); }
+.project-link { display: block; padding: 22px 18px; text-decoration: none; border-left: 3px solid transparent; border-bottom: 1px solid var(--line); }
+.project-link[aria-current="true"] { background: var(--paper-light); border-left-color: var(--accent); }
+.project-link-meta { display: flex; justify-content: space-between; gap: 12px; font: 400 12px/1.5 var(--mono); color: var(--muted); }
+.project-link strong { display: block; margin: 14px 0 20px; font: 400 25px/1.18 var(--serif); }
+.project-link-type { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--muted); }
+.directory-note { color: var(--muted); font-size: 14px; line-height: 1.6; margin-top: 22px; }
+.project-content { min-width: 0; }
+.project-metadata { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; border-top: 1px solid var(--ink); padding-top: 18px; color: var(--muted); font-size: 14px; }
+.project-metadata .eyebrow { margin: 0; }
+.work-page .project-title { font: 400 clamp(2.5rem, 3.8vw, 3.6rem)/1.08 var(--serif); letter-spacing: -.04em; margin: 28px 0 22px; overflow-wrap: anywhere; max-width:24ch; }
+.project-deck { font-size: 21px; line-height: 1.5; max-width: 38ch; margin: 0 0 24px; }
+.project-review { display: flex; gap: 8px 12px; flex-wrap: wrap; font-size: 14px; color: var(--muted); margin: 0 0 36px; }
+.project-review > span { color: var(--accent); }
+.work-reader-controls { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; }
+.work-reader-controls .eyebrow { margin: 0 0 13px; }
+.work-reader-controls .audience-switch { width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.work-reader-controls .audience-switch button { min-width: 0; min-height: 56px; white-space: normal; font-size: 15px; }
+.work-noscript { color: var(--muted); font-size: 14px; }
+.project-overview { padding-top: 36px; }
+.project-overview h3, .project-example h3 { font: 400 clamp(1.8rem, 2.6vw, 2.55rem)/1.15 var(--serif); letter-spacing: -.02em; margin: 0 0 20px; }
+.project-overview > p { max-width: 64ch; margin: 0 0 30px; }
+.overview-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; border-top: 1px solid var(--line); padding: 22px 0; }
+.overview-row h4 { font: 600 15px/1.55 var(--sans); margin: 3px 0 0; }
+.overview-row p { margin: 0; max-width: 62ch; }
+.project-scope { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; border-top: 1px solid var(--ink); margin: 20px 0 0; padding: 26px 0; }
+.project-scope dt { font: 400 48px/1.05 var(--serif); }
+.project-scope dd { margin: 12px 0 0; font-size: 14px; line-height: 1.5; }
+.scope-caption { font-size: 14px; color: var(--muted); margin: 0 0 44px; }
+.project-example { background: var(--ink-deep); color: var(--paper-light); padding: 36px; }
+.project-example .eyebrow { color: var(--sage); margin-top: 0; }
+.project-example p:not(.eyebrow) { max-width: 62ch; }
+.project-example .text-link { color: var(--paper-light); }
+.project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px 30px; margin: 34px 0 24px; }
+.project-actions .button { white-space: normal; }
+.project-closing { font-size: 14px; color: var(--muted); max-width: 72ch; }
+.work-footer { border-top: 1px solid var(--line); padding-top: 32px; padding-bottom: 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; font-size: 14px; }
+.work-footer p { color: var(--muted); margin: 0; }
+
+@media (min-width: 901px) {
+  .project-picker summary { list-style: none; cursor: default; }
+  .project-picker summary::-webkit-details-marker { display: none; }
+}
+@media (max-width: 1050px) {
+  .work-layout, .work-intro { column-gap: 32px; grid-template-columns: 240px minmax(0, 1fr); }
+  .overview-row { grid-template-columns: 1fr; gap: 10px; }
+}
+@media (max-width: 900px) {
+  .work-page .work-main { padding-top: 32px; padding-bottom: 64px; }
+  .work-intro { display: block; padding-bottom: 32px; }
+  .work-intro .eyebrow { padding-top: 0; margin: 0 0 18px; }
+  .work-intro > p:last-child { margin-top: 16px; }
+  .work-layout { display: block; }
+  .project-sidebar { position: static; margin-bottom: 34px; }
+  .project-picker { border: 1px solid var(--line); }
+  .project-picker summary { padding: 16px 18px; }
+  .directory-note { display: none; }
+  .project-link { margin: 0 14px 14px; }
+  .project-link strong br { display: none; }
+  .project-metadata { gap: 8px; }
+  .work-page .project-title { margin-top: 26px; font-size: clamp(2.45rem, 7vw, 4rem); }
+  .project-example { padding: 26px; }
+}
+@media (max-width: 430px) {
+  .project-metadata { display: block; }
+  .project-metadata > span { display: block; margin-bottom: 8px; }
+  .work-reader-controls .audience-switch button { padding: 12px 9px; font-size: 14px; }
+  .project-scope { gap: 14px; }
+  .project-scope dt { font-size: 39px; }
+  .project-example { padding: 22px 20px; }
+  .project-actions { align-items: flex-start; flex-direction: column; }
+  .work-footer { align-items: flex-start; flex-direction: column; }
+}
+
+.project-actions + .work-reader-controls { margin-top:30px; }
+
+@media(max-width:900px) { .project-link { padding:12px 13px; } .project-link-meta { font-size:10px; } .project-link strong { font-size:20px; line-height:1.3; margin:8px 0 0; } .project-link-type { display:none; } .project-picker summary { font-size:12px; } }

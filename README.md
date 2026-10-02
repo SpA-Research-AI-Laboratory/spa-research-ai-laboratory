@@ -1,6 +1,6 @@
 # SpA Lab
 
-Public website for the SpA Research AI Laboratory. A static, accessible editorial site with distinct researcher/physician and patient/public routes. Research outputs are clearly labeled by scope and review status.
+Public website for the SpA Research AI Laboratory. A static site with a universal lab introduction and distinct research/public reading views inside the project library and study report. Research outputs are clearly labeled by scope and review status.
 
 ## Run locally
 
@@ -14,7 +14,11 @@ Open `http://127.0.0.1:8765/`. Production uses GitHub Pages and the custom domai
 
 ## Content
 
-- `index.html`, `style.css`, `script.js`: audience experiences, original schematic artwork and motion.
+- `index.html`, `site.css`: laboratory mission, structure and original workflow illustration.
+- `work.html`, `work.css`, `work.js`: responsive completed-project directory and audience-specific overviews.
+- `how-we-work.html`: research cycle, project continuity and scientific standards.
+- `about.html`, `about.css`: founder and AI profiles.
+- `style.css`, `script.js`: shared base styles, navigation preferences, accessible tabs and motion controls.
 - `study.html`, `study.css`: P002 study report with accessible explanatory figures.
 - `data/`: public endpoint extracts, comparison data, source locations and arithmetic reproduction.
 - `spa_knowledge_graph/`: legacy URL retained as an archive notice; the old graph is not treated as validated evidence.
