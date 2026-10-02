@@ -1,3 +1,5 @@
+> Historical prototype planning notes (March2026). These plans and novelty claims were not validated research results and are not the current project portfolio. See the website for current work.
+
 # SpA Research AI Laboratory — Journal
 
 ---

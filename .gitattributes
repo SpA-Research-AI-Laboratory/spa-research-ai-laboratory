@@ -1,0 +1,4 @@
+# Preserve exact downloadable CSV bytes used by the integrity manifest.
+data/*.csv -text
+data/*.json text eol=lf
+data/*.svg text eol=lf

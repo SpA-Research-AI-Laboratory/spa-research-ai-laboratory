@@ -1,0 +1,10 @@
+{
+  "scope": "Public extracted data only; no participant-level data",
+  "release": "P002 v1 / 2026-10-02",
+  "files": {
+    "p002-comparisons.json": "18ededb636c421628e98cbb62b8fcefdec9124412f848ad171e234a9d06c4a78",
+    "p002-endpoints.json": "26aee354a4084fcbc169314deea9b4bcffd5422721dd9e676151b00b0bb68c17",
+    "p002-endpoints.csv": "fa43b84b87ebec25c242edef19006464e82a0f9bb651b3222d2e9838e1fa13dd",
+    "p002-thresholds.svg": "0a236cf16f936de90c325970203cecac763415936d910f93bd53db6bdd66cf1a"
+  }
+}

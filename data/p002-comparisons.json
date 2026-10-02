@@ -1,0 +1,107 @@
+[
+  {
+    "family_id": "MEASURE-1",
+    "arm": "SEC75/150 pooled original randomization",
+    "week": 104,
+    "denominator_n": 168,
+    "lower_rule": "mSASSS change <=0",
+    "upper_rule": "mSASSS change <=2",
+    "lower_percent": 60.7,
+    "upper_percent": 82.1,
+    "difference_percentage_points": 21.4,
+    "calculation": "difference of reported rounded percentages",
+    "source_endpoint_ids": [
+      "MEASURE_comp_le0",
+      "MEASURE_comp_le2"
+    ],
+    "comparison_label": "≤0 → ≤2",
+    "warning": "Shares paper and reading exercise with ENRADAS; nominal104-week primary image window day31–743.",
+    "confidence_interval": null,
+    "confidence_interval_reason": "No paired uncertainty calculation; rounded aggregates insufficient.",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1"
+  },
+  {
+    "family_id": "ENRADAS",
+    "arm": "Continuous/on-demand NSAID pooled",
+    "week": 104,
+    "denominator_n": 69,
+    "lower_rule": "mSASSS change <=0",
+    "upper_rule": "mSASSS change <=2",
+    "lower_percent": 52.2,
+    "upper_percent": 72.5,
+    "difference_percentage_points": 20.3,
+    "calculation": "difference of reported rounded percentages",
+    "source_endpoint_ids": [
+      "ENRADAS_le0",
+      "ENRADAS_le2"
+    ],
+    "comparison_label": "≤0 → ≤2",
+    "warning": "Selected historical cohort; same reading exercise as MEASURE1; not an efficacy contrast.",
+    "confidence_interval": null,
+    "confidence_interval_reason": "No paired uncertainty calculation; rounded aggregates insufficient.",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "arm": "pooled sequences",
+    "week": 104,
+    "denominator_n": 136,
+    "lower_rule": "change in mSASSS <=0",
+    "upper_rule": "change in mSASSS <2",
+    "lower_percent": 76.5,
+    "upper_percent": 89.7,
+    "difference_percentage_points": 13.2,
+    "calculation": "difference of reported rounded percentages",
+    "source_endpoint_ids": [
+      "SELECT1_total_LE0",
+      "SELECT1_total_LT2"
+    ],
+    "comparison_label": "≤0 → <2",
+    "warning": "Denominator136 linked from Table1 common imaging cohort; not restated beside binary rates.",
+    "confidence_interval": null,
+    "confidence_interval_reason": "No paired uncertainty calculation; rounded aggregates insufficient.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/"
+  },
+  {
+    "family_id": "PREVENT",
+    "arm": "secukinumab_pooled",
+    "week": 104,
+    "denominator_n": 280,
+    "lower_rule": "mSASSS change <=0.76",
+    "upper_rule": "mSASSS change <=2 (complement of >2)",
+    "lower_percent": 97.5,
+    "upper_percent": 98.92857142857143,
+    "difference_percentage_points": 1.4285714285714286,
+    "calculation": "100*((n-reported progression numerator)-reported nonprogression numerator)/n",
+    "source_endpoint_ids": [
+      "PREVENT_secukinumab_pooled_SDC",
+      "PREVENT_secukinumab_pooled_GT2"
+    ],
+    "comparison_label": "≤0.76 → ≤2",
+    "warning": "Derived complement from explicit observed counts. Different contrast from other panels; no <2 substitution.",
+    "confidence_interval": null,
+    "confidence_interval_reason": "Descriptive arithmetic only; no sampling interval estimated.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/"
+  },
+  {
+    "family_id": "PREVENT",
+    "arm": "placebo_secukinumab",
+    "week": 104,
+    "denominator_n": 136,
+    "lower_rule": "mSASSS change <=0.76",
+    "upper_rule": "mSASSS change <=2 (complement of >2)",
+    "lower_percent": 97.05882352941177,
+    "upper_percent": 99.26470588235294,
+    "difference_percentage_points": 2.2058823529411766,
+    "calculation": "100*((n-reported progression numerator)-reported nonprogression numerator)/n",
+    "source_endpoint_ids": [
+      "PREVENT_placebo_secukinumab_SDC",
+      "PREVENT_placebo_secukinumab_GT2"
+    ],
+    "comparison_label": "≤0.76 → ≤2",
+    "warning": "Derived complement from explicit observed counts. Different contrast from other panels; no <2 substitution.",
+    "confidence_interval": null,
+    "confidence_interval_reason": "Descriptive arithmetic only; no sampling interval estimated.",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/"
+  }
+]

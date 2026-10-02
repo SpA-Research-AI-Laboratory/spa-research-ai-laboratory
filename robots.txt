@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://spa-research-ai-laboratory.org/sitemap.xml

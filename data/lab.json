@@ -1,0 +1,16 @@
+{
+  "name": "SpA Lab",
+  "updated": "2026-10-02",
+  "study": {
+    "id": "P002",
+    "title": "What does non-progression mean?",
+    "status": "Completed bounded pilot",
+    "peer_review": "Not externally peer reviewed",
+    "families": 9,
+    "endpoint_rows": 46,
+    "matched_families": 4,
+    "comparison_rows": 5,
+    "scope": "Accessible axial SpA trial reports published in2018–2026; not a systematic review",
+    "next_question": "Which dietary interventions have direct evidence in axial SpA, and for which outcomes?"
+  }
+}

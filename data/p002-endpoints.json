@@ -1,0 +1,1366 @@
+[
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC150_le05",
+    "arm": "SEC150",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 66.1,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "estimate_type": "reported multiply-imputed percentage",
+    "missing_data": "multiple imputation; treatment-policy estimand, retrieved dropout data",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC150_le05_adjusted",
+    "arm": "SEC150",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 66.6,
+    "uncertainty": {
+      "type": "95% CI",
+      "lower": 60.7,
+      "upper": 72.5
+    },
+    "denominator_n": null,
+    "estimate_type": "logistic-regression marginal standardized estimated percentage",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC150_lt2",
+    "arm": "SEC150",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <2",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 85.5,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "denominator_reason": "not explicitly supplied for this estimate in inspected material",
+    "estimate_type": "reported sensitivity percentage; exact estimator not specified",
+    "missing_data": "not explicitly specified for sensitivity result",
+    "source_location": "Results: primary endpoint sensitivity paragraph",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC150_mean",
+    "arm": "SEC150",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "continuous change",
+    "construct": "composite spinal mSASSS change",
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "SE",
+      "value": 0.18
+    },
+    "denominator_n": null,
+    "estimate_type": "ANCOVA LS mean",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "mean_change": 0.54,
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC300_le05",
+    "arm": "SEC300",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 66.9,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "estimate_type": "reported multiply-imputed percentage",
+    "missing_data": "multiple imputation; treatment-policy estimand, retrieved dropout data",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC300_le05_adjusted",
+    "arm": "SEC300",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 66.8,
+    "uncertainty": {
+      "type": "95% CI",
+      "lower": 60.5,
+      "upper": 73.1
+    },
+    "denominator_n": null,
+    "estimate_type": "logistic-regression marginal standardized estimated percentage",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC300_lt2",
+    "arm": "SEC300",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <2",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 82.9,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "denominator_reason": "not explicitly supplied for this estimate in inspected material",
+    "estimate_type": "reported sensitivity percentage; exact estimator not specified",
+    "missing_data": "not explicitly specified for sensitivity result",
+    "source_location": "Results: primary endpoint sensitivity paragraph",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SEC300_mean",
+    "arm": "SEC300",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "continuous change",
+    "construct": "composite spinal mSASSS change",
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "SE",
+      "value": 0.18
+    },
+    "denominator_n": null,
+    "estimate_type": "ANCOVA LS mean",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "mean_change": 0.55,
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SDZ_ADL40_le05",
+    "arm": "SDZ_ADL40",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 65.6,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "estimate_type": "reported multiply-imputed percentage",
+    "missing_data": "multiple imputation; treatment-policy estimand, retrieved dropout data",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SDZ_ADL40_le05_adjusted",
+    "arm": "SDZ_ADL40",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 65.1,
+    "uncertainty": {
+      "type": "95% CI",
+      "lower": 58.8,
+      "upper": 71.5
+    },
+    "denominator_n": null,
+    "estimate_type": "logistic-regression marginal standardized estimated percentage",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SDZ_ADL40_lt2",
+    "arm": "SDZ_ADL40",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "mSASSS change <2",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 82.3,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": null,
+    "denominator_reason": "not explicitly supplied for this estimate in inspected material",
+    "estimate_type": "reported sensitivity percentage; exact estimator not specified",
+    "missing_data": "not explicitly specified for sensitivity result",
+    "source_location": "Results: primary endpoint sensitivity paragraph",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SURPASS",
+    "family_doi": "10.1002/art.42852",
+    "url": "https://acrjournals.onlinelibrary.wiley.com/doi/full/10.1002/art.42852",
+    "endpoint_id": "SDZ_ADL40_mean",
+    "arm": "SDZ_ADL40",
+    "population": "Adults with active radiographic axSpA, biologic-naive; hsCRP >=5 mg/L and/or syndesmophyte; excludes total ankylosis.",
+    "week": 104,
+    "threshold": "continuous change",
+    "construct": "composite spinal mSASSS change",
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "SE",
+      "value": 0.18
+    },
+    "denominator_n": null,
+    "estimate_type": "ANCOVA LS mean",
+    "missing_data": "multiple imputation",
+    "source_location": "Table2",
+    "mean_change": 0.72,
+    "denominator_reason": "Table2 n is baseline measurements; exact analysis denominator not independently explicit.",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://acrjournals.onlinelibrary.wiley.com/doi/suppl/10.1002/art.42852/supinfo/art42852-sup-0002-supinfo.docx",
+        "access": "inaccessible: web internal error; direct HTTP403"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "RAPID-axSpA",
+    "family_doi": "10.1136/annrheumdis-2017-212377",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5909752/",
+    "endpoint_id": "RAPID_AS_lt2",
+    "arm": "CZP pooled including switchers",
+    "population": "AS",
+    "week": 96,
+    "threshold": "mSASSS increase <2 (complement of progression >=2)",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 84.2,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 112,
+    "estimate_type": "multiple-imputation estimated percentage",
+    "missing_data": "50 imputations; predictive mean matching; MAR; three week12 substitutions in overall Xray set",
+    "source_location": "Results radiographic progression; Supplement Table3",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5909752/supplementaryFiles",
+        "access": "retrieved ZIP; docx tables inspected as XML text"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "RAPID-axSpA",
+    "family_doi": "10.1136/annrheumdis-2017-212377",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5909752/",
+    "endpoint_id": "RAPID_AS_mean",
+    "arm": "CZP pooled including switchers",
+    "population": "AS",
+    "week": 96,
+    "threshold": "continuous change",
+    "construct": "composite spinal mSASSS change",
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "95% CI",
+      "lower": 0.21,
+      "upper": 1.13
+    },
+    "denominator_n": 112,
+    "estimate_type": "MMRM LS mean",
+    "missing_data": "MAR; observed-data MMRM; overall-set baseline substitution",
+    "source_location": "Abstract Results; Methods statistical analysis",
+    "mean_change": 0.67,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5909752/supplementaryFiles",
+        "access": "retrieved ZIP; docx tables inspected as XML text"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "RAPID-axSpA",
+    "family_doi": "10.1136/annrheumdis-2017-212377",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5909752/",
+    "endpoint_id": "RAPID_nr-axSpA_mean",
+    "arm": "CZP pooled including switchers",
+    "population": "nr-axSpA",
+    "week": 96,
+    "threshold": "continuous change",
+    "construct": "composite spinal mSASSS change",
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "95% CI",
+      "lower": -0.19,
+      "upper": 0.17
+    },
+    "denominator_n": null,
+    "denominator_reason": "not explicitly supplied for this estimate in inspected material",
+    "estimate_type": "MMRM LS mean",
+    "missing_data": "MAR; observed-data MMRM; overall-set baseline substitution",
+    "source_location": "Abstract Results; Methods statistical analysis",
+    "mean_change": -0.01,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5909752/supplementaryFiles",
+        "access": "retrieved ZIP; docx tables inspected as XML text"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "RAPID-axSpA",
+    "family_doi": "10.1136/annrheumdis-2017-212377",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5909752/",
+    "endpoint_id": "RAPID_AS_new",
+    "arm": "CZP pooled including switchers",
+    "population": "AS",
+    "week": 96,
+    "threshold": "one or more new syndesmophytes: edge 0/1 to2/3 agreed by both readers",
+    "construct": "new lesion",
+    "rate_percent": 5.9,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 85,
+    "estimate_type": "observed percentage",
+    "missing_data": "not applicable: observed imaging",
+    "source_location": "Results radiographic progression",
+    "numerator_n": 5,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5909752/supplementaryFiles",
+        "access": "retrieved ZIP; docx tables inspected as XML text"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "MEASURE-1",
+    "family_doi": "10.1093/rheumatology/key375",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "MEASURE_comp_le0",
+    "arm": "SEC75/150 pooled original randomization",
+    "population": "MEASURE1 companion Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=0",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 60.7,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 168,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6477523/supplementaryFiles",
+        "access": "retrieved ZIP; extension docx extracted to text, not fully inspected"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "companion supplement not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "MEASURE-1",
+    "family_doi": "10.1093/rheumatology/key375",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "MEASURE_comp_le05",
+    "arm": "SEC75/150 pooled original randomization",
+    "population": "MEASURE1 companion Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 68.5,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 168,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6477523/supplementaryFiles",
+        "access": "retrieved ZIP; extension docx extracted to text, not fully inspected"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "companion supplement not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "MEASURE-1",
+    "family_doi": "10.1093/rheumatology/key375",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "MEASURE_comp_le1",
+    "arm": "SEC75/150 pooled original randomization",
+    "population": "MEASURE1 companion Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=1",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 78,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 168,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6477523/supplementaryFiles",
+        "access": "retrieved ZIP; extension docx extracted to text, not fully inspected"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "companion supplement not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "MEASURE-1",
+    "family_doi": "10.1093/rheumatology/key375",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "MEASURE_comp_le2",
+    "arm": "SEC75/150 pooled original randomization",
+    "population": "MEASURE1 companion Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=2",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 82.1,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 168,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6477523/supplementaryFiles",
+        "access": "retrieved ZIP; extension docx extracted to text, not fully inspected"
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "companion supplement not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ENRADAS",
+    "family_doi": "10.1186/s13075-019-1911-1",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "ENRADAS_le0",
+    "arm": "Continuous/on-demand NSAID pooled",
+    "population": "ENRADAS historical Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=0",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 52.2,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 69,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ENRADAS",
+    "family_doi": "10.1186/s13075-019-1911-1",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "ENRADAS_le05",
+    "arm": "Continuous/on-demand NSAID pooled",
+    "population": "ENRADAS historical Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=0.5",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 62.3,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 69,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ENRADAS",
+    "family_doi": "10.1186/s13075-019-1911-1",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "ENRADAS_le1",
+    "arm": "Continuous/on-demand NSAID pooled",
+    "population": "ENRADAS historical Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=1",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 69.6,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 69,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ENRADAS",
+    "family_doi": "10.1186/s13075-019-1911-1",
+    "url": "https://doi.org/10.1186/s13075-019-1911-1",
+    "endpoint_id": "ENRADAS_le2",
+    "arm": "Continuous/on-demand NSAID pooled",
+    "population": "ENRADAS historical Primary Analysis Set",
+    "week": 104,
+    "threshold": "mSASSS change <=2",
+    "construct": "composite spinal mSASSS nonprogression",
+    "rate_percent": 72.5,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this rate in inspected table/text",
+    "denominator_n": 69,
+    "estimate_type": "reported table percentage; logistic regression used for cohort comparison",
+    "missing_data": "paired available films; no imputation described",
+    "source_location": "Companion DOI10.1186/s13075-019-1911-1 Table2 primary set",
+    "source_doi": "10.1186/s13075-019-1911-1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6555995/#MOESM1",
+        "access": "not inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_secukinumab_pooled_SDC",
+    "arm": "secukinumab_pooled",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in total mSASSS <= SDC (0.76)",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 97.5,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 280,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph2",
+    "numerator_n": 273,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_secukinumab_pooled_GT2",
+    "arm": "secukinumab_pooled",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "increase in mSASSS >2",
+    "construct": "composite_mSASSS_progression",
+    "rate_percent": 1.1,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 280,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph2",
+    "numerator_n": 3,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_secukinumab_pooled_mean",
+    "arm": "secukinumab_pooled",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.04,
+    "uncertainty": {
+      "SD": 0.47
+    },
+    "denominator_n": 280,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_placebo_secukinumab_SDC",
+    "arm": "placebo_secukinumab",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in total mSASSS <= SDC (0.76)",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 97.1,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph2",
+    "numerator_n": 132,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_placebo_secukinumab_GT2",
+    "arm": "placebo_secukinumab",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "increase in mSASSS >2",
+    "construct": "composite_mSASSS_progression",
+    "rate_percent": 0.7,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph2",
+    "numerator_n": 1,
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "PREVENT",
+    "family_doi": "10.1186/s13075-023-03051-5",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10186767/",
+    "endpoint_id": "PREVENT_placebo_secukinumab_mean",
+    "arm": "placebo_secukinumab",
+    "population": "PREVENT imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.07,
+    "uncertainty": {
+      "SD": 0.36
+    },
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Spinal radiographic progression, paragraph1",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10186767/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_total_LT2",
+    "arm": "pooled sequences",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in mSASSS <2",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 89.7,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Imaging outcomes last sentence",
+    "denominator_basis": "Table1 paired total cohort; not independently printed alongside rate",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_total_LE0",
+    "arm": "pooled sequences",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in mSASSS <=0",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 76.5,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Results: Imaging outcomes last sentence",
+    "denominator_basis": "Table1 paired total cohort; not independently printed alongside rate",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_continuous_upadacitinib_mean",
+    "arm": "continuous_upadacitinib",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.6,
+    "uncertainty": {
+      "CI95": [
+        0.1,
+        1.1
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 69,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_continuous_upadacitinib_LSmean",
+    "arm": "continuous_upadacitinib",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.6,
+    "uncertainty": {
+      "CI95": [
+        0,
+        1.2
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 69,
+    "estimate_type": "ANCOVA_LSmean",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 LS mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_placebo_upadacitinib_mean",
+    "arm": "placebo_upadacitinib",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.8,
+    "uncertainty": {
+      "CI95": [
+        0.2,
+        1.4
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 67,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_placebo_upadacitinib_LSmean",
+    "arm": "placebo_upadacitinib",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.9,
+    "uncertainty": {
+      "CI95": [
+        0.3,
+        1.5
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 67,
+    "estimate_type": "ANCOVA_LSmean",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 LS mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_pooled sequences_mean",
+    "arm": "pooled sequences",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.7,
+    "uncertainty": {
+      "CI95": [
+        0.3,
+        1.1
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 136,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-1",
+    "family_doi": "10.1136/rmdopen-2022-002280",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335045/",
+    "endpoint_id": "SELECT1_pooled sequences_LSmean",
+    "arm": "pooled sequences",
+    "population": "SELECT-AXIS-1 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.7,
+    "uncertainty": {
+      "CI95": [
+        0.3,
+        1.2
+      ],
+      "method": "t-distribution"
+    },
+    "denominator_n": 136,
+    "estimate_type": "ANCOVA_LSmean",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Table1 LS mean row",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9335045/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-2",
+    "family_doi": "10.1186/s13075-024-03412-8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556075/",
+    "endpoint_id": "SELECT2_continuous_upadacitinib_LT2",
+    "arm": "continuous_upadacitinib",
+    "population": "SELECT-AXIS-2 imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in mSASSS <2",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 94.9,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 158,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Supplement TableS1 row no radiographic progression, footnotes c/b",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11556075/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-2",
+    "family_doi": "10.1186/s13075-024-03412-8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556075/",
+    "endpoint_id": "SELECT2_continuous_upadacitinib_LSmean",
+    "arm": "continuous_upadacitinib",
+    "population": "SELECT-AXIS-2 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.12,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 158,
+    "estimate_type": "AO_ANCOVA_LSmean",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Main Figure4 graphic; text rounds to0.1/0.2",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11556075/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-2",
+    "family_doi": "10.1186/s13075-024-03412-8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556075/",
+    "endpoint_id": "SELECT2_placebo_upadacitinib_LT2",
+    "arm": "placebo_upadacitinib",
+    "population": "SELECT-AXIS-2 imaging-evaluable population",
+    "week": 104,
+    "threshold": "change in mSASSS <2",
+    "construct": "composite_mSASSS_nonprogression",
+    "rate_percent": 93.8,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 162,
+    "estimate_type": "reported_observed",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Supplement TableS1 row no radiographic progression, footnotes c/b",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11556075/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "SELECT-AXIS-2",
+    "family_doi": "10.1186/s13075-024-03412-8",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11556075/",
+    "endpoint_id": "SELECT2_placebo_upadacitinib_LSmean",
+    "arm": "placebo_upadacitinib",
+    "population": "SELECT-AXIS-2 imaging-evaluable population",
+    "week": 104,
+    "threshold": "continuous change from baseline",
+    "construct": "composite_mSASSS_change",
+    "rate_percent": null,
+    "mean_change": 0.2,
+    "uncertainty": null,
+    "uncertainty_reason": "not reported for this estimate in inspected location",
+    "denominator_n": 162,
+    "estimate_type": "AO_ANCOVA_LSmean",
+    "missing_data": "observed available radiographs; no outcome imputation",
+    "source_location": "Main Figure4 graphic; text rounds to0.1/0.2",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11556075/supplementaryFiles",
+        "access": "ZIP retrieved; relevant supplementary text inspected"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "CONSUL",
+    "family_doi": "10.1136/ard-2023-224699",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11041582/",
+    "endpoint_id": "CONSUL_GOL_CEL_mean",
+    "arm": "GOL_CEL",
+    "population": "Adults with r-axSpA, high progression risk; randomized after sufficient response to12-week golimumab run-in.",
+    "week": 108,
+    "threshold": "continuous change",
+    "construct": "composite_mSASSS",
+    "mean_change": 1.1,
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "95%CI",
+      "lower": 0.4,
+      "upper": 1.8
+    },
+    "denominator_n": 54,
+    "estimate_type": "ITT multiple-imputation mean",
+    "missing_data": "<=8missing corners: other-timepoint score or0if both missing; otherwise20multiple imputations, separately by arm and reader; imputation uses baseline score,time lag,CRP.",
+    "source_location": "Main analysis; Figure3A; Methods Statistical analysis",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11041582/supplementaryFiles",
+        "access": "retrieval_timeout"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "CONSUL",
+    "family_doi": "10.1136/ard-2023-224699",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11041582/",
+    "endpoint_id": "CONSUL_GOL_mean",
+    "arm": "GOL",
+    "population": "Adults with r-axSpA, high progression risk; randomized after sufficient response to12-week golimumab run-in.",
+    "week": 108,
+    "threshold": "continuous change",
+    "construct": "composite_mSASSS",
+    "mean_change": 1.7,
+    "rate_percent": null,
+    "uncertainty": {
+      "type": "95%CI",
+      "lower": 0.8,
+      "upper": 2.6
+    },
+    "denominator_n": 55,
+    "estimate_type": "ITT multiple-imputation mean",
+    "missing_data": "<=8missing corners: other-timepoint score or0if both missing; otherwise20multiple imputations, separately by arm and reader; imputation uses baseline score,time lag,CRP.",
+    "source_location": "Main analysis; Figure3A; Methods Statistical analysis",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11041582/supplementaryFiles",
+        "access": "retrieval_timeout"
+      }
+    ],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ASSERT",
+    "family_doi": "10.1136/rmdopen-2020-001391",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7856152/",
+    "endpoint_id": "ASSERT_both",
+    "arm": "Pooled parent treatment histories",
+    "population": "Trial-derived r-axSpA subset with baseline DXA and baseline/two-year spinal radiographs; analysis restricted to L1–L4.",
+    "week": 102,
+    "threshold": "Corner grade0/1 to2/3; both readers agree",
+    "construct": "new_syndesmophyte_patient_indicator",
+    "rate_percent": 5,
+    "numerator_n": 9,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "Not reported for descriptive patient rate",
+    "denominator_n": 165,
+    "estimate_type": "Observed rounded patient percentage",
+    "missing_data": "Included baseline DXA and paired radiographs; excludes vertebrae with fracture or baseline syndesmophytes; no whole-outcome imputation described.",
+    "source_location": "Methods Outcome definition; Results Incidence of new syndesmophyte formation",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  },
+  {
+    "family_id": "ASSERT",
+    "family_doi": "10.1136/rmdopen-2020-001391",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7856152/",
+    "endpoint_id": "ASSERT_either",
+    "arm": "Pooled parent treatment histories",
+    "population": "Trial-derived r-axSpA subset with baseline DXA and baseline/two-year spinal radiographs; analysis restricted to L1–L4.",
+    "week": 102,
+    "threshold": "Corner grade0/1 to2/3; at least one reader",
+    "construct": "new_syndesmophyte_patient_indicator",
+    "rate_percent": 18,
+    "numerator_n": 30,
+    "mean_change": null,
+    "uncertainty": null,
+    "uncertainty_reason": "Not reported for descriptive patient rate",
+    "denominator_n": 165,
+    "estimate_type": "Observed rounded patient percentage",
+    "missing_data": "Included baseline DXA and paired radiographs; excludes vertebrae with fracture or baseline syndesmophytes; no whole-outcome imputation described.",
+    "source_location": "Methods Outcome definition; Results Incidence of new syndesmophyte formation",
+    "source_access": "Full text inspected; see supplementary_access for narrower supplement coverage.",
+    "supplementary_access": [],
+    "review_scope": "Pivotal numerical inputs internally cross-checked; not every field independently re-extracted. No external review.",
+    "registry_history": "Not verified"
+  }
+]
