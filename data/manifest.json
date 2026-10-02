@@ -2,9 +2,9 @@
   "scope": "Public extracted data only; no participant-level data",
   "release": "P002 v1 / 2026-10-02",
   "files": {
-    "p002-comparisons.json": "18ededb636c421628e98cbb62b8fcefdec9124412f848ad171e234a9d06c4a78",
-    "p002-endpoints.json": "26aee354a4084fcbc169314deea9b4bcffd5422721dd9e676151b00b0bb68c17",
+    "p002-comparisons.json": "b947b8870a10f326ae44a5bc771edc97aab73d26d9b8bb3e05d33bfb6dccd503",
+    "p002-endpoints.json": "11a4f0418058f638315f767403497bc9d56fbc6068246ede241da29160604f3d",
     "p002-endpoints.csv": "fa43b84b87ebec25c242edef19006464e82a0f9bb651b3222d2e9838e1fa13dd",
-    "p002-thresholds.svg": "0a236cf16f936de90c325970203cecac763415936d910f93bd53db6bdd66cf1a"
+    "p002-thresholds.svg": "09bb2d99ba76e78c585c52c9137d856f2c17608449cdc8e5d61d1c42cd0a9caf"
   }
 }
