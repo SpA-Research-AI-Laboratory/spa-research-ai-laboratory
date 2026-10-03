@@ -1,0 +1,14 @@
+.digest-reader{max-width:740px;margin:0 0 32px;padding:22px 24px;border:1px solid #c6d4c7;border-radius:12px;background:#eef4e9;color:#21352f;font:15px/1.65 system-ui,sans-serif}
+.digest-reader .reader-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.digest-reader button,.digest-reader select{font:inherit;min-height:44px;border-radius:7px;border:1px solid #899f8e;padding:9px 14px;color:#21352f;background:#fff}
+.digest-reader #digest-listen{background:#225c42;color:#fff;border-color:#225c42;font-weight:650}
+.digest-reader button{cursor:pointer}.digest-reader button:disabled{cursor:default;opacity:.6}
+.digest-reader button:focus-visible,.digest-reader select:focus-visible,.digest-reader input:focus-visible{outline:3px solid #a65d16;outline-offset:3px}
+.digest-reader p{margin:12px 0 0!important;font-size:14px;line-height:1.6}
+.digest-reader details{margin:14px 0 0;background:transparent;padding:0;border:0}
+.digest-reader summary{font-size:14px}.digest-reader .reader-settings{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.digest-reader label{display:flex;flex-direction:column;gap:4px;min-width:0;max-width:100%}
+.digest-reader .reader-voice{flex-basis:100%}.digest-reader select{max-width:100%;width:100%}
+.digest-reader .reader-notes{flex-direction:row;align-items:center;flex-basis:100%}.digest-reader input{width:18px;height:18px}
+@media(max-width:640px){.digest-reader{padding:18px}.digest-reader .reader-settings>label{flex-basis:100%}}
+@media print{.digest-reader{display:none}}
