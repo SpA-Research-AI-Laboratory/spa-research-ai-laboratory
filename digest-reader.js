@@ -95,6 +95,8 @@
     play.disabled = true; status.textContent = 'Reading aloud is unavailable here. Open this page in your phone’s Safari or Chrome browser.'; return;
   }
   const synth = root.speechSynthesis;
+  const episode = doc.querySelector('#episode audio');
+  const idleLabel = episode ? 'Read full text aloud' : 'Listen to episode';
   let voices = [];
   function loadVoices() {
     const selected = voiceMenu.value;
@@ -106,14 +108,17 @@
   loadVoices(); synth.addEventListener('voiceschanged', loadVoices);
   const player = createPlayer({synth, Utterance: root.SpeechSynthesisUtterance, onChange(info) {
     const running = ['speaking','starting'].includes(info.state), active = running || info.state === 'paused';
-    play.textContent = running ? 'Pause reading' : info.state === 'paused' ? 'Resume reading' : 'Listen to episode';
+    play.textContent = running ? 'Pause reading' : info.state === 'paused' ? 'Resume reading' : idleLabel;
     stop.disabled = !active;
     [voiceMenu,rate,pitch,notes].forEach(el => { el.disabled = active; });
     status.textContent = info.message;
   }});
   play.disabled = false;
+  play.textContent = idleLabel;
+  if (episode) episode.addEventListener('play', () => player.stop());
   status.textContent = 'Ready. Reads the digest aloud using a voice provided by your browser.';
   play.addEventListener('click', () => {
+    if (episode) episode.pause();
     const state = player.getState();
     if (['speaking','starting'].includes(state)) { player.pause(); return; }
     if (state === 'paused') { player.resume(); return; }
