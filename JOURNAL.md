@@ -59,3 +59,6 @@
 **Timeline:** ~8 weeks part-time
 
 **Status:** Ready to begin Phase 0 (environment setup). GPU model and WSL2 status to be confirmed.
+# 2026-10-03 — Living helix identity
+
+Adopt the founder-selected green and teal helix with vertebra-shaped rungs. Add the emblem to the shared header, the full logo beside the homepage vision, and favicons plus a phone home-screen icon across the site. Desktop and phone-width previews checked; scientific content unchanged.

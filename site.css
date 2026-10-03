@@ -25,6 +25,7 @@
 .lab-principle { display:flex; align-items:center; justify-content:space-between; gap:35px; padding-block:28px; border-block:1px solid var(--line); }
 .lab-principle p { font:26px/1.35 var(--serif); }
 .lab-principle p br { display:none; }
+.lab-logo-signature { width:clamp(150px,20vw,230px); height:auto; flex-shrink:0; clip-path:polygon(15% 0,100% 0,100% 100%,0 100%,0 15%,15% 15%); }
 .lab-section { padding-block:92px; }
 .lab-section-heading { display:grid; grid-template-columns:1.05fr 1fr; gap:26px 85px; align-items:end; }
 .lab-section-heading .eyebrow { grid-column:1/-1; color:var(--accent); }
