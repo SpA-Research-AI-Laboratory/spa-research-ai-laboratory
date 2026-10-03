@@ -131,3 +131,7 @@
 @media(max-width:360px) { .lab-hero h1 { font-size:2.35rem; } }
 @media(prefers-reduced-motion:reduce) { .cycle-flow { animation:none; } }
 @media print { .lab-cycle, .header-study, .main-nav, .lab-footer { display:none; } .lab-hero, .structure-layout, .lab-next, .method-section { display:block; } }
+
+/* Daily digest navigation stays usable on narrow screens. */
+.main-nav { flex-wrap:wrap; }
+@media(max-width:760px) { .main-nav { justify-content:flex-start; column-gap:16px; row-gap:4px; } }

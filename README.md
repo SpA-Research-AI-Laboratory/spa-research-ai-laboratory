@@ -31,3 +31,8 @@ Keep factual claims source-linked. Distinguish completed research from external 
 Check both audience modes, keyboard navigation, narrow screens, reduced motion, pause controls, local links and data integrity before release. Keep critical content usable without JavaScript. Preserve existing URLs or give them useful archive/redirect pages. Use Git history for rollback; document substantive research corrections and version changes.
 
 The site makes no appointment, diagnostic or personalized-treatment service claims. Third-party research remains attributable to its original authors. No third-party full-text paper PDFs are distributed in the public data package.
+
+
+## Public daily digests
+
+Since 3 October 2026, the founder authorizes reviewed public daily-digest editions under digests/, including CEO updates, research progress and lessons. This supersedes any general exclusion of board reports only for these deliberately curated public editions. Raw private reports, personal context, credentials and internal memory still do not belong here. Keep dates, citations, uncertainty and mobile-readable light styling. No audio edition is configured yet.
