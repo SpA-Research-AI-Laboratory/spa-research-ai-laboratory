@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#F4F1E9">
+<title>About lab and how we work · SpA Lab podcast</title>
+<meta name="description" content="An introductory two-host conversation about SpA Lab: its origins, research process, ambitions and limits.">
+<link rel="canonical" href="https://spa-research-ai-laboratory.org/podcasts/about-lab.html">
+<link rel="stylesheet" href="../style.css?v=20261003-helix1"><link rel="stylesheet" href="../site.css?v=20261003-helix1"><link rel="stylesheet" href="../podcast.css?v=20261004-about1">
+<link rel="icon" href="/favicon.ico?v=helix1" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/images/spa-lab-icon-32.png?v=helix1"><link rel="icon" type="image/png" sizes="192x192" href="/images/spa-lab-icon-192.png?v=helix1"><link rel="apple-touch-icon" sizes="180x180" href="/images/spa-lab-icon-180.png?v=helix1">
+</head>
+<body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header wrap"><a class="wordmark" href="../index.html" aria-label="SpA Lab home"><img class="brand-helix" src="../images/spa-lab-emblem.png" width="48" height="48" alt="">SpA Lab<span class="wordmark-dot">.</span></a><nav class="main-nav" aria-label="Main navigation"><a href="../index.html">The lab</a><a href="../work.html">Our work</a><a href="../how-we-work.html">How we work</a><a href="../about.html">About us</a><a href="../digests/index.html">Daily digests</a></nav></header>
+<main id="main" class="podcast-episode wrap">
+<p class="eyebrow">SpA Lab · introductory podcast · 4 October 2026</p>
+<h1>About lab and how we work</h1>
+<p class="lead">The story behind SpA Lab, the research process we are building, and what a future with AI and experimental collaborators might make possible.</p>
+<div class="podcast-player"><p class="podcast-format">NotebookLM Deep Dive · Two hosts · English · 25 min 32 sec</p><audio controls preload="metadata" aria-label="About lab and how we work" aria-describedby="episode-disclosure"><source src="audio/about-lab-2026-10-04.mp3" type="audio/mpeg">Your browser does not support embedded audio. <a href="audio/about-lab-2026-10-04.mp3">Open the MP3 recording</a>.</audio><p class="podcast-links"><a href="audio/about-lab-2026-10-04.mp3" download>Download MP3</a><a href="#transcript">Read the transcript</a></p><p id="episode-disclosure" class="podcast-disclosure">AI-generated conversation with synthetic voices. Educational introduction, not medical advice.</p>
+<p class="podcast-clarification"><strong>Listening notes.</strong> The P002 contrast is 21.4 percentage points, not a relative percent change. The future “tiebreaker” example is hypothetical. Failing to find a discriminating measurement does not itself mathematically prove none exists or that an experiment would be uninformative.</p></div>
+<section id="episode-notes" class="episode-prose" aria-labelledby="notes-title"><h2 id="notes-title">Episode notes</h2>
+<p>SpA Lab began with a question about how a small team could sustain useful scientific work. This conversation follows the idea from a forest walk to a laboratory organized around human direction, bounded AI tasks and a shared research record.</p>
+<p>The hosts explore how a research question becomes a protocol, how literature and code are checked, and why an AI review still needs qualified outside scrutiny. A worked example from our first completed pilot shows why changing a measurement cutoff can change a headline without changing the people being studied.</p>
+<p>The final part looks outward: what protein-structure prediction and automated chemistry have already demonstrated, and what a future connecting theoretical models, public-data analysis and experimental collaborators might make possible. These are conditional possibilities; SpA Lab currently conducts computational and evidence work, with no operating robotic wet lab or validated new treatment.</p>
+<h3>Sources behind the conversation</h3>
+<ul class="podcast-sources">
+<li><a href="../about.html">SpA Lab: the professional founding story and AI coordinator</a>; <a href="../how-we-work.html">How we work</a>. Public pages.</li>
+<li><a href="../study.html">What does “non-progression” mean?</a> P002, version 1, 2 October 2026. Internally checked bounded descriptive audit; <a href="../data/p002-comparisons.json">comparison data</a>. The numerical example reuses this pilot's checked extraction.</li>
+<li>Jumper et al. (2021). <a href="https://doi.org/10.1038/s41586-021-03819-2">Highly accurate protein structure prediction with AlphaFold</a>. Publisher full text inspected.</li>
+<li>Burger et al. (2020). <a href="https://doi.org/10.1038/s41586-020-2442-2">A mobile robotic chemist</a>. Publisher abstract and metadata inspected; full text was not read for this episode.</li>
+<li>Boiko et al. (2023). <a href="https://doi.org/10.1038/s41586-023-06792-0">Autonomous chemical research with large language models</a>. Indexed publisher/PMC passages inspected; complete direct full-text access was unavailable.</li>
+</ul>
+<p>The three AI-science examples are historical demonstrations from other groups, not a survey of the latest capabilities or achievements of SpA Lab. Complete source identities and access limits appear in the <a href="about-lab-source.txt">written source narrative</a>.</p>
+</section>
+<section id="review-notes" class="episode-prose" aria-labelledby="review-title"><h2 id="review-title">Audio review &amp; limitations</h2>
+<p>The written source and the complete automatic transcript of this recording were checked in separate internal AI reviews. The episode is published with the listening notes beside the player. These checks are not external scientific validation or a direct listening certification.</p>
+<p>AI-generated conversation can simplify or overstate a source. Documentation and repeated review reduce risks; they do not eliminate errors. Future examples are scenarios, with no demonstrated mathematical proof, measured time saving or guaranteed discovery claimed here.</p>
+</section>
+<section id="transcript" class="episode-prose" aria-labelledby="transcript-title"><h2 id="transcript-title">Transcript &amp; source</h2>
+<p><a href="about-lab-transcript.txt" download>Download the automatic transcript and listening notes</a> · <a href="about-lab-source.txt">Read the written source narrative</a></p>
+<p>This is NotebookLM’s automatic transcript of the actual recording. Names and technical terms may be mis-transcribed; use the written source and listening notes for the checked account.</p>
+<details class="podcast-transcript"><summary>Read the full conversation</summary><div class="transcript-text">So, I want you to think about what actually makes a laboratory. Like, if you picture a lab right now, you probably imagine this sterile white room, right? Benches, pipets, maybe a centrifuge humming in the corner,
+right? Yeah. You think of the physical architecture.
+Exactly. You picture a building where discoveries just happen. But today, we&#x27;re doing a deep dive that really challenges that entire premise. What if we just strip the building away entirely? Is a lab really the physical equipment or is it at its core or actually just a system like a specific way of organizing human curiosity and demanding evidence.
+I mean that is a profound shift in perspective and it&#x27;s exactly the lens we need for the material we&#x27;re digging into today because when you stop viewing science as just a building you walk into and start viewing it as an organizational structure, it completely changes what&#x27;s possible.
+It really does. It forces you to look at how we manage the friction of asking a question and actually getting a reliable answer. And we have a phenomenal document in front of us today to explore that friction. It&#x27;s a public professional overview prepared on October 4th, 2026 about a project called ESPAB.
+Yeah, Espab is really fascinating. It&#x27;s a unique computational laboratory focusing on research into a condition called axial spondylothritis.
+Right. But just to be clear for everyone listening, our mission today isn&#x27;t to dive deep into the medical nuances of that specific condition. We&#x27;re really here to unpack the how. How does a single human founder and an AI coordinator actually work together to do scientific research?
+Precisely, the methodology is the story here. We really want to cut through the immense amount of hype, you know, the science fiction noise about AI scientists. We&#x27;re looking at the grounded realities of what autonomous work actually means in a daily context,
+which I&#x27;m incredibly enthusiastic about because we hear these flashy headlines constantly like AI discovers this algorithms solves that, but we rarely get to see the actual nuts and bolts,
+right? And we also have to look at the hard limits and the severe risks of bringing AI into a rigorous scientific setting. It&#x27;s not all magic.
+Definitely. So, let&#x27;s start at the beginning. The origin of Spa Lab comes from its founder, Puffle Kulik, and the overview uses this brilliant framing to describe his background. They call it a tale of two forests.
+Yeah, it&#x27;s a wonderful way to ground this highly technical project in a very human reality. So, the first forest is quite literal. When Paul was a child, he had a microscope and he&#x27;d go out into the garden and the nearby woods.
+Oh, catching bugs and stuff.
+Exactly. Collecting insects, gathering leaves, bringing them back to look at them under the lens.
+It&#x27;s that fundamental drive, right? Just that sheer fascination with the complexity that living systems reveal when you just look a little bit closer.
+And that curiosity didn&#x27;t fade at all. It just became more formalized. He went on to study physics and The overview notes that during his studies he encountered a department focused on the dynamics of the heart
+which gives his curiosity a very quantitative direction.
+It did. He moved into cardiac electrophysiology. During his master&#x27;s work, he was actually simulating cardiac electrical activity.
+Wow. So taking something incredibly complex and biological, a beating heart, and trying to capture its behavior through measurement and computational simulation.
+Exactly. And he built a significant professional career in that space. He collaborated with physicians. He consulted for a startup that was developing a mapping system for atrial fibrillation.
+So he has this deep practical background right at the intersection of living systems, measurement and computation. He intimately knows how hard it is to map biology to numbers.
+Yes, that background is essential context. He was already deeply familiar with the rigors of scientific investigation and data. Which brings us to the second forest.
+Right. So years later, Pavle&#x27;s out for a walk. in the woods and he&#x27;s listening to a podcast about autonomous AI agents. And while he&#x27;s walking, he&#x27;s wrestling with this massive logistical problem,
+the time constraint.
+Yes, he has specific scientific questions he wants to pursue about axial spondaloarthritis. But he has a primary professional career. He simply doesn&#x27;t have the time to manually supervise every single microscopic step of a brand new research program.
+And time is the universal enemy of the independent researcher. I mean, the sheer volume of labor ious transition work required in science is just staggering.
+Oh, absolutely. Taking a broad idea, formatting it into a structured search query, reading dozens of papers, extracting data, formatting the data set,
+writing the code to run a calculation, and then verifying a result you can actually trust. It is a grueling, friction-heavy process.
+So, on this walk, listening to that podcast, he essentially formulates an organizational experiment. He asks, could an AI system carry that laborious transition work forward? Could you build a small computational lab that does useful, highly inspectable work so the founder can keep his primary career but still drive new research?
+And that question is what birthed bile lab. It&#x27;s designed around a very specific division of labor. You have one human founder Pavle who sets the broad direction and you have an AI coordinator
+and the overview identifies this coordinator as GPT6 Astra operating through a tool called codeex and some other connected utilities. Right.
+Yes. Uh and we should clarify what code X is here. In this context, it&#x27;s a system designed to translate natural language instructions into functional programming code. So, the AI isn&#x27;t just generating text. It&#x27;s generating the scripts needed to actually manipulate data.
+But I want to zero in on the AI&#x27;s role for a second because the source material uses the word director to describe the AI coordinator. Now, in a normal lab, a director is the ultimate authority. Like they certify the science. Is that what&#x27;s happening here?
+Absolutely not. And the overview is pain. ingly careful to define this. Director in Spa Lab describes a functional operational role. It is a workflow position.
+So it&#x27;s not a credential
+categorically not. It means the AI proposes priorities from a list, designs bounded questions, delegates tasks, and integrates the outputs. It does not independently certify the scientific validity of the findings, and it certainly isn&#x27;t an endorsement by the software developer.
+Okay, so it&#x27;s directing the traffic of the research, not granting the PhD. Right.
+But let me push on this setup a bit. When you say the AI coordinates and delegates, it is so easy to picture this tireless awake digital entity living inside a server just churning out science 24/7 while Pavle is sleeping. Is that how it works?
+It is the exact opposite of that. This is not a sentient entity running endlessly in the dark. The system works in explicitly scheduled sessions and those sessions are entirely dependent on local compute availability. and application access.
+Wait, really? So, you can&#x27;t just hit go, walk away for a month, and come back to a finished paper.
+No, the overview explicitly notes that reliable, unattended completion of tasks is still unproven. The autonomy is highly bounded. It&#x27;s basically about how much scoped work the system can execute during a specific window of time.
+Okay. But if it isn&#x27;t continuously running, how does it know what it did yesterday? Like, does it have some permanent immutable memory?
+No, it doesn&#x27;t have a digital subconscious. It maintains continuity through rigorous exhaustive documentation, saved protocols, saved evidence tables, stored code, and written decision records.
+So when a new session starts, it has to read its own paper trail to resume the work.
+Precisely. Which makes a lot of sense because it makes every step inspectable. If something derails, you can look at the save state and see exactly where the logic broke down.
+And Paval isn&#x27;t just blindly accepting this out. put is he
+not at all. The overview is emphatic that qualified human specialist scrutiny remains entirely necessary. Pavle sets the direction but the system generates work that other people specialist collaborators methodologists can then interpret and criticize. Rigorous evidence limits the conclusion.
+Okay, so we have a human setting the compass and an AI executing transitions in documented bursts. But how do they do this without the AI just hallucinating because language models are famous for sounding incredibly confident while making things up.
+Yeah, that brings us to the concrete research loop of Spa Lab. Their primary defense mechanism against hallucination is starting by making the question aggressively small.
+Aggressively small. That is so counterintuitive to how AI is usually marketed. We always hear, you know, cure this disease, solve this massive problem
+because massive open-ended queries are an invitation to hallucinate. If you ask a vague question, the model will just generate a statistically probable, polished, and potentially totally fabricated answer. The question must be structurally bounded and answerable.
+So what does an aggressively small question look like here?
+It requires defining exact parameters beforehand. What exact population is being studied compared with what? Which specific outcome? Exactly when is it being measured?
+And there&#x27;s a specific requirement they enforce that I thought was brilliant. They demand the system articulate what observation would count against the proposed explanation. Like what would disprove it?
+Falsifiability. It&#x27;s the bedrock of the scientific method. But the crucial part is the sequence. The lab mandates that these choices, the boundaries, the conditions for disproof must be written down before the results are extracted and interpreted,
+which is vital because if you don&#x27;t write your hypothesis down first, you run into the Texas Sharpshooter fallacy.
+Oh, right.
+Yeah. Where you shoot a bunch of holes in a barn and then paint a bullseye around the tightest cluster and claim you&#x27;re a master marksman. It prevents post hawk rationalization.
+Exactly. It prevents the AI from just mining data until it finds something statistically significant and then inventing a successful prediction after the fact. Writing it down preserves the difference between a real investigation and just searching for support.
+And the plan can still change if the data demands it. Right.
+Yes. But because of how the lab operates that pivot is documented in the saved records. The change is completely visible.
+Okay, so they have a bounded question. Next is retrieving the literature. And the overview describes this as building a chain of evidence, right? It&#x27;s not just scraping text.
+This is where the AI&#x27;s operational role really shines, but it requires strict rules. The AI has to trace connections between papers. In medical research, multiple papers published over several years might actually be reporting on the exact same group of patients from one initial trial.
+Oh, like a one-year outcome paper and then a three-year extension paper.
+Exactly. And if the AI counts those as two independent pieces of evidence, it&#x27;s double counting. It&#x27;s artificially inflating the evidence.
+So, it has to preserve those relationships. And it also has to record source access levels, right? Like noting if a paper was deeply inspected versus just reading a public abstract.
+Yes. Because abstracts are summaries. They omit crucial method ological details. If a supplementary data file is inaccessible to the system, it has to be recorded as inaccessible. If a number is missing, it must remain unknown. The AI cannot invent a convenient assumption to make the math work out smoothly.
+It has to respect the missing information. And when it needs to run a calculation, it keeps all the inputs and the codec generated code so any human can rerun the arithmetic.
+That&#x27;s the essence of making the work inspectable.
+Now, the overview mentions they use a separate AI task to challenge a pivotal extraction. Basically, a second AI checking the first AI. That sounds like a great safety net, but isn&#x27;t that just like asking two students who read the same flawed textbook to grade each other&#x27;s exams? They might share the exact same blind spots.
+Your intuition is spot on. And the source document actively acknowledges this. Internal AI cross checks can catch basic errors in text extraction or table reading, but they are absolutely not a substitute for external independent validation
+because these models share underlying training data.
+Precisely. They can share highly confident mistakes. Having a second AI agree with the first AI doesn&#x27;t transform an interpretation into a verified scientific fact. Generating more text confirming an error is not progress.
+And even a perfectly reproducible piece of code can flawlessly reproduce a totally incorrect underlying assumption.
+Yes, the internal checks tidy up the draft, but external human expertise and real world are irreplaceable.
+So to really grasp why this strict approach is necessary, we need to look at an actual example. The overview provides a fascinating one. The lab&#x27;s first completed public pilot called P002.
+Right. P002, which audited the definition of nonprogression.
+Yeah. Which sounds simple, but it&#x27;s actually biologically and statistically treacherous. They asked, &quot;What does the term non-progression actually mean in accessible reports of spinal structural outcomes?&quot;
+It&#x27;s a brilliant example because it exposes the gap between how data is categorized in research and how the public perceives it. When people hear structural damage didn&#x27;t progress, they imagine a spine completely unchanged, static, frozen in time. But the mathematical definition used to categorize that patient can mean something entirely different.
+Okay, so let&#x27;s look at their data set. They assembled nine parent trial families. From those, they found 46 endpoint records and within that They found that four families supported five matched comparison rows.
+Let&#x27;s pause on trial families.
+Okay,
+this goes back to what we just discussed about not double counting. They grouped reports from the same underlying trial into a single family to prevent the illusion of having more independent data than actually exists.
+Rigorous curation. So the core example they highlight uses data from a radiographic spinal score known as MSASS. Specifically looking at a 2019 report by Braraw and colleagues, the measure one data.
+The MSSASS is just a specific scoring system to quantify structural changes in the spine on X-rays. And what P002 found when auditing these definitions is staggering.
+Let&#x27;s walk through the numbers. They looked at how patients were classified as non-progressors based on changes to the score over time. When the definition meant the score change had to be zero or less, meaning less than or equal to zero, 60.7% of participants were classified as non-progressers.
+So roughly six out of 10 meet that strict threshold,
+right? But when the rule allowed for a score change of up to two points less than or equal to two, the rate jumped to 82.1%.
+From 60.7% to 82.1%. That is a 21.4 percentage point difference within the exact same group of people.
+It fundamentally changes the narrative. But here&#x27;s the critical distinction we have to make. That 21.4 percentage point gap is not a treatment gain.
+No, not at all.
+The biological reality of the patients didn&#x27;t change. Their spines didn&#x27;t suddenly alter. The only thing that changed was the mathematical boundary defining the category.
+It is entirely a function of classification.
+It&#x27;s exactly like setting a passing grade on a final exam. If you decree a passing grade is a 90, maybe 60% of the class passes. But if you lower it and say a 70 is a pass, suddenly 80% pass. The students didn&#x27;t get smarter overnight. You just moved the goalpost.
+That exam analogy is exactly what&#x27;s happening. When researchers take a continuous range of measurements like a numerical score and force it into a binary category like progressor versus non-progressor, they are compressing the data. Now, dichotomizing data isn&#x27;t always mathematically required. You can analyze continuous outcomes directly. But when they do use a cutoff, the rule they choose becomes permanently baked into the final result.
+So a cutoff of zero or less and a cutoff of two or less are answering different statistical questions. Furthermore, there&#x27;s a deep biological nuance here. Even if a patient meets that strict threshold of zero or less, that does not literally prove the absolute absence of biological progression.
+Wait, if the score didn&#x27;t go up, why doesn&#x27;t that mean the disease stopped?
+Because the score is just a measurement tool applied to an image. It&#x27;s a snapshot with inherent limitations and margins of error. A measured score change of zero is an observation, not a guarantee of absolute cellular stasis.
+Well, So, because these definitions are so sensitive, Spa Lab kept all comparisons strictly separate. They didn&#x27;t smash it all into one misleading average, and they didn&#x27;t claim this 21.4% gap had immediate clinical implications. They just laid out the descriptive arithmetic,
+which highlights how research is communicated. This pilot helps separate concepts that frequently get tangled up. The overview outlines four distinct phenomena that must be kept separate.
+Let&#x27;s clarify those.
+First, you have symptoms. This is the subjective experience. Is the patient in pain? Are they stiff?
+Crucial for the patient, obviously.
+Absolutely crucial. But symptoms cannot silently stand in for an imaging outcome. You can have fluctuating symptoms while structural changes occur independently. The second concept is inflammation. Active inflammatory processes distinct from long-term damage.
+Okay, so symptoms and inflammation. What&#x27;s the third?
+Structural progression. This is what P002 was auditing, looking at whether additional structural changes are occurring. over time.
+And the fourth concept,
+lesion specific repair. This is a very rigorous benchmark. It requires demonstrating that an existing structural lesion has actually regressed over time. You have to track the exact same lesion and distinguish true biological change from just imaging noise.
+And when Spa Lab audited their data set, did they find an endpoint measuring that specific kind of repair?
+They found no lesion specific repair endpoint in the inspected material for those nine families.
+But just to be perfectly clear that is a tightly bounded observation. That doesn&#x27;t mean repair is universally impossible. Right.
+Correct. That would be a massive overreach. It simply means it was not an end point in the specific reports they examined for this pilot. It doesn&#x27;t establish a global conclusion.
+So P00002 perfectly illustrates the grounded reality of Spa Lab. The AI isn&#x27;t discovering miracle therapies. It&#x27;s executing bounded traceable audits of existing evidence. Anyone can look at the records and produce the arithmetic behind that 21.4 percentage point difference.
+Reproducibility is the goal.
+But again, reproducing the code doesn&#x27;t mean external experts have certified the literature search. It&#x27;s a transparent starting point for human scrutiny, not a final verdict.
+Right?
+So if that is the meticulous reality of Spa Lab today, why is there so much global momentum behind AI in science? To understand that, the overview points us toward three external examples.
+And we must place a massive flashing warning light here. These are achievements by other research groups, not Spa Lab. Spa Lab is referencing them to map what is technologically possible.
+Exactly. So the first external example is a famous one, Alphafold, published by Jumper and colleagues in 2021.
+Alphafold was a monumental computational leap. They reported a system that predicted protein structures from their sequences with accuracy approaching experimental structures,
+which is a huge biological puzzle.
+But the overview places specific boundaries around what that means because predicting a structure computationally is not the same as treating a disease. Alphold helps researchers form structural hypotheses, but a predicted shape alone doesn&#x27;t validate a living person&#x27;s treatment. It&#x27;s a computational building block, not a finished medical solution.
+The second example moves into the physical world. It&#x27;s a 2020 paper by Burger and colleagues detailing a mobile robotic chemist.
+This group placed a robot in a working chemistry lab and over 8 days, the robot conducted 688 experiments exploring mixtures for a specific photoc catalytic task.
+688 experiments in 8 days is incredible speed.
+And they reported a six-fold improvement in activity compared to initial formulations. But look at the strict confines. The task, the chemicals, the laboratory, all of it was defined and set up by human researchers.
+It&#x27;s an algorithm optimizing a search within a highly bounded sandbox, not an AI with general biological reasoning.
+Exactly. And The third example bridges the gap between language models and lab tools. The co-scientist system published by boyco in 2023.
+So co-scientists essentially gave a language model a set of hands. They connected it with search functions, code execution, and automated lab tools.
+They demonstrated it planning and executing established chemical reactions. But the overview notes that even here lab resources were supplied by humans and some manual handling still remained.
+In the titles of these papers, autonomous This chemical research can be so seductive. They make it sound like we have a silicon scientist we can just unleash.
+And that&#x27;s the communication trap. Alphafold, the robotic chemist, co-scientist, these are different building blocks solving different problems in different years. They are not a single omnipotent autonomous system
+and you can&#x27;t just snap them together effortlessly, right?
+Not at all. Combining them is incredibly difficult. An AI might propose an experiment a machine can&#x27;t run or a machine might measure something that doesn&#x27;t actually test the biological question at hand.
+Which brings us to the conditional future of Spa Lab. The overview is refreshingly sober. Spa Lab does not have an operating robotic wet lab. They have no experimentally validated new therapy and no guaranteed discovery.
+So, their immediate future is primarily computational. If suitable data is found, AI could help compare mechanistic explanations or map evidence to hypothesis.
+Or, like they did with P002, test how strongly a conclusion depends on an analytical choice. But there&#x27;s one theoretical use they mentioned that I found fascinating. Finding discriminating tests. What is that?
+Imagine you have two plausible biological explanations that both fit the exact same observed data. A computational analysis might be able to find a specific theoretical measurement where their predictions diverge.
+Oh, like a tiebreaker. An experiment where explanation A predicts it goes up and B predicts it goes down.
+Exactly. And even if the AI concludes no such tiebreaker exists in current data, that negative result is highly valuable. It proves mathematically that available data cannot separate the alternatives, which saves human collaborators from running uninformative experiments.
+It&#x27;s a mathematical warning sign. Now, what about a conditional wet lab future
+that would require qualified external collaborators, facilities, ethical approvals, and even then, human specialists would still have to judge if the assays actually represent the biological question. More automation does not guarantee useful knowledge.
+I want to touch on the risks because when you scale up this ambition, what are the concrete dangers?
+The risks scale with the ambition. An AI can invent citations, merge distinct patient groups, or confidently turn a mere association into a false causal story.
+And even if the code flawlessly calculates a quantity, if the underlying biological assumption is wrong, it just calculates the complete wrong quantity perfectly.
+And automation can rapidly spread that error through files before a human catches it. Plus, you have privacy and data rights issues. Just because data is public doesn&#x27;t mean every reuse is permitted.
+And tool dependence. They rely on external software. If an API updates or access changes, the lab&#x27;s operation could just break.
+A working demonstration today is not a permanent reliability promise for tomorrow.
+So, pulling this all together, what is the core message of this public overview.
+I think the thread connecting Pavl Kouglick&#x27;s childhood microscope, the forest walk and spa lab is a deep desire to look closer at living systems and ensure every claim is answerable to what was actually seen.
+The test isn&#x27;t a magical immediate cure. It&#x27;s whether this AI assisted arrangement produces questions, records, and analyses that other people can understand and challenge.
+It&#x27;s a grounded hope. Delegating the coordination allows a small team to do more useful inspectable work eventually contributing to a better understanding of axial spondyloarththritis.
+Which leaves me with a final thought for you, the listener. We started by asking what makes a laboratory. If AI can eventually help us sort through the noise of millions of research papers, the bottleneck in science might no longer be finding answers. It might become asking the right questions. So, how can we use these tools not just to analyze data, but to design scientific questions that are fundamentally more testable.</div></details>
+<p>Read more about <a href="../about.html">the people and story behind the lab</a>, <a href="../how-we-work.html">our research process</a>, and <a href="../work.html">the work itself</a>.</p>
+</section>
+</main>
+<footer class="lab-footer wrap"><a class="wordmark" href="../index.html">SpA Lab<span class="wordmark-dot">.</span></a><nav aria-label="Footer navigation"><a href="../index.html#about-lab-podcast">Back to the lab</a><a href="../digests/index.html">Daily digests</a></nav><p>Independent research &amp; education · © 2026 SpA Lab<br>Not personal medical advice.</p></footer>
+</body></html>

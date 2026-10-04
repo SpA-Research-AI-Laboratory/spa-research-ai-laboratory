@@ -1,0 +1,12 @@
+{
+  "files": {
+    "about-lab-2026-10-04.mp3": "df0afa135bfa765e4223f03031bba4ba76ef99793bf4517fc4c063b4b2d191f7"
+  },
+  "title": "About lab and how we work",
+  "duration_seconds": 1532.38,
+  "provider": "NotebookLM",
+  "format": "English two-host Deep Dive, Long",
+  "release": "Annotated episode; carry listening notes when sharing",
+  "episode_page": "../about-lab.html",
+  "listening_notes": "The P002 contrast is 21.4 percentage points, not a relative percent change. The future “tiebreaker” example is hypothetical. Failing to find a discriminating measurement does not itself mathematically prove none exists or that an experiment would be uninformative."
+}
