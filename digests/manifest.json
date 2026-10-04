@@ -6,6 +6,13 @@
     "file": "2026-10-04.html"
   },
   {
+    "date": "2026-10-04",
+    "kind": "improvement",
+    "title": "A useful stopping point is not a failure",
+    "summary": "Our first three-day review adds an honest checkpoint state and explains how we will measure whether it helps.",
+    "file": "2026-10-04-improvement.html"
+  },
+  {
     "date": "2026-10-03",
     "title": "How would we know whether diet helps?",
     "summary": "Why dietary studies need careful comparisons, what today's source checks taught us, and why a change in immune measurements is not yet a patient benefit.",
