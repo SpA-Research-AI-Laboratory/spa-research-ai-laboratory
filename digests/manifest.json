@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-11",
+    "kind": "improvement",
+    "title": "Follow the evidence back to its source",
+    "summary": "A bounded evidence graph reproduced existing answers; practical benefit remains untested.",
+    "file": "2026-10-11-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-06",
     "kind": "daily",
     "title": "One nutrient, three different questions",
