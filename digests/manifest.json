@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-14",
+    "kind": "improvement",
+    "title": "Test the copy, protect the evidence",
+    "summary": "An isolated regeneration test protects reviewed evidence while preserving an unresolved reproducibility discrepancy.",
+    "file": "2026-10-14-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-11",
     "kind": "improvement",
     "title": "Follow the evidence back to its source",
