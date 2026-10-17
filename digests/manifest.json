@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-17",
+    "kind": "improvement",
+    "title": "When the numbers agree but the explanation changes",
+    "summary": "A copied rebuild preserves the numbers but changes explanatory text; a real graph retrieval attempt stops at its freshness check.",
+    "file": "2026-10-17-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-14",
     "kind": "improvement",
     "title": "Test the copy, protect the evidence",
