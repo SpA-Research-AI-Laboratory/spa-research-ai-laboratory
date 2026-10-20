@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-20",
+    "kind": "improvement",
+    "title": "Keep the explanation tied to the evidence",
+    "summary": "Why a baseline participant count does not establish an outcome denominator, and how source-specific caveats preserve meaning.",
+    "file": "2026-10-20-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-17",
     "kind": "improvement",
     "title": "When the numbers agree but the explanation changes",
