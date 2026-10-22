@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-22",
+    "kind": "improvement",
+    "title": "Making a research correction usable",
+    "summary": "A reproducible correction preview preserves the numbers, explains uncertain patient denominators, and exposes one checker failure and its repair.",
+    "file": "2026-10-22-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-20",
     "kind": "improvement",
     "title": "Keep the explanation tied to the evidence",
