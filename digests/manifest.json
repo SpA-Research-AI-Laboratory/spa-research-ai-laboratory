@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-10-26",
+    "kind": "improvement",
+    "title": "A checked correction with no recorded ordinary use",
+    "summary": "A retrospective review finds no established ordinary use of a correction preview, leaving practical benefit unmeasured.",
+    "file": "2026-10-26-improvement.html",
+    "release_mode": "written"
+  },
+  {
     "date": "2026-10-22",
     "kind": "improvement",
     "title": "Making a research correction usable",
